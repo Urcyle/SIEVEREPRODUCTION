@@ -1,0 +1,22 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# requests 2731876301 wss_obj 508752958 small 0.001 large 0.1
+# sample_ratio 0.1
+# pass large.1
+# sizes large
+# cachesim 0346336 args: fifo 0.1
+# started 2026-10-10T08:19:48-07:00 on OMEN, 8 threads
+spatial sampler: sample ratio 0.100000, sample func 0x6011dcf20c20, clone func 0x6011dcf20bd0
+[32m[INFO]  10-10-2026 08:19:48 cli_reader_utils.c:262  (tid=132677691397376): calculating working set size...
+[0m[32m[INFO]  10-10-2026 08:29:53 cli_reader_utils.c:279  (tid=132677691397376): working set size: 50816130 object 50816130 byte
+[0m[32m[INFO]  10-10-2026 08:29:53 cli_parser.c:545  (tid=132677691397376): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo2.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 1 size = 1 caches, fifo, ignore object size
+[0m[32m[INFO]  10-10-2026 08:30:46    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 24.00 hour: 31714712 requests, miss ratio 0.3034, interval miss ratio 0.3034
+[0m[32m[INFO]  10-10-2026 08:31:30    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 48.00 hour: 63755032 requests, miss ratio 0.2887, interval miss ratio 0.2741
+[0m[32m[INFO]  10-10-2026 08:32:09    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 72.00 hour: 94800577 requests, miss ratio 0.2858, interval miss ratio 0.2798
+[0m[32m[INFO]  10-10-2026 08:32:48    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 96.00 hour: 127411033 requests, miss ratio 0.2833, interval miss ratio 0.2761
+[0m[32m[INFO]  10-10-2026 08:33:23    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 120.00 hour: 156816266 requests, miss ratio 0.2809, interval miss ratio 0.2707
+[0m[32m[INFO]  10-10-2026 08:34:05    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 144.00 hour: 190060670 requests, miss ratio 0.2782, interval miss ratio 0.2652
+[0m[32m[INFO]  10-10-2026 08:34:45    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 168.00 hour: 219220520 requests, miss ratio 0.2769, interval miss ratio 0.2683
+[0m[32m[INFO]  10-10-2026 08:40:17    sim.c:49   (tid=132677691397376): tencent_photo2.oracleGeneral.zst FIFO 192.00 hour: 256796810 requests, miss ratio 0.2765, interval miss ratio 0.2744
+[0m/home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst FIFO cache size     5MiB,        273066692 req, miss ratio 0.2765, throughput 0.39 MQPS
+# time wall_s=1311.51 maxrss_kb=687736
+# finished 2026-10-10T08:41:40-07:00

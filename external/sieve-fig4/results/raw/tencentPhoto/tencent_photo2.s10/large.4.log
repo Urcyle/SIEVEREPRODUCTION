@@ -1,0 +1,19 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# requests 2731876301 wss_obj 508752958 small 0.001 large 0.1
+# sample_ratio 0.1
+# pass large.4
+# sizes large
+# cachesim 0346336 args: lru,clock,sieve,hyperbolic 0.1
+# started 2026-10-10T07:00:02-07:00 on OMEN, 8 threads
+spatial sampler: sample ratio 0.100000, sample func 0x621d24121c20, clone func 0x621d24121bd0
+[32m[INFO]  10-10-2026 07:00:03 cli_reader_utils.c:262  (tid=129881803990272): calculating working set size...
+[0m[32m[INFO]  10-10-2026 07:37:50 cli_reader_utils.c:279  (tid=129881803990272): working set size: 50816130 object 50816130 byte
+[0m[32m[INFO]  10-10-2026 07:37:53 cli_parser.c:545  (tid=129881803990272): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo2.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 4 algo x 1 size = 4 caches, lru, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-10-2026 07:37:53 simulator.c:294  (tid=129881803990272): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 5MiB, end cache Hyperbolic size 5MiB, 4 caches, 8 threads, please wait
+[0m
+result/tencent_photo2.oracleGeneral.zst                              LRU cache size  5081613, 273066692 req, miss ratio 0.2548, byte miss ratio 0.2548
+result/tencent_photo2.oracleGeneral.zst                            Clock cache size  5081613, 273066692 req, miss ratio 0.2510, byte miss ratio 0.2510
+result/tencent_photo2.oracleGeneral.zst                            Sieve cache size  5081613, 273066692 req, miss ratio 0.2448, byte miss ratio 0.2448
+result/tencent_photo2.oracleGeneral.zst                       Hyperbolic cache size  5081613, 273066692 req, miss ratio 0.2512, byte miss ratio 0.2512
+# time wall_s=4062.82 maxrss_kb=2741948
+# finished 2026-10-10T08:07:45-07:00

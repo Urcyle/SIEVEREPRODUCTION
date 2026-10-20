@@ -1,0 +1,15 @@
+# dataset	trace_file	run_suffix	env
+# (Tencent Photo runs in a second, parallel queue: manifests/fig4_tencent.tsv)
+# Meta CDN (3 traces) and Wiki (3): whole traces, both sizes
+metaCDN	data/metaCDN/meta_reag.oracleGeneral.zst
+metaCDN	data/metaCDN/meta_rnha.oracleGeneral.zst
+metaCDN	data/metaCDN/meta_rprn.oracleGeneral.zst
+wiki	data/wiki/wiki_2019t.oracleGeneral.zst
+wiki	data/wiki/wiki_2019u.oracleGeneral.zst
+wiki	data/wiki/wiki_2016u.oracleGeneral.zst
+# Meta KV (5): converted from Meta's CSVs (scripts/convert_metakv.sh); whole traces, both sizes
+metaKV	data/metaKV/kvcache_traces_1.oracleGeneral.zst
+metaKV	data/metaKV/kvcache_traces_2.oracleGeneral.zst
+metaKV	data/metaKV/kvcache_traces_3.oracleGeneral.zst
+metaKV	data/metaKV/kvcache_traces_4.oracleGeneral.zst
+metaKV	data/metaKV/kvcache_traces_5.oracleGeneral.zst

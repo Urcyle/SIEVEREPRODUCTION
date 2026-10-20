@@ -1,0 +1,5 @@
+data/
+__pycache__/
+results/tmp/
+result/
+fig9/sieve_hand

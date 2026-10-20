@@ -1,0 +1,17 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst
+# requests 2917228640 wss_obj 529527042 small 0.001 large 0.1
+# sample_ratio 0.1
+# pass large.2
+# sizes large
+# cachesim 0346336 args: lirs,twoq 0.1
+# started 2026-10-10T05:01:01-07:00 on OMEN, 8 threads
+spatial sampler: sample ratio 0.100000, sample func 0x5f6135aedc20, clone func 0x5f6135aedbd0
+[32m[INFO]  10-10-2026 05:01:01 cli_reader_utils.c:262  (tid=126990148175104): calculating working set size...
+[0m[32m[INFO]  10-10-2026 05:04:57 cli_reader_utils.c:279  (tid=126990148175104): working set size: 52945210 object 52945210 byte
+[0m[32m[INFO]  10-10-2026 05:05:10 cli_parser.c:545  (tid=126990148175104): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo1.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 2 algo x 1 size = 2 caches, lirs, twoq, ignore object size
+[0m[32m[INFO]  10-10-2026 05:05:10 simulator.c:294  (tid=126990148175104): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LIRS size 5MiB, end cache TwoQ size 5MiB, 2 caches, 8 threads, please wait
+[0m
+result/tencent_photo1.oracleGeneral.zst                             LIRS cache size  5294521, 291664957 req, miss ratio 0.2522, byte miss ratio 0.2522
+result/tencent_photo1.oracleGeneral.zst                             TwoQ cache size  5294521, 291664957 req, miss ratio 0.2580, byte miss ratio 0.2580
+# time wall_s=1795.69 maxrss_kb=3295364
+# finished 2026-10-10T05:30:56-07:00

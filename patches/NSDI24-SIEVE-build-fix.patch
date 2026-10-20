@@ -1,0 +1,78 @@
+diff --git a/libCacheSim/libCacheSim/dataStructure/robin_hood.h b/libCacheSim/libCacheSim/dataStructure/robin_hood.h
+index 7ee5d32..c832939 100644
+--- a/libCacheSim/libCacheSim/dataStructure/robin_hood.h
++++ b/libCacheSim/libCacheSim/dataStructure/robin_hood.h
+@@ -39,6 +39,7 @@
+ #define ROBIN_HOOD_VERSION_PATCH 3  // for backwards-compatible bug fixes
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstring>
+ #include <functional>
+diff --git a/libCacheSim/scripts/install_dependency.sh b/libCacheSim/scripts/install_dependency.sh
+index a155d74..573fd58 100644
+--- a/libCacheSim/scripts/install_dependency.sh
++++ b/libCacheSim/scripts/install_dependency.sh
+@@ -1,8 +1,19 @@
+ #!/bin/bash 
+ 
++# number of parallel build jobs, override with JOBS=N
++# an unbounded `make -j` can run out of memory when compiling xgboost,
++# so default to one job per 2GB of available memory, capped at nproc
++MEM_GB=$(awk '/MemAvailable/ {print int($2/1024/1024)}' /proc/meminfo 2>/dev/null || echo 4)
++JOBS=${JOBS:-$(( MEM_GB / 2 > 0 ? MEM_GB / 2 : 1 ))}
++JOBS=$(( JOBS < $(nproc) ? JOBS : $(nproc) ))
++
+ setup_ubuntu() {
+ 	sudo apt update
+-	sudo apt install -yqq libglib2.0-dev libgoogle-perftools-dev build-essential cmake google-perftools xxhash
++	sudo apt install -yqq libglib2.0-dev libgoogle-perftools-dev build-essential cmake xxhash
++	# google-perftools (pprof cli) was dropped in newer Ubuntu releases, tcmalloc comes from libgoogle-perftools-dev
++	if apt-cache show google-perftools >/dev/null 2>&1; then
++		sudo apt install -yqq google-perftools
++	fi
+ }
+ 
+ setup_centos() {
+@@ -23,7 +34,7 @@ setup_xgboost() {
+ 	if [[ $GITHUB_ACTIONS == "true" ]]; then
+ 		make
+ 	else
+-		make -j
++		make -j${JOBS}
+ 	fi
+ 	sudo make install
+ }
+@@ -38,7 +49,7 @@ setup_lightgbm() {
+ 	if [[ $GITHUB_ACTIONS == "true" ]]; then
+ 		make
+ 	else
+-		make -j
++		make -j${JOBS}
+ 	fi
+ 	sudo make install
+ }
+@@ -50,8 +61,8 @@ setup_zstd() {
+     pushd zstd-1.5.0/build/cmake/
+     mkdir _build;
+     pushd _build/;
+-    cmake ..
+-    make -j
++    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
++    make -j${JOBS}
+     sudo make install
+ }
+ 
+diff --git a/libCacheSim/scripts/install_libcachesim.sh b/libCacheSim/scripts/install_libcachesim.sh
+index ecd52b5..c5995d1 100644
+--- a/libCacheSim/scripts/install_libcachesim.sh
++++ b/libCacheSim/scripts/install_libcachesim.sh
+@@ -9,6 +9,6 @@ cd ${DIR}/../;
+ mkdir _build || true 2>/dev/null;
+ cd _build;
+ cmake ..;
+-make -j;
++make -j${JOBS:-$(nproc)};
+ cd ${DIR}; 
+ 

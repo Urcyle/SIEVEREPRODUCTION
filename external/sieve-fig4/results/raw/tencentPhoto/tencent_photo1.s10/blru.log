@@ -1,0 +1,23 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst
+# requests 2917228640 wss_obj 529527042 small 0.001 large 0.1
+# sample_ratio 0.1
+# pass blru
+# sizes large
+# cachesim 0346336 args: lru 0.1 -a bloom-filter
+# started 2026-10-10T06:41:04-07:00 on OMEN, 8 threads
+spatial sampler: sample ratio 0.100000, sample func 0x60ecdb961c20, clone func 0x60ecdb961bd0
+[32m[INFO]  10-10-2026 06:41:04 cli_reader_utils.c:262  (tid=137331632592128): calculating working set size...
+[0m[32m[INFO]  10-10-2026 06:49:45 cli_reader_utils.c:279  (tid=137331632592128): working set size: 52945210 object 52945210 byte
+[0m[32m[INFO]  10-10-2026 06:49:47 cli_parser.c:545  (tid=137331632592128): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo1.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 1 size = 1 caches, lru, admission: bloom-filter, ignore object size
+[0m[33m[WARN]  10-10-2026 06:49:47  cache.c:145  (tid=137331632592128): admission algorithm does not admit: req 1, obj 2080013134558301265, size 1
+[0m[32m[INFO]  10-10-2026 06:50:45    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 24.00 hour: 33023205 requests, miss ratio 0.3778, interval miss ratio 0.3778
+[0m[32m[INFO]  10-10-2026 06:51:35    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 48.00 hour: 66772835 requests, miss ratio 0.3322, interval miss ratio 0.2874
+[0m[32m[INFO]  10-10-2026 06:52:23    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 72.00 hour: 100746891 requests, miss ratio 0.3140, interval miss ratio 0.2782
+[0m[32m[INFO]  10-10-2026 06:53:08    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 96.00 hour: 133819684 requests, miss ratio 0.3046, interval miss ratio 0.2759
+[0m[32m[INFO]  10-10-2026 06:53:57    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 120.00 hour: 166638690 requests, miss ratio 0.2977, interval miss ratio 0.2698
+[0m[32m[INFO]  10-10-2026 06:54:50    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 144.00 hour: 200001341 requests, miss ratio 0.2934, interval miss ratio 0.2718
+[0m[32m[INFO]  10-10-2026 06:55:41    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 168.00 hour: 237694550 requests, miss ratio 0.2919, interval miss ratio 0.2840
+[0m[32m[INFO]  10-10-2026 06:57:39    sim.c:49   (tid=137331632592128): tencent_photo1.oracleGeneral.zst LRU 192.00 hour: 275433341 requests, miss ratio 0.2907, interval miss ratio 0.2832
+[0m/home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst LRU cache size     5MiB,        291664957 req, miss ratio 0.2904, throughput 0.47 MQPS
+# time wall_s=1137.63 maxrss_kb=2088080
+# finished 2026-10-10T07:00:02-07:00

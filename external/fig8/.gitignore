@@ -1,0 +1,6 @@
+data/
+.venv/
+__pycache__/
+results/tmp/
+result/
+fig8/popular_ratio

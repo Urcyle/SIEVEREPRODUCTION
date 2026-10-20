@@ -1,0 +1,33 @@
+dataset,size,SIEVE,ARC,TwoQ,LHD,Others,traces,source
+Meta (CDN),large,0.3333,0.3333,0.0,0.0,0.3333,3,replication
+Meta (CDN),small,0.0,0.0,1.0,0.0,0.0,3,replication
+Meta (KV),large,1.0,0.0,0.0,0.0,0.0,5,replication
+Meta (KV),small,0.0,0.0,1.0,0.0,0.0,5,replication
+Tencent,large,0.5,0.0,0.0,0.0,0.5,2,replication
+Tencent,small,0.0,0.0,0.0,1.0,0.0,2,replication
+Twitter,large,0.25,0.0,0.1667,0.2083,0.375,24,replication
+Twitter,small,0.125,0.0833,0.2917,0.375,0.125,24,replication
+Wiki,large,0.3333,0.0,0.0,0.0,0.6667,3,replication
+Wiki,small,0.3333,0.0,0.0,0.3333,0.3333,3,replication
+Meta (CDN),large,0.3333,0.3333,0.0,0.0,0.3333,3,paper Figure 4 dots
+Meta (CDN),small,0.0,0.0,1.0,0.0,0.0,3,paper Figure 4 dots
+Meta (KV),large,1.0,0.0,0.0,0.0,0.0,5,paper Figure 4 dots
+Meta (KV),small,0.0,0.0,1.0,0.0,0.0,5,paper Figure 4 dots
+Tencent,large,1.0,0.0,0.0,0.0,0.0,2,paper Figure 4 dots
+Tencent,small,0.0,0.0,0.0,1.0,0.0,2,paper Figure 4 dots
+Wiki,large,0.3333,0.0,0.0,0.0,0.6667,3,paper Figure 4 dots
+Wiki,small,0.3333,0.0,0.0,0.3333,0.3333,3,paper Figure 4 dots
+Wiki,large,0.3333,0.0,0.0,0.0,0.6667,,paper Figure 5
+Tencent,large,1.0,0.0,0.0,0.0,0.0,,paper Figure 5
+Meta (CDN),large,0.3333,0.3333,0.0,0.0,0.3333,,paper Figure 5
+Meta (KV),large,1.0,0.0,0.0,0.0,0.0,,paper Figure 5
+CDN1,large,0.4085,0.1246,0.0673,0.0112,0.3884,,paper Figure 5
+CDN2,large,0.293,0.1062,0.1941,0.0073,0.3993,,paper Figure 5
+Twitter,large,0.3019,0.0189,0.1509,0.1887,0.3396,,paper Figure 5
+Wiki,small,0.3333,0.0,0.0,0.3333,0.3333,,paper Figure 5
+Tencent,small,0.0,0.0,0.0,1.0,0.0,,paper Figure 5
+Meta (CDN),small,0.0,0.0,1.0,0.0,0.0,,paper Figure 5
+Meta (KV),small,0.0,0.0,1.0,0.0,0.0,,paper Figure 5
+CDN1,small,0.2987,0.0885,0.258,0.0224,0.3324,,paper Figure 5
+CDN2,small,0.033,0.2711,0.3187,0.0073,0.3699,,paper Figure 5
+Twitter,small,0.1132,0.0377,0.3774,0.283,0.1887,,paper Figure 5

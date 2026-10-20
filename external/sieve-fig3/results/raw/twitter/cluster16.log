@@ -1,0 +1,45 @@
+# trace /home/urcyle/sieve-fig3/data/twitter/cluster16.oracleGeneral.first1000000000.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0346336
+# started 2026-10-08T13:10:58-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-08-2026 13:10:58 cli_reader_utils.c:262  (tid=133818816976128): calculating working set size...
+[0m[32m[INFO]  10-08-2026 13:11:53 cli_reader_utils.c:279  (tid=133818816976128): working set size: 8323511 object 8323511 byte
+[0m[32m[INFO]  10-08-2026 13:12:10 cli_parser.c:545  (tid=133818816976128): trace path: /home/urcyle/sieve-fig3/data/twitter/cluster16.oracleGeneral.first1000000000.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster16.oracleGeneral.first1000000000.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 2 size = 22 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-08-2026 13:12:10 simulator.c:294  (tid=133818816976128): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 8KiB, end cache Sieve size 813KiB, 22 caches, 8 threads, please wait
+[0m
+result/cluster16.oracleGeneral.first1000000000.zst                             FIFO cache size     8323, 1000000000 req, miss ratio 0.4596, byte miss ratio 0.4596
+result/cluster16.oracleGeneral.first1000000000.zst                             FIFO cache size   832351, 1000000000 req, miss ratio 0.0819, byte miss ratio 0.0819
+result/cluster16.oracleGeneral.first1000000000.zst                              LRU cache size     8323, 1000000000 req, miss ratio 0.4363, byte miss ratio 0.4363
+result/cluster16.oracleGeneral.first1000000000.zst                              LRU cache size   832351, 1000000000 req, miss ratio 0.0706, byte miss ratio 0.0706
+result/cluster16.oracleGeneral.first1000000000.zst                            Clock cache size     8323, 1000000000 req, miss ratio 0.4318, byte miss ratio 0.4318
+result/cluster16.oracleGeneral.first1000000000.zst                            Clock cache size   832351, 1000000000 req, miss ratio 0.0696, byte miss ratio 0.0696
+result/cluster16.oracleGeneral.first1000000000.zst                              ARC cache size     8323, 1000000000 req, miss ratio 0.4335, byte miss ratio 0.4335
+result/cluster16.oracleGeneral.first1000000000.zst                              ARC cache size   832351, 1000000000 req, miss ratio 0.0670, byte miss ratio 0.0670
+result/cluster16.oracleGeneral.first1000000000.zst                             TwoQ cache size     8323, 1000000000 req, miss ratio 0.4214, byte miss ratio 0.4214
+result/cluster16.oracleGeneral.first1000000000.zst                             TwoQ cache size   832351, 1000000000 req, miss ratio 0.0669, byte miss ratio 0.0669
+result/cluster16.oracleGeneral.first1000000000.zst                             LIRS cache size     8323, 1000000000 req, miss ratio 0.4562, byte miss ratio 0.4562
+result/cluster16.oracleGeneral.first1000000000.zst                             LIRS cache size   832351, 1000000000 req, miss ratio 0.0659, byte miss ratio 0.0659
+result/cluster16.oracleGeneral.first1000000000.zst                              LHD cache size     8323, 1000000000 req, miss ratio 0.4155, byte miss ratio 0.4155
+result/cluster16.oracleGeneral.first1000000000.zst                              LHD cache size   832351, 1000000000 req, miss ratio 0.0676, byte miss ratio 0.0676
+result/cluster16.oracleGeneral.first1000000000.zst                          Cacheus cache size     8323, 1000000000 req, miss ratio 0.4189, byte miss ratio 0.4189
+result/cluster16.oracleGeneral.first1000000000.zst                          Cacheus cache size   832351, 1000000000 req, miss ratio 0.0679, byte miss ratio 0.0679
+result/cluster16.oracleGeneral.first1000000000.zst                       Hyperbolic cache size     8323, 1000000000 req, miss ratio 0.4329, byte miss ratio 0.4329
+result/cluster16.oracleGeneral.first1000000000.zst                       Hyperbolic cache size   832351, 1000000000 req, miss ratio 0.0738, byte miss ratio 0.0738
+result/cluster16.oracleGeneral.first1000000000.zst              WTinyLFU-w0.01-SLRU cache size     8323, 1000000000 req, miss ratio 0.6026, byte miss ratio 0.6026
+result/cluster16.oracleGeneral.first1000000000.zst              WTinyLFU-w0.01-SLRU cache size   832351, 1000000000 req, miss ratio 0.0733, byte miss ratio 0.0733
+result/cluster16.oracleGeneral.first1000000000.zst                            Sieve cache size     8323, 1000000000 req, miss ratio 0.4278, byte miss ratio 0.4278
+result/cluster16.oracleGeneral.first1000000000.zst                            Sieve cache size   832351, 1000000000 req, miss ratio 0.0657, byte miss ratio 0.0657
+# time wall_s=1690.81 maxrss_kb=6507748
+# pass blru
+[32m[INFO]  10-08-2026 13:39:08 cli_reader_utils.c:262  (tid=130829829936384): calculating working set size...
+[0m[32m[INFO]  10-08-2026 13:39:59 cli_reader_utils.c:279  (tid=130829829936384): working set size: 8323511 object 8323511 byte
+[0m[32m[INFO]  10-08-2026 13:39:59 cli_parser.c:545  (tid=130829829936384): trace path: /home/urcyle/sieve-fig3/data/twitter/cluster16.oracleGeneral.first1000000000.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster16.oracleGeneral.first1000000000.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 2 size = 2 caches, lru, admission: bloom-filter, ignore object size
+[0m[32m[INFO]  10-08-2026 13:39:59 simulator.c:294  (tid=130829829936384): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 8KiB, end cache LRU size 813KiB, 2 caches, 8 threads, please wait
+[0m[33m[WARN]  10-08-2026 13:39:59  cache.c:145  (tid=130820962498240): admission algorithm does not admit: req 1, obj 4451331548113184421, size 1
+[0m
+result/cluster16.oracleGeneral.first1000000000.zst                              LRU cache size     8323, 1000000000 req, miss ratio 0.4404, byte miss ratio 0.4404
+result/cluster16.oracleGeneral.first1000000000.zst                              LRU cache size   832351, 1000000000 req, miss ratio 0.0754, byte miss ratio 0.0754
+# time wall_s=307.26 maxrss_kb=1037572
+# finished 2026-10-08T13:44:16-07:00

@@ -1,0 +1,23 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst
+# requests 207646002 wss_obj 18377117 small 18377 large 1837711
+# sample_ratio 1
+# pass small
+# sizes both
+# cachesim 0346336 args: fifo,lru,clock,arc,twoq,lirs,lhd,cacheus,hyperbolic,tinyLFU,sieve 18377
+# started 2026-10-09T13:46:12-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:46:41 cli_parser.c:545  (tid=127324664841472): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2019t.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 1 size = 11 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-09-2026 13:46:41 simulator.c:294  (tid=127324664841472): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 18KiB, end cache Sieve size 18KiB, 11 caches, 8 threads, please wait
+[0m
+result/wiki_2019t.oracleGeneral.zst                             FIFO cache size    18377, 207646002 req, miss ratio 0.8152, byte miss ratio 0.8152
+result/wiki_2019t.oracleGeneral.zst                              LRU cache size    18377, 207646002 req, miss ratio 0.7966, byte miss ratio 0.7966
+result/wiki_2019t.oracleGeneral.zst                            Clock cache size    18377, 207646002 req, miss ratio 0.7888, byte miss ratio 0.7888
+result/wiki_2019t.oracleGeneral.zst                              ARC cache size    18377, 207646002 req, miss ratio 0.7298, byte miss ratio 0.7298
+result/wiki_2019t.oracleGeneral.zst                             TwoQ cache size    18377, 207646002 req, miss ratio 0.7230, byte miss ratio 0.7230
+result/wiki_2019t.oracleGeneral.zst                             LIRS cache size    18377, 207646002 req, miss ratio 0.7298, byte miss ratio 0.7298
+result/wiki_2019t.oracleGeneral.zst                              LHD cache size    18377, 207646002 req, miss ratio 0.7216, byte miss ratio 0.7216
+result/wiki_2019t.oracleGeneral.zst                          Cacheus cache size    18377, 207646002 req, miss ratio 0.7486, byte miss ratio 0.7486
+result/wiki_2019t.oracleGeneral.zst                       Hyperbolic cache size    18377, 207646002 req, miss ratio 0.7843, byte miss ratio 0.7843
+result/wiki_2019t.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size    18377, 207646002 req, miss ratio 0.7131, byte miss ratio 0.7131
+result/wiki_2019t.oracleGeneral.zst                            Sieve cache size    18377, 207646002 req, miss ratio 0.7196, byte miss ratio 0.7196
+# time wall_s=1064.26 maxrss_kb=3124028
+# finished 2026-10-09T14:03:57-07:00

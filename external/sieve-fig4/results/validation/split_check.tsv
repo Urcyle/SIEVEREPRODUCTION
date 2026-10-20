@@ -1,0 +1,12 @@
+# meta_reag, large cache (1,226,253 objects): miss ratio of each algorithm in the one-process run of all 11
+# (results/raw/metaCDN/meta_reag/large.1.log) vs alone in its own cachesim process (2026-10-10).
+# Equal except LHD: alone, cachesim seeds the random state from the clock (bin/cachesim/sim.c);
+# with several caches it resets it to 0 for each cache (profiler/simulator.c), so results do not
+# depend on which algorithms share a process. Every LHD result of this replication is from a
+# multi-cache process.
+algorithm	one_process	alone
+SIEVE	0.3213	0.3213
+CACHEUS	0.3187	0.3187
+LHD	0.3337	0.3300
+Hyperbolic	0.3258	0.3258
+TinyLFU	0.3373	0.3373

@@ -1,0 +1,19 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# requests 2731876301 wss_obj 508752958 small 0.001 large 0.1
+# sample_ratio 0.1
+# pass large.3
+# sizes large
+# cachesim 0346336 args: tinyLFU,lhd,arc,fifo 0.1
+# started 2026-10-10T06:54:08-07:00 on OMEN, 8 threads
+spatial sampler: sample ratio 0.100000, sample func 0x63dbe69b0c20, clone func 0x63dbe69b0bd0
+[32m[INFO]  10-10-2026 06:54:08 cli_reader_utils.c:262  (tid=126658244404480): calculating working set size...
+[0m[32m[INFO]  10-10-2026 06:57:42 cli_reader_utils.c:279  (tid=126658244404480): working set size: 50816130 object 50816130 byte
+[0m[32m[INFO]  10-10-2026 06:57:44 cli_parser.c:545  (tid=126658244404480): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo2.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 4 algo x 1 size = 4 caches, tinyLFU, lhd, arc, fifo, ignore object size
+[0m[32m[INFO]  10-10-2026 06:57:44 simulator.c:294  (tid=126658244404480): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache WTinyLFU-w0.01-SLRU size 5MiB, end cache FIFO size 5MiB, 4 caches, 8 threads, please wait
+[0m
+result/tencent_photo2.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size  5081613, 273066692 req, miss ratio 0.3127, byte miss ratio 0.3127
+result/tencent_photo2.oracleGeneral.zst                              LHD cache size  5081613, 273066692 req, miss ratio 0.2711, byte miss ratio 0.2711
+result/tencent_photo2.oracleGeneral.zst                              ARC cache size  5081613, 273066692 req, miss ratio 0.2505, byte miss ratio 0.2505
+result/tencent_photo2.oracleGeneral.zst                             FIFO cache size  5081613, 273066692 req, miss ratio 0.2765, byte miss ratio 0.2765
+# time wall_s=2359.47 maxrss_kb=4250188
+# finished 2026-10-10T07:33:28-07:00

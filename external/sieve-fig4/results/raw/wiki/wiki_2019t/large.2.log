@@ -1,0 +1,19 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst
+# requests 207646002 wss_obj 18377117 small 18377 large 1837711
+# sample_ratio 1
+# pass large.2
+# sizes both
+# cachesim 0346336 args: tinyLFU,arc,fifo,lru,clock,sieve,hyperbolic 1837711
+# started 2026-10-09T21:45:13-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 21:45:14 cli_parser.c:545  (tid=125305598227712): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2019t.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 7 algo x 1 size = 7 caches, tinyLFU, arc, fifo, lru, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-09-2026 21:45:14 simulator.c:294  (tid=125305598227712): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache WTinyLFU-w0.01-SLRU size 2MiB, end cache Hyperbolic size 2MiB, 7 caches, 8 threads, please wait
+[0m
+result/wiki_2019t.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size  1837711, 207646002 req, miss ratio 0.1833, byte miss ratio 0.1833
+result/wiki_2019t.oracleGeneral.zst                              ARC cache size  1837711, 207646002 req, miss ratio 0.1883, byte miss ratio 0.1883
+result/wiki_2019t.oracleGeneral.zst                             FIFO cache size  1837711, 207646002 req, miss ratio 0.2672, byte miss ratio 0.2672
+result/wiki_2019t.oracleGeneral.zst                              LRU cache size  1837711, 207646002 req, miss ratio 0.2238, byte miss ratio 0.2238
+result/wiki_2019t.oracleGeneral.zst                            Clock cache size  1837711, 207646002 req, miss ratio 0.2152, byte miss ratio 0.2152
+result/wiki_2019t.oracleGeneral.zst                            Sieve cache size  1837711, 207646002 req, miss ratio 0.1866, byte miss ratio 0.1866
+result/wiki_2019t.oracleGeneral.zst                       Hyperbolic cache size  1837711, 207646002 req, miss ratio 0.2124, byte miss ratio 0.2124
+# time wall_s=536.68 maxrss_kb=2372312
+# finished 2026-10-09T21:54:10-07:00

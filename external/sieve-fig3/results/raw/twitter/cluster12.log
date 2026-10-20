@@ -1,0 +1,46 @@
+# trace /home/urcyle/sieve-fig3/data/twitter/sample100/cluster12.oracleGeneral.sample100.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0346336
+# started 2026-10-08T12:52:28-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-08-2026 12:52:28 cli_reader_utils.c:262  (tid=136837434680576): calculating working set size...
+[0m[32m[INFO]  10-08-2026 12:52:34 cli_reader_utils.c:279  (tid=136837434680576): working set size: 20949488 object 20949488 byte
+[0m[32m[INFO]  10-08-2026 12:53:02 cli_parser.c:545  (tid=136837434680576): trace path: /home/urcyle/sieve-fig3/data/twitter/sample100/cluster12.oracleGeneral.sample100.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster12.oracleGeneral.sample100.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 2 size = 22 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-08-2026 12:53:02 simulator.c:294  (tid=136837434680576): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 20KiB, end cache Sieve size 2MiB, 22 caches, 8 threads, please wait
+[0m
+result/cluster12.oracleGeneral.sample100.zst                             FIFO cache size    20949, 26506121 req, miss ratio 0.7907, byte miss ratio 0.7907
+result/cluster12.oracleGeneral.sample100.zst                             FIFO cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst                              LRU cache size    20949, 26506121 req, miss ratio 0.7906, byte miss ratio 0.7906
+result/cluster12.oracleGeneral.sample100.zst                              LRU cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst                            Clock cache size    20949, 26506121 req, miss ratio 0.7906, byte miss ratio 0.7906
+result/cluster12.oracleGeneral.sample100.zst                            Clock cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst                              ARC cache size    20949, 26506121 req, miss ratio 0.7909, byte miss ratio 0.7909
+result/cluster12.oracleGeneral.sample100.zst                              ARC cache size  2094948, 26506121 req, miss ratio 0.7907, byte miss ratio 0.7907
+result/cluster12.oracleGeneral.sample100.zst                             TwoQ cache size    20949, 26506121 req, miss ratio 0.7907, byte miss ratio 0.7907
+result/cluster12.oracleGeneral.sample100.zst                             TwoQ cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst                             LIRS cache size    20949, 26506121 req, miss ratio 0.8305, byte miss ratio 0.8305
+result/cluster12.oracleGeneral.sample100.zst                             LIRS cache size  2094948, 26506121 req, miss ratio 0.7905, byte miss ratio 0.7905
+result/cluster12.oracleGeneral.sample100.zst                              LHD cache size    20949, 26506121 req, miss ratio 0.7906, byte miss ratio 0.7906
+result/cluster12.oracleGeneral.sample100.zst                              LHD cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst                          Cacheus cache size    20949, 26506121 req, miss ratio 0.7907, byte miss ratio 0.7907
+result/cluster12.oracleGeneral.sample100.zst                          Cacheus cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst                       Hyperbolic cache size    20949, 26506121 req, miss ratio 0.7907, byte miss ratio 0.7907
+result/cluster12.oracleGeneral.sample100.zst                       Hyperbolic cache size  2094948, 26506121 req, miss ratio 0.7904, byte miss ratio 0.7904
+result/cluster12.oracleGeneral.sample100.zst              WTinyLFU-w0.01-SLRU cache size    20949, 26506121 req, miss ratio 0.8491, byte miss ratio 0.8491
+result/cluster12.oracleGeneral.sample100.zst              WTinyLFU-w0.01-SLRU cache size  2094948, 26506121 req, miss ratio 0.7906, byte miss ratio 0.7906
+result/cluster12.oracleGeneral.sample100.zst                            Sieve cache size    20949, 26506121 req, miss ratio 0.8366, byte miss ratio 0.8366
+result/cluster12.oracleGeneral.sample100.zst                            Sieve cache size  2094948, 26506121 req, miss ratio 0.7908, byte miss ratio 0.7908
+# time wall_s=229.87 maxrss_kb=8587772
+# pass blru
+[32m[INFO]  10-08-2026 12:56:18 cli_reader_utils.c:262  (tid=129376680383744): calculating working set size...
+[0m[32m[INFO]  10-08-2026 12:56:28 cli_reader_utils.c:279  (tid=129376680383744): working set size: 20949488 object 20949488 byte
+[0m[32m[INFO]  10-08-2026 12:56:28 cli_parser.c:545  (tid=129376680383744): trace path: /home/urcyle/sieve-fig3/data/twitter/sample100/cluster12.oracleGeneral.sample100.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster12.oracleGeneral.sample100.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 2 size = 2 caches, lru, admission: bloom-filter, ignore object size
+[0m[32m[INFO]  10-08-2026 12:56:28 simulator.c:294  (tid=129376680383744): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 20KiB, end cache LRU size 2MiB, 2 caches, 8 threads, please wait
+[0m[33m[WARN]  10-08-2026 12:56:28  cache.c:145  (tid=129376425338560): admission algorithm does not admit: req 1, obj 15279997813135616406, size 1
+[0m[33m[WARN]  10-08-2026 12:56:28  cache.c:145  (tid=129376374982336): admission algorithm does not admit: req 1, obj 15279997813135616406, size 1
+[0m
+result/cluster12.oracleGeneral.sample100.zst                              LRU cache size    20949, 26506121 req, miss ratio 0.9395, byte miss ratio 0.9395
+result/cluster12.oracleGeneral.sample100.zst                              LRU cache size  2094948, 26506121 req, miss ratio 0.9395, byte miss ratio 0.9395
+# time wall_s=24.71 maxrss_kb=2503964
+# finished 2026-10-08T12:56:42-07:00

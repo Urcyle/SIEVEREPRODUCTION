@@ -1,0 +1,23 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst
+# requests 88470732 wss_obj 29030282 small 29030 large 2903028
+# sample_ratio 1
+# pass small
+# sizes both
+# cachesim 0346336 args: fifo,lru,clock,arc,twoq,lirs,lhd,cacheus,hyperbolic,tinyLFU,sieve 29030
+# started 2026-10-09T13:38:53-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:40:43 cli_parser.c:545  (tid=139017399379200): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rprn.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 1 size = 11 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-09-2026 13:40:43 simulator.c:294  (tid=139017399379200): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 28KiB, end cache Sieve size 28KiB, 11 caches, 8 threads, please wait
+[0m
+result/meta_rprn.oracleGeneral.zst                             FIFO cache size    29030, 88470732 req, miss ratio 0.6028, byte miss ratio 0.6028
+result/meta_rprn.oracleGeneral.zst                              LRU cache size    29030, 88470732 req, miss ratio 0.5958, byte miss ratio 0.5958
+result/meta_rprn.oracleGeneral.zst                            Clock cache size    29030, 88470732 req, miss ratio 0.5936, byte miss ratio 0.5936
+result/meta_rprn.oracleGeneral.zst                              ARC cache size    29030, 88470732 req, miss ratio 0.5811, byte miss ratio 0.5811
+result/meta_rprn.oracleGeneral.zst                             TwoQ cache size    29030, 88470732 req, miss ratio 0.5760, byte miss ratio 0.5760
+result/meta_rprn.oracleGeneral.zst                             LIRS cache size    29030, 88470732 req, miss ratio 0.5982, byte miss ratio 0.5982
+result/meta_rprn.oracleGeneral.zst                              LHD cache size    29030, 88470732 req, miss ratio 0.5779, byte miss ratio 0.5779
+result/meta_rprn.oracleGeneral.zst                          Cacheus cache size    29030, 88470732 req, miss ratio 0.5860, byte miss ratio 0.5860
+result/meta_rprn.oracleGeneral.zst                       Hyperbolic cache size    29030, 88470732 req, miss ratio 0.5945, byte miss ratio 0.5945
+result/meta_rprn.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size    29030, 88470732 req, miss ratio 0.6412, byte miss ratio 0.6412
+result/meta_rprn.oracleGeneral.zst                            Sieve cache size    29030, 88470732 req, miss ratio 0.5823, byte miss ratio 0.5823
+# time wall_s=437.96 maxrss_kb=3249096
+# finished 2026-10-09T13:46:11-07:00

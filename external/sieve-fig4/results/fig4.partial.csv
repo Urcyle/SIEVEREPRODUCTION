@@ -1,0 +1,5 @@
+dataset,trace,run,sample_ratio,size,cache_size,requests,algo,miss_ratio,fifo_miss_ratio,reduction
+tencentPhoto,tencent_photo1,tencent_photo1.whole_large,1.0,large,52952704,2917228640,SIEVE,0.2391,0.2711,0.118
+tencentPhoto,tencent_photo1,tencent_photo1.whole_large,1.0,large,52952704,2917228640,LRU,0.2495,0.2711,0.0797
+tencentPhoto,tencent_photo1,tencent_photo1.whole_large,1.0,large,52952704,2917228640,CLOCK,0.2457,0.2711,0.0937
+tencentPhoto,tencent_photo2,tencent_photo2.s10_cacheus1,0.1,large,5081613,273066692,CACHEUS,0.2447,0.2765,0.115

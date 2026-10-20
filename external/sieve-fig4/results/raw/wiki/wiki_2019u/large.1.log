@@ -1,0 +1,32 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2019u.oracleGeneral.zst
+# requests 2655612611 wss_obj 49619987 small 49619 large 4961998
+# sample_ratio 1
+# pass large.1
+# sizes both
+# cachesim 0346336 args: cacheus 4961998
+# started 2026-10-09T21:59:28-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 21:59:38 cli_parser.c:545  (tid=131389039940864): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2019u.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2019u.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 1 size = 1 caches, cacheus, ignore object size
+[0m[32m[INFO]  10-09-2026 22:04:34    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 24.00 hour: 114317500 requests, miss ratio 0.1386, interval miss ratio 0.1386
+[0m[32m[INFO]  10-09-2026 22:10:07    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 48.00 hour: 240809655 requests, miss ratio 0.1289, interval miss ratio 0.1202
+[0m[32m[INFO]  10-09-2026 22:16:19    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 72.00 hour: 375944767 requests, miss ratio 0.1243, interval miss ratio 0.1160
+[0m[32m[INFO]  10-09-2026 22:23:42    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 96.00 hour: 509841095 requests, miss ratio 0.1222, interval miss ratio 0.1163
+[0m[32m[INFO]  10-09-2026 22:31:52    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 120.00 hour: 643059657 requests, miss ratio 0.1210, interval miss ratio 0.1162
+[0m[32m[INFO]  10-09-2026 22:37:21    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 144.00 hour: 772223749 requests, miss ratio 0.1203, interval miss ratio 0.1173
+[0m[32m[INFO]  10-09-2026 22:41:46    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 168.00 hour: 885855514 requests, miss ratio 0.1198, interval miss ratio 0.1162
+[0m[32m[INFO]  10-09-2026 22:46:19    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 192.00 hour: 1002488949 requests, miss ratio 0.1194, interval miss ratio 0.1163
+[0m[32m[INFO]  10-09-2026 22:51:17    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 216.00 hour: 1135372197 requests, miss ratio 0.1188, interval miss ratio 0.1142
+[0m[32m[INFO]  10-09-2026 22:57:11    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 240.00 hour: 1268798392 requests, miss ratio 0.1186, interval miss ratio 0.1168
+[0m[32m[INFO]  10-09-2026 23:04:17    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 264.00 hour: 1403128896 requests, miss ratio 0.1183, interval miss ratio 0.1156
+[0m[32m[INFO]  10-09-2026 23:10:18    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 288.00 hour: 1533922102 requests, miss ratio 0.1179, interval miss ratio 0.1135
+[0m[32m[INFO]  10-09-2026 23:15:46    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 312.00 hour: 1664183545 requests, miss ratio 0.1175, interval miss ratio 0.1130
+[0m[32m[INFO]  10-09-2026 23:20:47    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 336.00 hour: 1778431317 requests, miss ratio 0.1173, interval miss ratio 0.1142
+[0m[32m[INFO]  10-09-2026 23:25:19    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 360.00 hour: 1894101950 requests, miss ratio 0.1171, interval miss ratio 0.1147
+[0m[32m[INFO]  10-09-2026 23:31:45    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 384.00 hour: 2029347794 requests, miss ratio 0.1168, interval miss ratio 0.1121
+[0m[32m[INFO]  10-09-2026 23:38:31    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 408.00 hour: 2163481158 requests, miss ratio 0.1164, interval miss ratio 0.1105
+[0m[32m[INFO]  10-09-2026 23:48:06    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 432.00 hour: 2293563458 requests, miss ratio 0.1160, interval miss ratio 0.1089
+[0m[32m[INFO]  10-09-2026 23:53:45    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 456.00 hour: 2421118153 requests, miss ratio 0.1157, interval miss ratio 0.1098
+[0m[32m[INFO]  10-09-2026 23:59:58    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 480.00 hour: 2544987857 requests, miss ratio 0.1154, interval miss ratio 0.1098
+[0m[32m[INFO]  10-10-2026 00:14:24    sim.c:49   (tid=131389039940864): wiki_2019u.oracleGeneral.zst Cacheus 504.00 hour: 2655610977 requests, miss ratio 0.1153, interval miss ratio 0.1133
+[0m/home/urcyle/sieve-fig3/data/wiki/wiki_2019u.oracleGeneral.zst Cacheus cache size     5MiB,       2655612611 req, miss ratio 0.1153, throughput 0.33 MQPS
+# time wall_s=8097.24 maxrss_kb=6772340
+# finished 2026-10-10T00:14:26-07:00

@@ -1,0 +1,11 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# requests 2731876301 wss_obj 508752958 small 508752 large 50875295
+# sample_ratio 1
+# pass blru
+# sizes small
+# cachesim 0346336 args: blru_bitmap 508752
+# started 2026-10-10T04:24:28-07:00 on OMEN, 8 threads
+result/tencent_photo2                              LRU cache size   508752, 2731876301 req, miss ratio 0.7120, byte miss ratio 0.7120
+# exact tencent_photo2 cache_size 508752 n_req 2731876301 n_miss 1945029481 miss_ratio 0.7119756778 zero_size_skipped 1
+# time wall_s=818.59 maxrss_kb=541300
+# finished 2026-10-10T04:38:07-07:00

@@ -1,0 +1,23 @@
+# trace /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_1.oracleGeneral.zst
+# requests 335173084 wss_obj 16982130 small 16982 large 1698213
+# sample_ratio 1
+# pass small
+# sizes both
+# cachesim 0346336 args: fifo,lru,clock,arc,twoq,lirs,lhd,cacheus,hyperbolic,tinyLFU,sieve 16982
+# started 2026-10-10T00:14:27-07:00 on OMEN, 8 threads
+[32m[INFO]  10-10-2026 00:16:25 cli_parser.c:545  (tid=132165535495424): trace path: /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_1.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath kvcache_traces_1.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 1 size = 11 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-10-2026 00:16:25 simulator.c:294  (tid=132165535495424): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 17KiB, end cache Sieve size 17KiB, 11 caches, 8 threads, please wait
+[0m
+result/kvcache_traces_1.oracleGeneral.zst                             FIFO cache size    16982, 335173084 req, miss ratio 0.3371, byte miss ratio 0.3371
+result/kvcache_traces_1.oracleGeneral.zst                              LRU cache size    16982, 335173084 req, miss ratio 0.3253, byte miss ratio 0.3253
+result/kvcache_traces_1.oracleGeneral.zst                            Clock cache size    16982, 335173084 req, miss ratio 0.3204, byte miss ratio 0.3204
+result/kvcache_traces_1.oracleGeneral.zst                              ARC cache size    16982, 335173084 req, miss ratio 0.3052, byte miss ratio 0.3052
+result/kvcache_traces_1.oracleGeneral.zst                             TwoQ cache size    16982, 335173084 req, miss ratio 0.2867, byte miss ratio 0.2867
+result/kvcache_traces_1.oracleGeneral.zst                             LIRS cache size    16982, 335173084 req, miss ratio 0.3052, byte miss ratio 0.3052
+result/kvcache_traces_1.oracleGeneral.zst                              LHD cache size    16982, 335173084 req, miss ratio 0.2955, byte miss ratio 0.2955
+result/kvcache_traces_1.oracleGeneral.zst                          Cacheus cache size    16982, 335173084 req, miss ratio 0.3117, byte miss ratio 0.3117
+result/kvcache_traces_1.oracleGeneral.zst                       Hyperbolic cache size    16982, 335173084 req, miss ratio 0.3136, byte miss ratio 0.3136
+result/kvcache_traces_1.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size    16982, 335173084 req, miss ratio 0.2903, byte miss ratio 0.2903
+result/kvcache_traces_1.oracleGeneral.zst                            Sieve cache size    16982, 335173084 req, miss ratio 0.2951, byte miss ratio 0.2951
+# time wall_s=748.60 maxrss_kb=3117788
+# finished 2026-10-10T00:26:56-07:00

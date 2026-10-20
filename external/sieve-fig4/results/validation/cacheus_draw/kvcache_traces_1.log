@@ -1,0 +1,7 @@
+# trace data/metaKV/kvcache_traces_1.oracleGeneral.zst
+# args: cacheus 0.001,0.1 --ignore-obj-size 1 
+[32m[INFO]  10-10-2026 09:21:22 cli_reader_utils.c:262  (tid=138855087834368): calculating working set size...
+[0m[32m[INFO]  10-10-2026 09:22:44 cli_reader_utils.c:279  (tid=138855087834368): working set size: 16982130 object 16982130 byte
+result/kvcache_traces_1.oracleGeneral.zst                          Cacheus cache size    16982, 335173084 req, miss ratio 0.3117, byte miss ratio 0.3117
+result/kvcache_traces_1.oracleGeneral.zst                          Cacheus cache size  1698213, 335173084 req, miss ratio 0.0778, byte miss ratio 0.0778
+# time wall_s=448.34 maxrss_kb=2690604

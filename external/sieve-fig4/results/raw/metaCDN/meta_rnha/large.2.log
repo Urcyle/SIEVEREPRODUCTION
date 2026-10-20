@@ -1,0 +1,20 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rnha.oracleGeneral.zst
+# requests 96680668 wss_obj 35040280 small 35040 large 3504028
+# sample_ratio 1
+# pass large.2
+# sizes both
+# cachesim 0346336 args: twoq,tinyLFU,lhd,fifo,lru,clock,sieve,hyperbolic 3504028
+# started 2026-10-09T13:25:14-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:25:15 cli_parser.c:545  (tid=133545639699712): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rnha.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rnha.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 8 algo x 1 size = 8 caches, twoq, tinyLFU, lhd, fifo, lru, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-09-2026 13:25:15 simulator.c:294  (tid=133545639699712): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache TwoQ size 3MiB, end cache Hyperbolic size 3MiB, 8 caches, 8 threads, please wait
+[0m
+result/meta_rnha.oracleGeneral.zst                             TwoQ cache size  3504028, 96680668 req, miss ratio 0.4781, byte miss ratio 0.4781
+result/meta_rnha.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size  3504028, 96680668 req, miss ratio 0.4953, byte miss ratio 0.4953
+result/meta_rnha.oracleGeneral.zst                              LHD cache size  3504028, 96680668 req, miss ratio 0.5092, byte miss ratio 0.5092
+result/meta_rnha.oracleGeneral.zst                             FIFO cache size  3504028, 96680668 req, miss ratio 0.5075, byte miss ratio 0.5075
+result/meta_rnha.oracleGeneral.zst                              LRU cache size  3504028, 96680668 req, miss ratio 0.4932, byte miss ratio 0.4932
+result/meta_rnha.oracleGeneral.zst                            Clock cache size  3504028, 96680668 req, miss ratio 0.4909, byte miss ratio 0.4909
+result/meta_rnha.oracleGeneral.zst                            Sieve cache size  3504028, 96680668 req, miss ratio 0.4772, byte miss ratio 0.4772
+result/meta_rnha.oracleGeneral.zst                       Hyperbolic cache size  3504028, 96680668 req, miss ratio 0.4922, byte miss ratio 0.4922
+# time wall_s=579.82 maxrss_kb=4637736
+# finished 2026-10-09T13:34:54-07:00

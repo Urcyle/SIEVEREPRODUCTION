@@ -1,0 +1,101 @@
+dataset,trace,size,best,tied,SIEVE,ARC,TwoQ,LHD,Others,source
+Meta (CDN),meta_reag,large,CACHEUS,,0.0,0.0,0.0,0.0,1.0,replication
+Meta (CDN),meta_reag,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (CDN),meta_rnha,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Meta (CDN),meta_rnha,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (CDN),meta_rprn,large,ARC,,0.0,1.0,0.0,0.0,0.0,replication
+Meta (CDN),meta_rprn,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_1,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_1,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_2,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_2,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_3,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_3,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_4,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_4,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_5,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Meta (KV),kvcache_traces_5,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Tencent,tencent_photo1,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Tencent,tencent_photo1,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Tencent,tencent_photo2,large,CACHEUS,,0.0,0.0,0.0,0.0,1.0,replication
+Tencent,tencent_photo2,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster1,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster1,small,LRU,B-LRU,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster10,large,SIEVE,ARC TinyLFU TwoQ LIRS LHD CACHEUS Hyperbolic CLOCK LRU,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster10,small,SIEVE,ARC TwoQ LIRS LHD CACHEUS Hyperbolic CLOCK LRU,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster11,large,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster11,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster12,large,TwoQ,LHD CACHEUS Hyperbolic CLOCK LRU,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster12,small,LHD,CLOCK LRU,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster13,large,TwoQ,LHD CACHEUS Hyperbolic CLOCK LRU,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster13,small,LRU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster14,large,SIEVE,CACHEUS,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster14,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster15,large,SIEVE,ARC TinyLFU TwoQ LIRS LHD Hyperbolic CLOCK LRU,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster15,small,SIEVE,ARC TinyLFU TwoQ LIRS LHD CACHEUS Hyperbolic CLOCK LRU,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster16,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster16,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster17,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster17,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster18,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster18,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster19,large,LIRS,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster19,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster2,large,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster2,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster20,large,TinyLFU,CACHEUS,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster20,small,SIEVE,LHD,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster21,large,CACHEUS,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster21,small,ARC,,0.0,1.0,0.0,0.0,0.0,replication
+Twitter,cluster22,large,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster22,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster23,large,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster23,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster24,large,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster24,small,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster3,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster3,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster4,large,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster4,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster5,large,Hyperbolic,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster5,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster6,large,SIEVE,ARC LIRS CLOCK LRU,1.0,0.0,0.0,0.0,0.0,replication
+Twitter,cluster6,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster7,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster7,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,replication
+Twitter,cluster8,large,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Twitter,cluster8,small,ARC,,0.0,1.0,0.0,0.0,0.0,replication
+Twitter,cluster9,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Twitter,cluster9,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Wiki,wiki_2016u,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Wiki,wiki_2016u,small,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Wiki,wiki_2019t,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Wiki,wiki_2019t,small,TinyLFU,,0.0,0.0,0.0,0.0,1.0,replication
+Wiki,wiki_2019u,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,replication
+Wiki,wiki_2019u,small,LHD,,0.0,0.0,0.0,1.0,0.0,replication
+Meta (CDN),meta_rprn,large,ARC,,0.0,1.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (CDN),meta_rprn,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (CDN),meta_reag,large,CACHEUS,,0.0,0.0,0.0,0.0,1.0,paper Figure 4 dots
+Meta (CDN),meta_reag,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (CDN),meta_rnha,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (CDN),meta_rnha,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_5,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_5,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_1,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_1,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_3,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_3,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_4,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_4,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_2,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Meta (KV),kvcache_traces_2,small,TwoQ,,0.0,0.0,1.0,0.0,0.0,paper Figure 4 dots
+Tencent,tencent_photo2,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Tencent,tencent_photo2,small,LHD,,0.0,0.0,0.0,1.0,0.0,paper Figure 4 dots
+Tencent,tencent_photo1,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Tencent,tencent_photo1,small,LHD,,0.0,0.0,0.0,1.0,0.0,paper Figure 4 dots
+Wiki,wiki_2016u,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,paper Figure 4 dots
+Wiki,wiki_2016u,small,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Wiki,wiki_2019u,large,SIEVE,,1.0,0.0,0.0,0.0,0.0,paper Figure 4 dots
+Wiki,wiki_2019u,small,LHD,,0.0,0.0,0.0,1.0,0.0,paper Figure 4 dots
+Wiki,wiki_2019t,large,TinyLFU,,0.0,0.0,0.0,0.0,1.0,paper Figure 4 dots
+Wiki,wiki_2019t,small,TinyLFU,,0.0,0.0,0.0,0.0,1.0,paper Figure 4 dots

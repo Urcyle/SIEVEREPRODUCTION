@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_reag.oracleGeneral.zst
+# requests 45623306 wss_obj 12262537 small 12262 large 1226253
+# pass small
+# cachesim 0346336 args: fifo,lru,clock,arc,twoq,lirs,lhd,cacheus,hyperbolic,tinyLFU,sieve 12262
+# started 2026-10-09T13:07:11-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:07:18 cli_parser.c:545  (tid=135882519405824): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_reag.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_reag.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 1 size = 11 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-09-2026 13:07:18 simulator.c:294  (tid=135882519405824): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 12KiB, end cache Sieve size 12KiB, 11 caches, 8 threads, please wait
+[0m
+result/meta_reag.oracleGeneral.zst                             FIFO cache size    12262, 45623306 req, miss ratio 0.4422, byte miss ratio 0.4422
+result/meta_reag.oracleGeneral.zst                              LRU cache size    12262, 45623306 req, miss ratio 0.4354, byte miss ratio 0.4354
+result/meta_reag.oracleGeneral.zst                            Clock cache size    12262, 45623306 req, miss ratio 0.4340, byte miss ratio 0.4340
+result/meta_reag.oracleGeneral.zst                              ARC cache size    12262, 45623306 req, miss ratio 0.4265, byte miss ratio 0.4265
+result/meta_reag.oracleGeneral.zst                             TwoQ cache size    12262, 45623306 req, miss ratio 0.4225, byte miss ratio 0.4225
+result/meta_reag.oracleGeneral.zst                             LIRS cache size    12262, 45623306 req, miss ratio 0.4372, byte miss ratio 0.4372
+result/meta_reag.oracleGeneral.zst                              LHD cache size    12262, 45623306 req, miss ratio 0.4241, byte miss ratio 0.4241
+result/meta_reag.oracleGeneral.zst                          Cacheus cache size    12262, 45623306 req, miss ratio 0.4305, byte miss ratio 0.4305
+result/meta_reag.oracleGeneral.zst                       Hyperbolic cache size    12262, 45623306 req, miss ratio 0.4349, byte miss ratio 0.4349
+result/meta_reag.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size    12262, 45623306 req, miss ratio 0.4578, byte miss ratio 0.4578
+result/meta_reag.oracleGeneral.zst                            Sieve cache size    12262, 45623306 req, miss ratio 0.4269, byte miss ratio 0.4269
+# time wall_s=86.10 maxrss_kb=3307252
+# finished 2026-10-09T13:08:37-07:00

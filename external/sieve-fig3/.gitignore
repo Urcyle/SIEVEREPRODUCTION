@@ -1,0 +1,18 @@
+data/
+.venv/
+results/tmp/
+__pycache__/
+results/.cachesim.lock
+# CDN stand-in work (panels a/b/d/e are out of scope; kept on disk only)
+fig3a/
+fig3d/
+manifests/cdn_*.tsv
+results/raw/cdn_*/
+results/cdn_*.csv
+scripts/split_days.py
+scripts/pipeline.sh
+# scratch output
+logs/
+result/
+results/tmp/
+paper/*.txt

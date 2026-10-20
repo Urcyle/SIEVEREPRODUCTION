@@ -1,0 +1,15 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst
+# requests 88470732 wss_obj 29030282 small 29030 large 2903028
+# sample_ratio 1
+# pass large.3
+# sizes both
+# cachesim 0346336 args: clock,sieve,hyperbolic 2903028
+# started 2026-10-09T21:28:40-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 21:28:48 cli_parser.c:545  (tid=136972010943744): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rprn.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 1 size = 3 caches, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-09-2026 21:28:48 simulator.c:294  (tid=136972010943744): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache Clock size 3MiB, end cache Hyperbolic size 3MiB, 3 caches, 8 threads, please wait
+[0m
+result/meta_rprn.oracleGeneral.zst                            Clock cache size  2903028, 88470732 req, miss ratio 0.4380, byte miss ratio 0.4380
+result/meta_rprn.oracleGeneral.zst                            Sieve cache size  2903028, 88470732 req, miss ratio 0.4282, byte miss ratio 0.4282
+result/meta_rprn.oracleGeneral.zst                       Hyperbolic cache size  2903028, 88470732 req, miss ratio 0.4394, byte miss ratio 0.4394
+# time wall_s=420.37 maxrss_kb=1018916
+# finished 2026-10-09T21:35:41-07:00

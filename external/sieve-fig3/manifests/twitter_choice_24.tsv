@@ -1,0 +1,25 @@
+cluster	version	extra_sample	max_req	est_req	est_obj	reason
+cluster1	full	1	1000000000	1000000000	128200	sample10 footprint 12820 < 500000; full first 1000000000 req
+cluster2	full	1	1000000000	1000000000	3575400	sample10 footprint 357540 < 500000; full first 1000000000 req
+cluster3	full	1	-1	848270000	6237800	whole trace
+cluster4	sample10	1	-1	421985310	10657200	whole trace
+cluster5	sample100	1	-1	103936673	20752699	whole trace
+cluster6	sample10	1	-1	837404040	2135220	whole trace
+cluster7	full	1	-1	938411700	4458400	whole trace
+cluster8	full	1	1000000000	1000000000	263400	sample10 footprint 26340 < 500000; full first 1000000000 req
+cluster9	sample10	1	-1	846189030	1511220	whole trace
+cluster10	sample10	1	-1	13907710	6952350	whole trace
+cluster11	sample10	1	-1	268865540	2660480	whole trace
+cluster12	sample100	1	-1	26506121	20949488	whole trace
+cluster13	sample100	1	-1	8264851	5187343	whole trace
+cluster14	sample10	1	-1	244220700	6950430	whole trace
+cluster15	sample100	0.5	-1	26324149	26091611	sample100 footprint > 30000000: extra -s 1/2
+cluster16	full	1	1000000000	1000000000	14654100	sample100 footprint 146541 < 500000; full first 1000000000 req
+cluster17	sample10	1	-1	971395410	678840	whole trace
+cluster18	full	1	1000000000	1000000000	11467000	sample100 footprint 114670 < 500000; full first 1000000000 req
+cluster19	sample100	1	-1	20095728	3285961	whole trace
+cluster20	sample10	1	-1	342617580	8966750	whole trace
+cluster21	sample100	1	-1	15547796	14538790	whole trace
+cluster22	sample100	1	-1	20030642	4029594	whole trace
+cluster23	sample100	1	-1	37979795	14424494	whole trace
+cluster24	sample10	1	-1	348062750	1218220	whole trace

@@ -1,0 +1,16 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2019u.oracleGeneral.zst
+# requests 2655612611 wss_obj 49619987 small 49619 large 4961998
+# sample_ratio 1
+# pass large.4
+# sizes both
+# cachesim 0346336 args: lru,clock,sieve,hyperbolic 4961998
+# started 2026-10-10T03:56:41-07:00 on OMEN, 8 threads
+[32m[INFO]  10-10-2026 03:56:41 cli_parser.c:545  (tid=137448118998272): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2019u.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2019u.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 4 algo x 1 size = 4 caches, lru, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-10-2026 03:56:41 simulator.c:294  (tid=137448118998272): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 5MiB, end cache Hyperbolic size 5MiB, 4 caches, 8 threads, please wait
+[0m
+result/wiki_2019u.oracleGeneral.zst                              LRU cache size  4961998, 2655612611 req, miss ratio 0.1233, byte miss ratio 0.1233
+result/wiki_2019u.oracleGeneral.zst                            Clock cache size  4961998, 2655612611 req, miss ratio 0.1173, byte miss ratio 0.1173
+result/wiki_2019u.oracleGeneral.zst                            Sieve cache size  4961998, 2655612611 req, miss ratio 0.0912, byte miss ratio 0.0912
+result/wiki_2019u.oracleGeneral.zst                       Hyperbolic cache size  4961998, 2655612611 req, miss ratio 0.1118, byte miss ratio 0.1118
+# time wall_s=3858.17 maxrss_kb=2055880
+# finished 2026-10-10T05:00:59-07:00

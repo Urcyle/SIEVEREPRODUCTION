@@ -1,0 +1,33 @@
+# Not part of the repository: everything a build or a run creates. (Each figure's folder under
+# external/ also keeps the .gitignore of its original repository.)
+
+# traces and generated workloads (tens to hundreds of GB; scripts download or generate them)
+data/
+
+# Python environments and caches
+.venv/
+__pycache__/
+*.pyc
+
+# build output: compiled tools (the simulator builds inside external/NSDI24-SIEVE/libCacheSim/_build,
+# which the submodule's own .gitignore covers)
+*.o
+external/fig8/fig8/popular_ratio
+external/fig9/fig9/sieve_hand
+external/sieve-fig4/tools/blru_bitmap
+
+# run scratch: cachesim's result/ folders, temporary files, logs of interrupted passes, locks
+result/
+results/tmp/
+logs/
+*.part
+*.part.err
+*.lock
+results/.cachesim.lock
+results/.cachesim.slot*
+
+# editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

@@ -1,0 +1,12 @@
+# tools/blru_bitmap vs cachesim 'lru -a bloom-filter' (B-LRU), object size ignored, miss ratios
+# trace	cache_size	cachesim	blru_bitmap
+meta_reag	10	0.6259	0.6259
+meta_reag	100	0.5614	0.5614
+meta_reag	1000	0.5228	0.5228
+meta_reag	5000	0.4968	0.4968
+meta_reag	50000	0.4537	0.4537
+meta_reag	500000	0.4078	0.4078
+meta_reag	12262	0.4804	0.4804
+meta_reag	1226253	0.3869	0.3869
+meta_rnha	35040	0.7183	0.7183
+meta_rnha	3504028	0.5477	0.5477

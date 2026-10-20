@@ -1,0 +1,18 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst
+# requests 88470732 wss_obj 29030282 small 29030 large 2903028
+# sample_ratio 1
+# pass large.2
+# sizes both
+# cachesim 0346336 args: twoq,tinyLFU,lhd,arc,fifo,lru 2903028
+# started 2026-10-09T21:23:18-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 21:23:24 cli_parser.c:545  (tid=136092237948160): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rprn.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 6 algo x 1 size = 6 caches, twoq, tinyLFU, lhd, arc, fifo, lru, ignore object size
+[0m[32m[INFO]  10-09-2026 21:23:24 simulator.c:294  (tid=136092237948160): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache TwoQ size 3MiB, end cache LRU size 3MiB, 6 caches, 8 threads, please wait
+[0m
+result/meta_rprn.oracleGeneral.zst                             TwoQ cache size  2903028, 88470732 req, miss ratio 0.4280, byte miss ratio 0.4280
+result/meta_rprn.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size  2903028, 88470732 req, miss ratio 0.4433, byte miss ratio 0.4433
+result/meta_rprn.oracleGeneral.zst                              LHD cache size  2903028, 88470732 req, miss ratio 0.4523, byte miss ratio 0.4523
+result/meta_rprn.oracleGeneral.zst                              ARC cache size  2903028, 88470732 req, miss ratio 0.4255, byte miss ratio 0.4255
+result/meta_rprn.oracleGeneral.zst                             FIFO cache size  2903028, 88470732 req, miss ratio 0.4516, byte miss ratio 0.4516
+result/meta_rprn.oracleGeneral.zst                              LRU cache size  2903028, 88470732 req, miss ratio 0.4400, byte miss ratio 0.4400
+# time wall_s=321.69 maxrss_kb=3700340
+# finished 2026-10-09T21:28:40-07:00

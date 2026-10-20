@@ -1,0 +1,15 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rnha.oracleGeneral.zst
+# requests 96680668 wss_obj 35040280 small 35040 large 3504028
+# sample_ratio 1
+# pass large.1
+# sizes both
+# cachesim 0346336 args: cacheus,lirs,arc 3504028
+# started 2026-10-09T13:20:49-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:20:50 cli_parser.c:545  (tid=123611787474176): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rnha.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rnha.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 1 size = 3 caches, cacheus, lirs, arc, ignore object size
+[0m[32m[INFO]  10-09-2026 13:20:50 simulator.c:294  (tid=123611787474176): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache Cacheus size 3MiB, end cache ARC size 3MiB, 3 caches, 8 threads, please wait
+[0m
+result/meta_rnha.oracleGeneral.zst                          Cacheus cache size  3504028, 96680668 req, miss ratio 0.4779, byte miss ratio 0.4779
+result/meta_rnha.oracleGeneral.zst                             LIRS cache size  3504028, 96680668 req, miss ratio 0.4833, byte miss ratio 0.4833
+result/meta_rnha.oracleGeneral.zst                              ARC cache size  3504028, 96680668 req, miss ratio 0.4778, byte miss ratio 0.4778
+# time wall_s=264.48 maxrss_kb=3929652
+# finished 2026-10-09T13:25:14-07:00

@@ -1,0 +1,7 @@
+# trace data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# args: cacheus 0.001,0.1 --ignore-obj-size 1 -s 0.1
+[32m[INFO]  10-10-2026 09:21:22 cli_reader_utils.c:262  (tid=130274736887040): calculating working set size...
+[0m[32m[INFO]  10-10-2026 09:29:10 cli_reader_utils.c:279  (tid=130274736887040): working set size: 50816130 object 50816130 byte
+result/tencent_photo2.oracleGeneral.zst                          Cacheus cache size    50816, 273066692 req, miss ratio 0.6694, byte miss ratio 0.6694
+result/tencent_photo2.oracleGeneral.zst                          Cacheus cache size  5081613, 273066692 req, miss ratio 0.2447, byte miss ratio 0.2447
+# time wall_s=1941.37 maxrss_kb=3246372

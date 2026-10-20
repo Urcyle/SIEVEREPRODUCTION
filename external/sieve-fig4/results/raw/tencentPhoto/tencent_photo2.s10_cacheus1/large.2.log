@@ -1,0 +1,22 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# requests 2731876301 wss_obj 508752958 small 0.001 large 0.1
+# sample_ratio 0.1
+# pass large.2
+# sizes large
+# cachesim 0346336 args: cacheus 0.1
+# started 2026-10-10T08:41:40-07:00 on OMEN, 8 threads
+spatial sampler: sample ratio 0.100000, sample func 0x59c8d3f4dc20, clone func 0x59c8d3f4dbd0
+[32m[INFO]  10-10-2026 08:41:40 cli_reader_utils.c:262  (tid=135021859153152): calculating working set size...
+[0m[32m[INFO]  10-10-2026 08:50:10 cli_reader_utils.c:279  (tid=135021859153152): working set size: 50816130 object 50816130 byte
+[0m[32m[INFO]  10-10-2026 08:50:14 cli_parser.c:545  (tid=135021859153152): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo2.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 1 size = 1 caches, cacheus, ignore object size
+[0m[32m[INFO]  10-10-2026 08:52:35    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 24.00 hour: 31714712 requests, miss ratio 0.2904, interval miss ratio 0.2904
+[0m[32m[INFO]  10-10-2026 08:54:19    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 48.00 hour: 63755032 requests, miss ratio 0.2648, interval miss ratio 0.2395
+[0m[32m[INFO]  10-10-2026 08:55:58    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 72.00 hour: 94800577 requests, miss ratio 0.2579, interval miss ratio 0.2436
+[0m[32m[INFO]  10-10-2026 08:57:44    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 96.00 hour: 127411033 requests, miss ratio 0.2533, interval miss ratio 0.2399
+[0m[32m[INFO]  10-10-2026 08:59:23    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 120.00 hour: 156816266 requests, miss ratio 0.2500, interval miss ratio 0.2359
+[0m[32m[INFO]  10-10-2026 09:01:08    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 144.00 hour: 190060670 requests, miss ratio 0.2468, interval miss ratio 0.2318
+[0m[32m[INFO]  10-10-2026 09:03:01    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 168.00 hour: 219220520 requests, miss ratio 0.2463, interval miss ratio 0.2428
+[0m[32m[INFO]  10-10-2026 09:08:57    sim.c:49   (tid=135021859153152): tencent_photo2.oracleGeneral.zst Cacheus 192.00 hour: 256796810 requests, miss ratio 0.2450, interval miss ratio 0.2374
+[0m/home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst Cacheus cache size     5MiB,        273066692 req, miss ratio 0.2447, throughput 0.21 MQPS
+# time wall_s=1790.46 maxrss_kb=2191732
+# finished 2026-10-10T09:11:30-07:00

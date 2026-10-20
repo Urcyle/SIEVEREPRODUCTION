@@ -1,0 +1,45 @@
+# trace /home/urcyle/sieve-fig3/data/twitter/sample100/cluster7.oracleGeneral.sample100.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0346336
+# started 2026-10-08T07:45:47-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-08-2026 07:45:47 cli_reader_utils.c:262  (tid=134402122179840): calculating working set size...
+[0m[32m[INFO]  10-08-2026 07:45:48 cli_reader_utils.c:279  (tid=134402122179840): working set size: 44584 object 44584 byte
+[0m[32m[INFO]  10-08-2026 07:45:52 cli_parser.c:545  (tid=134402122179840): trace path: /home/urcyle/sieve-fig3/data/twitter/sample100/cluster7.oracleGeneral.sample100.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster7.oracleGeneral.sample100.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 2 size = 22 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-08-2026 07:45:52 simulator.c:294  (tid=134402122179840): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 44, end cache Sieve size 4KiB, 22 caches, 8 threads, please wait
+[0m
+result/cluster7.oracleGeneral.sample100.zst                             FIFO cache size       44, 9384117 req, miss ratio 0.2840, byte miss ratio 0.2840
+result/cluster7.oracleGeneral.sample100.zst                             FIFO cache size     4458, 9384117 req, miss ratio 0.1671, byte miss ratio 0.1671
+result/cluster7.oracleGeneral.sample100.zst                              LRU cache size       44, 9384117 req, miss ratio 0.2611, byte miss ratio 0.2611
+result/cluster7.oracleGeneral.sample100.zst                              LRU cache size     4458, 9384117 req, miss ratio 0.1481, byte miss ratio 0.1481
+result/cluster7.oracleGeneral.sample100.zst                            Clock cache size       44, 9384117 req, miss ratio 0.2675, byte miss ratio 0.2675
+result/cluster7.oracleGeneral.sample100.zst                            Clock cache size     4458, 9384117 req, miss ratio 0.1587, byte miss ratio 0.1587
+result/cluster7.oracleGeneral.sample100.zst                              ARC cache size       44, 9384117 req, miss ratio 0.2618, byte miss ratio 0.2618
+result/cluster7.oracleGeneral.sample100.zst                              ARC cache size     4458, 9384117 req, miss ratio 0.1481, byte miss ratio 0.1481
+result/cluster7.oracleGeneral.sample100.zst                             TwoQ cache size       44, 9384117 req, miss ratio 0.2330, byte miss ratio 0.2330
+result/cluster7.oracleGeneral.sample100.zst                             TwoQ cache size     4458, 9384117 req, miss ratio 0.1254, byte miss ratio 0.1254
+result/cluster7.oracleGeneral.sample100.zst                             LIRS cache size       44, 9384117 req, miss ratio 0.2758, byte miss ratio 0.2758
+result/cluster7.oracleGeneral.sample100.zst                             LIRS cache size     4458, 9384117 req, miss ratio 0.1478, byte miss ratio 0.1478
+result/cluster7.oracleGeneral.sample100.zst                              LHD cache size       44, 9384117 req, miss ratio 0.3478, byte miss ratio 0.3478
+result/cluster7.oracleGeneral.sample100.zst                              LHD cache size     4458, 9384117 req, miss ratio 0.1443, byte miss ratio 0.1443
+result/cluster7.oracleGeneral.sample100.zst                          Cacheus cache size       44, 9384117 req, miss ratio 0.2631, byte miss ratio 0.2631
+result/cluster7.oracleGeneral.sample100.zst                          Cacheus cache size     4458, 9384117 req, miss ratio 0.1353, byte miss ratio 0.1353
+result/cluster7.oracleGeneral.sample100.zst                       Hyperbolic cache size       44, 9384117 req, miss ratio 0.2643, byte miss ratio 0.2643
+result/cluster7.oracleGeneral.sample100.zst                       Hyperbolic cache size     4458, 9384117 req, miss ratio 0.1670, byte miss ratio 0.1670
+result/cluster7.oracleGeneral.sample100.zst              WTinyLFU-w0.01-SLRU cache size       44, 9384117 req, miss ratio 1.0000, byte miss ratio 1.0000
+result/cluster7.oracleGeneral.sample100.zst              WTinyLFU-w0.01-SLRU cache size     4458, 9384117 req, miss ratio 0.1213, byte miss ratio 0.1213
+result/cluster7.oracleGeneral.sample100.zst                            Sieve cache size       44, 9384117 req, miss ratio 0.2630, byte miss ratio 0.2630
+result/cluster7.oracleGeneral.sample100.zst                            Sieve cache size     4458, 9384117 req, miss ratio 0.1471, byte miss ratio 0.1471
+# time wall_s=32.17 maxrss_kb=7292192
+# pass blru
+[32m[INFO]  10-08-2026 07:46:19 cli_reader_utils.c:262  (tid=127467038577920): calculating working set size...
+[0m[32m[INFO]  10-08-2026 07:46:20 cli_reader_utils.c:279  (tid=127467038577920): working set size: 44584 object 44584 byte
+[0m[32m[INFO]  10-08-2026 07:46:20 cli_parser.c:545  (tid=127467038577920): trace path: /home/urcyle/sieve-fig3/data/twitter/sample100/cluster7.oracleGeneral.sample100.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster7.oracleGeneral.sample100.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 2 size = 2 caches, lru, admission: bloom-filter, ignore object size
+[0m[32m[INFO]  10-08-2026 07:46:20 simulator.c:294  (tid=127467038577920): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 44, end cache LRU size 4KiB, 2 caches, 8 threads, please wait
+[0m[33m[WARN]  10-08-2026 07:46:20  cache.c:145  (tid=127466926474944): admission algorithm does not admit: req 1, obj 3925623338479097551, size 1
+[0m
+result/cluster7.oracleGeneral.sample100.zst                              LRU cache size       44, 9384117 req, miss ratio 0.2658, byte miss ratio 0.2658
+result/cluster7.oracleGeneral.sample100.zst                              LRU cache size     4458, 9384117 req, miss ratio 0.1528, byte miss ratio 0.1528
+# time wall_s=2.76 maxrss_kb=671908
+# finished 2026-10-08T07:46:22-07:00

@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rnha.oracleGeneral.zst
+# requests 96680668 wss_obj 35040280 small 35040 large 3504028
+# pass small
+# cachesim 0346336 args: fifo,lru,clock,arc,twoq,lirs,lhd,cacheus,hyperbolic,tinyLFU,sieve 35040
+# started 2026-10-09T13:12:33-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:12:45 cli_parser.c:545  (tid=131235339781376): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rnha.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rnha.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 1 size = 11 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-09-2026 13:12:45 simulator.c:294  (tid=131235339781376): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 34KiB, end cache Sieve size 34KiB, 11 caches, 8 threads, please wait
+[0m
+result/meta_rnha.oracleGeneral.zst                             FIFO cache size    35040, 96680668 req, miss ratio 0.6736, byte miss ratio 0.6736
+result/meta_rnha.oracleGeneral.zst                              LRU cache size    35040, 96680668 req, miss ratio 0.6691, byte miss ratio 0.6691
+result/meta_rnha.oracleGeneral.zst                            Clock cache size    35040, 96680668 req, miss ratio 0.6676, byte miss ratio 0.6676
+result/meta_rnha.oracleGeneral.zst                              ARC cache size    35040, 96680668 req, miss ratio 0.6589, byte miss ratio 0.6589
+result/meta_rnha.oracleGeneral.zst                             TwoQ cache size    35040, 96680668 req, miss ratio 0.6551, byte miss ratio 0.6551
+result/meta_rnha.oracleGeneral.zst                             LIRS cache size    35040, 96680668 req, miss ratio 0.6785, byte miss ratio 0.6785
+result/meta_rnha.oracleGeneral.zst                              LHD cache size    35040, 96680668 req, miss ratio 0.6552, byte miss ratio 0.6552
+result/meta_rnha.oracleGeneral.zst                          Cacheus cache size    35040, 96680668 req, miss ratio 0.6610, byte miss ratio 0.6610
+result/meta_rnha.oracleGeneral.zst                       Hyperbolic cache size    35040, 96680668 req, miss ratio 0.6669, byte miss ratio 0.6669
+result/meta_rnha.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size    35040, 96680668 req, miss ratio 0.7177, byte miss ratio 0.7177
+result/meta_rnha.oracleGeneral.zst                            Sieve cache size    35040, 96680668 req, miss ratio 0.6606, byte miss ratio 0.6606
+# time wall_s=216.42 maxrss_kb=3183460
+# finished 2026-10-09T13:16:10-07:00

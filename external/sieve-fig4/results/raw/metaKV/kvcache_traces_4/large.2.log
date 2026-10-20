@@ -1,0 +1,18 @@
+# trace /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_4.oracleGeneral.zst
+# requests 329914873 wss_obj 16236011 small 16236 large 1623601
+# sample_ratio 1
+# pass large.2
+# sizes both
+# cachesim 0346336 args: lhd,arc,lru,clock,sieve,hyperbolic 1623601
+# started 2026-10-10T01:48:07-07:00 on OMEN, 8 threads
+[32m[INFO]  10-10-2026 01:48:07 cli_parser.c:545  (tid=136533716391168): trace path: /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_4.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath kvcache_traces_4.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 6 algo x 1 size = 6 caches, lhd, arc, lru, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-10-2026 01:48:07 simulator.c:294  (tid=136533716391168): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LHD size 2MiB, end cache Hyperbolic size 2MiB, 6 caches, 8 threads, please wait
+[0m
+result/kvcache_traces_4.oracleGeneral.zst                              LHD cache size  1623601, 329914873 req, miss ratio 0.0801, byte miss ratio 0.0801
+result/kvcache_traces_4.oracleGeneral.zst                              ARC cache size  1623601, 329914873 req, miss ratio 0.0762, byte miss ratio 0.0762
+result/kvcache_traces_4.oracleGeneral.zst                              LRU cache size  1623601, 329914873 req, miss ratio 0.0783, byte miss ratio 0.0783
+result/kvcache_traces_4.oracleGeneral.zst                            Clock cache size  1623601, 329914873 req, miss ratio 0.0776, byte miss ratio 0.0776
+result/kvcache_traces_4.oracleGeneral.zst                            Sieve cache size  1623601, 329914873 req, miss ratio 0.0742, byte miss ratio 0.0742
+result/kvcache_traces_4.oracleGeneral.zst                       Hyperbolic cache size  1623601, 329914873 req, miss ratio 0.0800, byte miss ratio 0.0800
+# time wall_s=304.62 maxrss_kb=1830424
+# finished 2026-10-10T01:53:11-07:00

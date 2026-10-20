@@ -1,0 +1,13 @@
+data/
+.venv/
+__pycache__/
+logs/
+result/
+results/tmp/
+results/.cachesim.lock
+*.part
+*.part.err
+paper/*.txt
+*.lock
+results/.cachesim.slot*
+tools/blru_bitmap

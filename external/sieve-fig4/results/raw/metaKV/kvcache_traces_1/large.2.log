@@ -1,0 +1,19 @@
+# trace /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_1.oracleGeneral.zst
+# requests 335173084 wss_obj 16982130 small 16982 large 1698213
+# sample_ratio 1
+# pass large.2
+# sizes both
+# cachesim 0346336 args: lhd,arc,fifo,lru,clock,sieve,hyperbolic 1698213
+# started 2026-10-10T00:26:56-07:00 on OMEN, 8 threads
+[32m[INFO]  10-10-2026 00:27:01 cli_parser.c:545  (tid=131396746757376): trace path: /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_1.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath kvcache_traces_1.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 7 algo x 1 size = 7 caches, lhd, arc, fifo, lru, clock, sieve, hyperbolic, ignore object size
+[0m[32m[INFO]  10-10-2026 00:27:01 simulator.c:294  (tid=131396746757376): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LHD size 2MiB, end cache Hyperbolic size 2MiB, 7 caches, 8 threads, please wait
+[0m
+result/kvcache_traces_1.oracleGeneral.zst                              LHD cache size  1698213, 335173084 req, miss ratio 0.0826, byte miss ratio 0.0826
+result/kvcache_traces_1.oracleGeneral.zst                              ARC cache size  1698213, 335173084 req, miss ratio 0.0792, byte miss ratio 0.0792
+result/kvcache_traces_1.oracleGeneral.zst                             FIFO cache size  1698213, 335173084 req, miss ratio 0.0937, byte miss ratio 0.0937
+result/kvcache_traces_1.oracleGeneral.zst                              LRU cache size  1698213, 335173084 req, miss ratio 0.0812, byte miss ratio 0.0812
+result/kvcache_traces_1.oracleGeneral.zst                            Clock cache size  1698213, 335173084 req, miss ratio 0.0805, byte miss ratio 0.0805
+result/kvcache_traces_1.oracleGeneral.zst                            Sieve cache size  1698213, 335173084 req, miss ratio 0.0772, byte miss ratio 0.0772
+result/kvcache_traces_1.oracleGeneral.zst                       Hyperbolic cache size  1698213, 335173084 req, miss ratio 0.0830, byte miss ratio 0.0830
+# time wall_s=642.54 maxrss_kb=2146612
+# finished 2026-10-10T00:37:39-07:00

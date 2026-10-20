@@ -1,0 +1,15 @@
+# trace /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst
+# requests 88470732 wss_obj 29030282 small 29030 large 2903028
+# sample_ratio 1
+# pass blru
+# sizes both
+# cachesim 0346336 args: lru 29030,2903028 -a bloom-filter
+# started 2026-10-09T21:35:41-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 21:35:51 cli_parser.c:545  (tid=129235594302720): trace path: /home/urcyle/sieve-fig3/data/metaCDN/meta_rprn.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath meta_rprn.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 2 size = 2 caches, lru, admission: bloom-filter, ignore object size
+[0m[32m[INFO]  10-09-2026 21:35:51 simulator.c:294  (tid=129235594302720): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 28KiB, end cache LRU size 3MiB, 2 caches, 8 threads, please wait
+[0m[33m[WARN]  10-09-2026 21:35:51  cache.c:145  (tid=129234722879168): admission algorithm does not admit: req 1, obj 5215466648312017252, size 1
+[0m
+result/meta_rprn.oracleGeneral.zst                              LRU cache size    29030, 88470732 req, miss ratio 0.6341, byte miss ratio 0.6341
+result/meta_rprn.oracleGeneral.zst                              LRU cache size  2903028, 88470732 req, miss ratio 0.4846, byte miss ratio 0.4846
+# time wall_s=120.94 maxrss_kb=1902308
+# finished 2026-10-09T21:37:42-07:00

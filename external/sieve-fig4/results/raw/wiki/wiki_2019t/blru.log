@@ -1,0 +1,15 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst
+# requests 207646002 wss_obj 18377117 small 18377 large 1837711
+# sample_ratio 1
+# pass blru
+# sizes both
+# cachesim 0346336 args: lru 18377,1837711 -a bloom-filter
+# started 2026-10-09T21:54:10-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 21:54:19 cli_parser.c:545  (tid=138566075249920): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2019t.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 2 size = 2 caches, lru, admission: bloom-filter, ignore object size
+[0m[32m[INFO]  10-09-2026 21:54:19 simulator.c:294  (tid=138566075249920): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 18KiB, end cache LRU size 2MiB, 2 caches, 8 threads, please wait
+[0m[33m[WARN]  10-09-2026 21:54:19  cache.c:145  (tid=138563974825664): admission algorithm does not admit: req 1, obj 868289764, size 1
+[0m
+result/wiki_2019t.oracleGeneral.zst                              LRU cache size    18377, 207646002 req, miss ratio 0.7906, byte miss ratio 0.7906
+result/wiki_2019t.oracleGeneral.zst                              LRU cache size  1837711, 207646002 req, miss ratio 0.2050, byte miss ratio 0.2050
+# time wall_s=317.78 maxrss_kb=1912524
+# finished 2026-10-09T21:59:28-07:00

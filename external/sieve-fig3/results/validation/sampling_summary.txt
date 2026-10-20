@@ -1,0 +1,18 @@
+level            cache_obj_s10  cache_obj_s100  sieve_rank_s10  sieve_rank_s100  mean_abs_diff
+cluster   size                                                                                
+cluster10 large         695679           69523             1.0              1.0         0.0000
+          small           6956             695             1.0              1.0         0.0000
+cluster26 large         122379           12205             1.0              1.0         0.0009
+          small           1223             122             4.0              3.0         0.0780
+cluster3  large          62778            6237             2.0              1.0         0.0909
+          small            627              62             2.0              1.0         0.1057
+cluster35 large        1279489          127933             1.0              1.0         0.0000
+          small          12794            1279             1.0              1.0         0.0002
+cluster45 large         654864           65457             2.0              2.0         0.0023
+          small           6548             654             3.0              3.0         0.0051
+cluster49 large          15972            1611             5.0              4.0         0.0454
+          small            159              16            11.0              8.0         0.0766
+cluster7  large          44734            4458             5.0              5.0         0.0102
+          small            447              44             6.0              4.0         0.1126
+
+mean |diff| by size: {'large': 0.0214, 'small': 0.054}

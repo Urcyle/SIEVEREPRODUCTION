@@ -1,0 +1,17 @@
+# trace /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_2.oracleGeneral.zst
+# requests 328002954 wss_obj 16542009 small 16542 large 1654200
+# sample_ratio 1
+# pass large.1
+# sizes both
+# cachesim 0346336 args: cacheus,lirs,twoq,tinyLFU,fifo 1654200
+# started 2026-10-10T00:53:40-07:00 on OMEN, 8 threads
+[32m[INFO]  10-10-2026 00:54:04 cli_parser.c:545  (tid=139572785423616): trace path: /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_2.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath kvcache_traces_2.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 5 algo x 1 size = 5 caches, cacheus, lirs, twoq, tinyLFU, fifo, ignore object size
+[0m[32m[INFO]  10-10-2026 00:54:04 simulator.c:294  (tid=139572785423616): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache Cacheus size 2MiB, end cache FIFO size 2MiB, 5 caches, 8 threads, please wait
+[0m
+result/kvcache_traces_2.oracleGeneral.zst                          Cacheus cache size  1654200, 328002954 req, miss ratio 0.0798, byte miss ratio 0.0798
+result/kvcache_traces_2.oracleGeneral.zst                             LIRS cache size  1654200, 328002954 req, miss ratio 0.0783, byte miss ratio 0.0783
+result/kvcache_traces_2.oracleGeneral.zst                             TwoQ cache size  1654200, 328002954 req, miss ratio 0.0772, byte miss ratio 0.0772
+result/kvcache_traces_2.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size  1654200, 328002954 req, miss ratio 0.0817, byte miss ratio 0.0817
+result/kvcache_traces_2.oracleGeneral.zst                             FIFO cache size  1654200, 328002954 req, miss ratio 0.0935, byte miss ratio 0.0935
+# time wall_s=579.93 maxrss_kb=3940432
+# finished 2026-10-10T01:03:20-07:00

@@ -1,0 +1,23 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst
+# requests 2917228640 wss_obj 529527042 small 529527 large 52952704
+# sample_ratio 1
+# pass small
+# sizes small
+# cachesim 0346336 args: fifo,lru,clock,arc,twoq,lirs,lhd,cacheus,hyperbolic,tinyLFU,sieve 529527
+# started 2026-10-09T13:38:11-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 13:38:53 cli_parser.c:545  (tid=130960895628544): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo1.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo1.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 11 algo x 1 size = 11 caches, fifo, lru, clock, arc, twoq, lirs, lhd, cacheus, hyperbolic, tinyLFU, sieve, ignore object size
+[0m[32m[INFO]  10-09-2026 13:38:53 simulator.c:294  (tid=130960895628544): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 517KiB, end cache Sieve size 517KiB, 11 caches, 8 threads, please wait
+[0m
+result/tencent_photo1.oracleGeneral.zst                             FIFO cache size   529527, 2917228640 req, miss ratio 0.7142, byte miss ratio 0.7142
+result/tencent_photo1.oracleGeneral.zst                              LRU cache size   529527, 2917228640 req, miss ratio 0.6939, byte miss ratio 0.6939
+result/tencent_photo1.oracleGeneral.zst                            Clock cache size   529527, 2917228640 req, miss ratio 0.6874, byte miss ratio 0.6874
+result/tencent_photo1.oracleGeneral.zst                              ARC cache size   529527, 2917228640 req, miss ratio 0.6695, byte miss ratio 0.6695
+result/tencent_photo1.oracleGeneral.zst                             TwoQ cache size   529527, 2917228640 req, miss ratio 0.6527, byte miss ratio 0.6527
+result/tencent_photo1.oracleGeneral.zst                             LIRS cache size   529527, 2917228640 req, miss ratio 0.6919, byte miss ratio 0.6919
+result/tencent_photo1.oracleGeneral.zst                              LHD cache size   529527, 2917228640 req, miss ratio 0.6500, byte miss ratio 0.6500
+result/tencent_photo1.oracleGeneral.zst                          Cacheus cache size   529527, 2917228640 req, miss ratio 0.6636, byte miss ratio 0.6636
+result/tencent_photo1.oracleGeneral.zst                       Hyperbolic cache size   529527, 2917228640 req, miss ratio 0.6810, byte miss ratio 0.6810
+result/tencent_photo1.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size   529527, 2917228640 req, miss ratio 0.7165, byte miss ratio 0.7165
+result/tencent_photo1.oracleGeneral.zst                            Sieve cache size   529527, 2917228640 req, miss ratio 0.6783, byte miss ratio 0.6783
+# time wall_s=20514.23 maxrss_kb=4755640
+# finished 2026-10-09T19:20:06-07:00

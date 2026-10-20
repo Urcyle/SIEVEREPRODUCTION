@@ -1,0 +1,15 @@
+# trace /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_4.oracleGeneral.zst
+# requests 329914873 wss_obj 16236011 small 16236 large 1623601
+# sample_ratio 1
+# pass blru
+# sizes both
+# cachesim 0346336 args: lru 16236,1623601 -a bloom-filter
+# started 2026-10-10T01:53:12-07:00 on OMEN, 8 threads
+[32m[INFO]  10-10-2026 01:53:16 cli_parser.c:545  (tid=134296328070400): trace path: /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_4.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath kvcache_traces_4.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 1 algo x 2 size = 2 caches, lru, admission: bloom-filter, ignore object size
+[0m[32m[INFO]  10-10-2026 01:53:16 simulator.c:294  (tid=134296328070400): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LRU size 16KiB, end cache LRU size 2MiB, 2 caches, 8 threads, please wait
+[0m[33m[WARN]  10-10-2026 01:53:16  cache.c:145  (tid=134294693476032): admission algorithm does not admit: req 1, obj 1665446515, size 1
+[0m
+result/kvcache_traces_4.oracleGeneral.zst                              LRU cache size    16236, 329914873 req, miss ratio 0.3255, byte miss ratio 0.3255
+result/kvcache_traces_4.oracleGeneral.zst                              LRU cache size  1623601, 329914873 req, miss ratio 0.0886, byte miss ratio 0.0886
+# time wall_s=126.09 maxrss_kb=1230632
+# finished 2026-10-10T01:55:18-07:00

@@ -1,0 +1,5 @@
+# dataset	trace_file	run_suffix	env
+# Remaining Tencent work, reordered to run beside the first Tencent queue (passes are locked, so
+# nothing runs twice): photo2's 10% sample, then the whole-trace validation
+tencentPhoto	data/tencentPhoto/tencent_photo2.oracleGeneral.zst	.s10	SAMPLE=0.1 SIZES=large
+tencentPhoto	data/tencentPhoto/tencent_photo1.oracleGeneral.zst	.whole_large	SIZES=large ALGOS_LARGE=fifo,sieve,lru,clock NO_BLRU=1

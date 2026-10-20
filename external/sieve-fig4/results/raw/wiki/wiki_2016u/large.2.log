@@ -1,0 +1,15 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2016u.oracleGeneral.zst
+# requests 2803498585 wss_obj 37218197 small 37218 large 3721819
+# sample_ratio 1
+# pass large.2
+# sizes both
+# cachesim 0346336 args: lirs,twoq,tinyLFU 3721819
+# started 2026-10-09T20:32:50-07:00 on OMEN, 8 threads
+[32m[INFO]  10-09-2026 20:33:01 cli_parser.c:545  (tid=136054469309696): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2016u.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2016u.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 1 size = 3 caches, lirs, twoq, tinyLFU, ignore object size
+[0m[32m[INFO]  10-09-2026 20:33:01 simulator.c:294  (tid=136054469309696): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache LIRS size 4MiB, end cache WTinyLFU-w0.01-SLRU size 4MiB, 3 caches, 8 threads, please wait
+[0m
+result/wiki_2016u.oracleGeneral.zst                             LIRS cache size  3721819, 2803498585 req, miss ratio 0.0637, byte miss ratio 0.0637
+result/wiki_2016u.oracleGeneral.zst                             TwoQ cache size  3721819, 2803498585 req, miss ratio 0.0708, byte miss ratio 0.0708
+result/wiki_2016u.oracleGeneral.zst              WTinyLFU-w0.01-SLRU cache size  3721819, 2803498585 req, miss ratio 0.0608, byte miss ratio 0.0608
+# time wall_s=4754.72 maxrss_kb=3230604
+# finished 2026-10-09T21:52:05-07:00

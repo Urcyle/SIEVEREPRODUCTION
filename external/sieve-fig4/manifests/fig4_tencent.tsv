@@ -1,0 +1,11 @@
+# dataset	trace_file	run_suffix	env
+# Tencent part of manifests/fig4.tsv, run as a second queue in parallel with the first
+# Tencent Photo (2): small cache on the whole trace (B-LRU with tools/blru_bitmap: 1 core,
+# < 1 GB, so it may use a 3rd slot); large cache (~53 M objects, too big for
+# 11 GB for most algorithms) on a 10% spatial sample
+tencentPhoto	data/tencentPhoto/tencent_photo1.oracleGeneral.zst	-	SIZES=small BLRU_TOOL=1
+tencentPhoto	data/tencentPhoto/tencent_photo2.oracleGeneral.zst	-	SIZES=small BLRU_TOOL=1
+tencentPhoto	data/tencentPhoto/tencent_photo1.oracleGeneral.zst	.s10	SAMPLE=0.1 SIZES=large
+tencentPhoto	data/tencentPhoto/tencent_photo2.oracleGeneral.zst	.s10	SAMPLE=0.1 SIZES=large
+# validation of the 10% sample: the algorithms that fit in memory at the large size, whole trace
+tencentPhoto	data/tencentPhoto/tencent_photo1.oracleGeneral.zst	.whole_large	SIZES=large ALGOS_LARGE=fifo,sieve,lru,clock NO_BLRU=1

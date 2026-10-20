@@ -1,0 +1,15 @@
+# dataset	trace_file	sample_ratio	max_req	log_file
+validation	data/twitter/sample10/cluster10.oracleGeneral.sample10.zst	1	-1	results/validation/cluster10.s10.log
+validation	data/twitter/sample100/cluster10.oracleGeneral.sample100.zst	1	-1	results/validation/cluster10.s100.log
+validation	data/twitter/sample10/cluster26.oracleGeneral.sample10.zst	1	-1	results/validation/cluster26.s10.log
+validation	data/twitter/sample100/cluster26.oracleGeneral.sample100.zst	1	-1	results/validation/cluster26.s100.log
+validation	data/twitter/sample10/cluster3.oracleGeneral.sample10.zst	1	-1	results/validation/cluster3.s10.log
+validation	data/twitter/sample100/cluster3.oracleGeneral.sample100.zst	1	-1	results/validation/cluster3.s100.log
+validation	data/twitter/sample10/cluster7.oracleGeneral.sample10.zst	1	-1	results/validation/cluster7.s10.log
+validation	data/twitter/sample100/cluster7.oracleGeneral.sample100.zst	1	-1	results/validation/cluster7.s100.log
+validation	data/twitter/sample10/cluster49.oracleGeneral.sample10.zst	1	-1	results/validation/cluster49.s10.log
+validation	data/twitter/sample100/cluster49.oracleGeneral.sample100.zst	1	-1	results/validation/cluster49.s100.log
+validation	data/twitter/sample10/cluster45.oracleGeneral.sample10.zst	1	-1	results/validation/cluster45.s10.log
+validation	data/twitter/sample100/cluster45.oracleGeneral.sample100.zst	1	-1	results/validation/cluster45.s100.log
+validation	data/twitter/sample10/cluster35.oracleGeneral.sample10.zst	1	-1	results/validation/cluster35.s10.log
+validation	data/twitter/sample100/cluster35.oracleGeneral.sample100.zst	1	-1	results/validation/cluster35.s100.log
