@@ -1,0 +1,11 @@
+trace,capacity_fraction,blind,patched_reduction,pinned_reduction,nearest_paper_dot_to_patched,distance_patched,distance_pinned,dots_in_panel,posthoc_dot_of_this_trace,posthoc_distance_patched,posthoc_distance_pinned
+meta_reag,0.001,False,-0.0385,-0.0342,-0.0385,0.0000,0.0043,3,-0.0385,0.0000,0.0043
+meta_reag,0.1,False,-0.0224,-0.0105,-0.0226,0.0002,0.0121,3,-0.0226,0.0002,0.0121
+meta_rnha,0.001,True,-0.0615,-0.0615,-0.0614,0.0001,0.0001,3,-0.0614,0.0001,0.0001
+meta_rnha,0.1,True,0.0139,0.0241,0.0138,0.0001,0.0103,3,0.0138,0.0001,0.0103
+meta_rprn,0.001,True,-0.0659,-0.0600,-0.0659,0.0000,0.0014,3,-0.0659,0.0000,0.0059
+meta_rprn,0.1,True,0.0081,0.0183,0.0082,0.0001,0.0045,3,0.0082,0.0001,0.0101
+metakv_trace1_candidate,0.001,True,0.1125,0.1388,0.1149,0.0024,0.0007,5,0.1397,0.0272,0.0009
+metakv_trace1_candidate,0.1,True,0.0903,0.1217,0.0896,0.0007,0.0246,5,0.0896,0.0007,0.0321
+wiki_2019t,0.001,True,0.1275,0.1252,0.1276,0.0001,0.0024,3,0.1276,0.0001,0.0024
+wiki_2019t,0.1,True,0.3098,0.3141,0.3095,0.0003,0.0046,3,0.3095,0.0003,0.0046
