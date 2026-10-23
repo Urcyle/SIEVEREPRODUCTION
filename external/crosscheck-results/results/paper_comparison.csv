@@ -1,0 +1,5 @@
+policy,cache_objects,paper_phase1_miss_by_eye,ours_phase1_miss,paper_phase1_popular_by_eye,ours_phase1_popular,ours_miss_first_interval_after_switch,ours_popular_first_sample_after_switch,ours_popular_final
+ARC,3000,0.165,0.1621,0.65,0.6423,0.1874,0.6519,0.6340
+LRU,3000,0.188,0.1753,0.54,0.5947,0.1861,0.6063,0.5855
+LFU,3000,0.155,0.1455,0.71,0.7258,0.9831,0.0003,0.0003
+SIEVE,3000,0.15,0.1322,0.75,0.8305,0.2387,0.6955,0.8525
