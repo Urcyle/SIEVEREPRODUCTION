@@ -1,0 +1,438 @@
+diff --git a/libCacheSim/libCacheSim/bin/cachesim/cache_init.h b/libCacheSim/libCacheSim/bin/cachesim/cache_init.h
+index 6c37211..7a6d847 100644
+--- a/libCacheSim/libCacheSim/bin/cachesim/cache_init.h
++++ b/libCacheSim/libCacheSim/bin/cachesim/cache_init.h
+@@ -138,6 +138,12 @@ static inline cache_t *create_cache(const char *trace_path,
+     cache = QDLP_init(cc_params, eviction_params);
+   } else if (strcasecmp(eviction_algo, "sieve") == 0) {
+     cache = Sieve_init(cc_params, eviction_params);
++  } else if (strncasecmp(eviction_algo, "sieveg", 6) == 0) {
++    /* sieveg or sieveg-<ghost ratio>, so that several ratios can run in one pass */
++    char p[64] = "ghost-ratio=0.5";
++    if (eviction_algo[6] == '-')
++      snprintf(p, sizeof p, "ghost-ratio=%s", eviction_algo + 7);
++    cache = SieveG_init(cc_params, p);
+ #ifdef ENABLE_GLCACHE
+   } else if (strcasecmp(eviction_algo, "GLCache") == 0 ||
+              strcasecmp(eviction_algo, "gl-cache") == 0) {
+diff --git a/libCacheSim/libCacheSim/cache/eviction/CMakeLists.txt b/libCacheSim/libCacheSim/cache/eviction/CMakeLists.txt
+index 0a9a695..15e31e6 100644
+--- a/libCacheSim/libCacheSim/cache/eviction/CMakeLists.txt
++++ b/libCacheSim/libCacheSim/cache/eviction/CMakeLists.txt
+@@ -38,6 +38,7 @@ set(sourceC
+         other/S3LRU.c
+ 
+         Sieve.c
++        SieveG.c
+ 
+ )
+ 
+diff --git a/libCacheSim/libCacheSim/cache/eviction/SieveG.c b/libCacheSim/libCacheSim/cache/eviction/SieveG.c
+new file mode 100644
+index 0000000..f23cdbf
+--- /dev/null
++++ b/libCacheSim/libCacheSim/cache/eviction/SieveG.c
+@@ -0,0 +1,389 @@
++//
++//  SIEVE-G: SIEVE with a ghost list of recently evicted object ids
++//
++//  The same as SIEVE (Sieve.c), plus a bounded FIFO "ghost" that remembers the ids of the
++//  objects SIEVE evicted (no data). On a miss, an object whose id is in the ghost is inserted
++//  with its visited bit already set (freq = 1), and its id leaves the ghost, so the hand keeps it
++//  for one more round. Everything else is unchanged SIEVE.
++//
++//  parameters: ghost-ratio=<x> (default 0.5): ghost size = x * cache size (0 = no ghost, which
++//  is exactly SIEVE). The cache name is SieveG-<x> (e.g. SieveG-0.50).
++//  The ghost follows S3FIFO's fifo_ghost (S3FIFO.c).
++//
++
++#include "../../dataStructure/hashtable/hashtable.h"
++#include "../../include/libCacheSim/evictionAlgo.h"
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++typedef struct {
++  cache_obj_t *q_head;
++  cache_obj_t *q_tail;
++
++  cache_obj_t *pointer;
++
++  cache_t *ghost;          // FIFO of evicted ids, NULL if ghost_ratio * cache size is 0
++  request_t *req_local;    // the evicted object, as a request to the ghost
++  double ghost_ratio;
++  int64_t n_ghost_hit;     // insertions whose id was in the ghost
++  int64_t n_insert;        // all insertions
++} SieveG_params_t;
++
++static const char *DEFAULT_PARAMS = "ghost-ratio=0.5";
++
++// ***********************************************************************
++// ****                                                               ****
++// ****                   function declarations                       ****
++// ****                                                               ****
++// ***********************************************************************
++static void SieveG_free(cache_t *cache);
++static bool SieveG_get(cache_t *cache, const request_t *req);
++static cache_obj_t *SieveG_find(cache_t *cache, const request_t *req,
++                                const bool update_cache);
++static cache_obj_t *SieveG_insert(cache_t *cache, const request_t *req);
++static cache_obj_t *SieveG_to_evict(cache_t *cache, const request_t *req);
++static void SieveG_evict(cache_t *cache, const request_t *req);
++static bool SieveG_remove(cache_t *cache, const obj_id_t obj_id);
++static void SieveG_parse_params(cache_t *cache,
++                                const char *cache_specific_params);
++
++// ***********************************************************************
++// ****                                                               ****
++// ****                   end user facing functions                   ****
++// ****                                                               ****
++// ****                       init, free, get                         ****
++// ***********************************************************************
++
++/**
++ * @brief initialize cache
++ *
++ * @param ccache_params some common cache parameters
++ * @param cache_specific_params "ghost-ratio=<x>", or NULL for the default
++ */
++cache_t *SieveG_init(const common_cache_params_t ccache_params,
++                     const char *cache_specific_params) {
++  cache_t *cache =
++      cache_struct_init("SieveG", ccache_params, cache_specific_params);
++  cache->cache_init = SieveG_init;
++  cache->cache_free = SieveG_free;
++  cache->get = SieveG_get;
++  cache->find = SieveG_find;
++  cache->insert = SieveG_insert;
++  cache->evict = SieveG_evict;
++  cache->remove = SieveG_remove;
++  cache->to_evict = SieveG_to_evict;
++
++  if (ccache_params.consider_obj_metadata) {
++    cache->obj_md_size = 1;
++  } else {
++    cache->obj_md_size = 0;
++  }
++
++  cache->eviction_params = my_malloc(SieveG_params_t);
++  memset(cache->eviction_params, 0, sizeof(SieveG_params_t));
++  SieveG_params_t *params = (SieveG_params_t *)cache->eviction_params;
++  params->pointer = NULL;
++  params->q_head = NULL;
++  params->q_tail = NULL;
++  params->req_local = new_request();
++
++  SieveG_parse_params(cache, DEFAULT_PARAMS);
++  if (cache_specific_params != NULL) {
++    SieveG_parse_params(cache, cache_specific_params);
++  }
++
++  int64_t ghost_size =
++      (int64_t)(params->ghost_ratio * ccache_params.cache_size);
++  if (ghost_size > 0) {
++    common_cache_params_t ccache_params_local = ccache_params;
++    ccache_params_local.cache_size = ghost_size;
++    params->ghost = FIFO_init(ccache_params_local, NULL);
++    snprintf(params->ghost->cache_name, CACHE_NAME_ARRAY_LEN, "FIFO-ghost");
++#if defined(TRACK_EVICTION_V_AGE)
++    params->ghost->track_eviction_age = false;
++#endif
++  } else {
++    params->ghost = NULL;
++  }
++
++  snprintf(cache->cache_name, CACHE_NAME_ARRAY_LEN, "SieveG-%.2lf",
++           params->ghost_ratio);
++
++  return cache;
++}
++
++/**
++ * free resources used by this cache
++ * (with the environment variable SIEVEG_STATS set, prints how many insertions
++ * were ghost hits)
++ *
++ * @param cache
++ */
++static void SieveG_free(cache_t *cache) {
++  SieveG_params_t *params = (SieveG_params_t *)cache->eviction_params;
++  if (getenv("SIEVEG_STATS") != NULL) {
++    printf("# %s cache size %ld: %ld insertions, %ld ghost hits (%.4lf)\n",
++           cache->cache_name, (long)cache->cache_size, (long)params->n_insert,
++           (long)params->n_ghost_hit,
++           params->n_insert ? (double)params->n_ghost_hit / params->n_insert
++                            : 0.0);
++  }
++  free_request(params->req_local);
++  if (params->ghost != NULL) {
++    params->ghost->cache_free(params->ghost);
++  }
++  free(cache->eviction_params);
++  cache_struct_free(cache);
++}
++
++/**
++ * @brief this function is the user facing API
++ * it performs the following logic
++ *
++ * ```
++ * if obj in cache:
++ *    update_metadata
++ *    return true
++ * else:
++ *    if cache does not have enough space:
++ *        evict until it has space to insert
++ *    insert the object
++ *    return false
++ * ```
++ *
++ * @param cache
++ * @param req
++ * @return true if cache hit, false if cache miss
++ */
++
++static bool SieveG_get(cache_t *cache, const request_t *req) {
++  bool ck_hit = cache_get_base(cache, req);
++  return ck_hit;
++}
++
++// ***********************************************************************
++// ****                                                               ****
++// ****       developer facing APIs (used by cache developer)         ****
++// ****                                                               ****
++// ***********************************************************************
++
++/**
++ * @brief find an object in the cache
++ *
++ * @param cache
++ * @param req
++ * @param update_cache whether to update the cache,
++ *  if true, the object is promoted
++ *  and if the object is expired, it is removed from the cache
++ * @return the object or NULL if not found
++ */
++static cache_obj_t *SieveG_find(cache_t *cache, const request_t *req,
++                                const bool update_cache) {
++  cache_obj_t *cache_obj = cache_find_base(cache, req, update_cache);
++  if (cache_obj != NULL && update_cache) {
++    cache_obj->sieve.freq = 1;
++  }
++
++  return cache_obj;
++}
++
++/**
++ * @brief insert an object into the cache,
++ * update the hash table and cache metadata
++ * this function assumes the cache has enough space
++ * eviction should be
++ * performed before calling this function
++ *
++ * an object whose id is in the ghost (evicted recently) starts as visited
++ *
++ * @param cache
++ * @param req
++ * @return the inserted object
++ */
++static cache_obj_t *SieveG_insert(cache_t *cache, const request_t *req) {
++  SieveG_params_t *params = cache->eviction_params;
++  cache_obj_t *obj = cache_insert_base(cache, req);
++  prepend_obj_to_head(&params->q_head, &params->q_tail, obj);
++  obj->sieve.freq = 0;
++
++  if (params->ghost != NULL &&
++      params->ghost->remove(params->ghost, req->obj_id)) {
++    // the id was in the ghost (remove returns true): keep it for one more round
++    obj->sieve.freq = 1;
++    params->n_ghost_hit++;
++  }
++  params->n_insert++;
++
++  return obj;
++}
++
++/**
++ * @brief find the object to be evicted
++ * this function does not actually evict the object or update metadata
++ * not all eviction algorithms support this function
++ * because the eviction logic cannot be decoupled from finding eviction
++ * candidate, so use assert(false) if you cannot support this function
++ *
++ * @param cache the cache
++ * @return the object to be evicted
++ */
++static cache_obj_t *SieveG_to_evict_with_freq(cache_t *cache,
++                                              const request_t *req,
++                                              int to_evict_freq) {
++  SieveG_params_t *params = cache->eviction_params;
++  cache_obj_t *pointer = params->pointer;
++
++  /* if we have run one full around or first eviction */
++  if (pointer == NULL) pointer = params->q_tail;
++
++  /* find the first untouched */
++  while (pointer != NULL && pointer->sieve.freq > to_evict_freq) {
++    pointer = pointer->queue.prev;
++  }
++
++  /* if we have finished one around, start from the tail */
++  if (pointer == NULL) {
++    pointer = params->q_tail;
++    while (pointer != NULL && pointer->sieve.freq > to_evict_freq) {
++      pointer = pointer->queue.prev;
++    }
++  }
++
++  if (pointer == NULL) return NULL;
++
++  return pointer;
++}
++
++static cache_obj_t *SieveG_to_evict(cache_t *cache, const request_t *req) {
++  // because we do not change the frequency of the object,
++  // if all objects have frequency 1, we may return NULL
++  int to_evict_freq = 0;
++
++  cache_obj_t *obj_to_evict =
++      SieveG_to_evict_with_freq(cache, req, to_evict_freq);
++
++  while (obj_to_evict == NULL) {
++    to_evict_freq += 1;
++
++    obj_to_evict = SieveG_to_evict_with_freq(cache, req, to_evict_freq);
++  }
++
++  return obj_to_evict;
++}
++
++/**
++ * @brief evict an object from the cache
++ * it needs to call cache_evict_base before returning
++ * which updates some metadata such as n_obj, occupied size, and hash table
++ *
++ * the evicted object's id is added to the ghost
++ *
++ * @param cache
++ * @param req not used
++ * @param evicted_obj if not NULL, return the evicted object to caller
++ */
++static void SieveG_evict(cache_t *cache, const request_t *req) {
++  SieveG_params_t *params = cache->eviction_params;
++
++  /* if we have run one full around or first eviction */
++  cache_obj_t *obj = params->pointer == NULL ? params->q_tail : params->pointer;
++
++  while (obj->sieve.freq > 0) {
++    obj->sieve.freq -= 1;
++    obj = obj->queue.prev == NULL ? params->q_tail : obj->queue.prev;
++  }
++
++  params->pointer = obj->queue.prev;
++
++  // remember the victim's id in the ghost (as S3FIFO_evict_fifo does)
++  copy_cache_obj_to_request(params->req_local, obj);
++  if (params->ghost != NULL) {
++    params->ghost->get(params->ghost, params->req_local);
++  }
++
++  remove_obj_from_list(&params->q_head, &params->q_tail, obj);
++  cache_evict_base(cache, obj, true);
++}
++
++static void SieveG_remove_obj(cache_t *cache, cache_obj_t *obj_to_remove) {
++  DEBUG_ASSERT(obj_to_remove != NULL);
++  SieveG_params_t *params = cache->eviction_params;
++  if (obj_to_remove == params->pointer) {
++    params->pointer = obj_to_remove->queue.prev;
++  }
++  remove_obj_from_list(&params->q_head, &params->q_tail, obj_to_remove);
++  cache_remove_obj_base(cache, obj_to_remove, true);
++}
++
++/**
++ * @brief remove an object from the cache
++ * this is different from cache_evict because it is used to for user trigger
++ * remove, and eviction is used by the cache to make space for new objects
++ * (the ghost is not changed)
++ *
++ * it needs to call cache_remove_obj_base before returning
++ * which updates some metadata such as n_obj, occupied size, and hash table
++ *
++ * @param cache
++ * @param obj_id
++ * @return true if the object is removed, false if the object is not in the
++ * cache
++ */
++static bool SieveG_remove(cache_t *cache, const obj_id_t obj_id) {
++  cache_obj_t *obj = hashtable_find_obj_id(cache->hashtable, obj_id);
++  if (obj == NULL) {
++    return false;
++  }
++
++  SieveG_remove_obj(cache, obj);
++
++  return true;
++}
++
++// ***********************************************************************
++// ****                                                               ****
++// ****                  parameter set up functions                   ****
++// ****                                                               ****
++// ***********************************************************************
++static void SieveG_parse_params(cache_t *cache,
++                                const char *cache_specific_params) {
++  SieveG_params_t *params = (SieveG_params_t *)(cache->eviction_params);
++
++  char *params_str = strdup(cache_specific_params);
++  char *old_params_str = params_str;
++
++  while (params_str != NULL && params_str[0] != '\0') {
++    /* different parameters are separated by comma,
++     * key and value are separated by = */
++    char *key = strsep((char **)&params_str, "=");
++    char *value = strsep((char **)&params_str, ",");
++
++    // skip the white space
++    while (params_str != NULL && *params_str == ' ') {
++      params_str++;
++    }
++
++    if (strcasecmp(key, "ghost-ratio") == 0) {
++      params->ghost_ratio = strtod(value, NULL);
++      if (params->ghost_ratio < 0) {
++        ERROR("%s ghost-ratio must not be negative: %s\n", cache->cache_name,
++              value);
++        exit(1);
++      }
++    } else if (strcasecmp(key, "print") == 0) {
++      printf("parameters: ghost-ratio=%lf\n", params->ghost_ratio);
++      exit(0);
++    } else {
++      ERROR("%s does not have parameter %s\n", cache->cache_name, key);
++      exit(1);
++    }
++  }
++
++  free(old_params_str);
++}
++
++#ifdef __cplusplus
++}
++#endif
+diff --git a/libCacheSim/libCacheSim/include/libCacheSim/evictionAlgo.h b/libCacheSim/libCacheSim/include/libCacheSim/evictionAlgo.h
+index 3158900..f763480 100644
+--- a/libCacheSim/libCacheSim/include/libCacheSim/evictionAlgo.h
++++ b/libCacheSim/libCacheSim/include/libCacheSim/evictionAlgo.h
+@@ -163,6 +163,9 @@ cache_t *LRU_Belady_init(const common_cache_params_t ccache_params,
+ cache_t *FIFO_Belady_init(const common_cache_params_t ccache_params,
+                           const char *cache_specific_params);
+ 
++cache_t *SieveG_init(const common_cache_params_t ccache_params,
++                     const char *cache_specific_params);
++
+ cache_t *Sieve_init(const common_cache_params_t ccache_params,
+                     const char *cache_specific_params);
+ 
