@@ -1,0 +1,16 @@
+# Figure 4 check (plan Phase 4b): the 13 Figure 4 traces, versions as in external/sieve-fig4 (whole traces;
+# Tencent Photo on its 10% spatial sample, -s 0.1, at both sizes, as in the Figure 4 figure).
+# trace	trace_file	sample_ratio	max_req	log_file
+meta_reag	data/fig4/metaCDN/meta_reag.oracleGeneral.zst	1	-1	results/fig4check/meta_reag.log
+meta_rnha	data/fig4/metaCDN/meta_rnha.oracleGeneral.zst	1	-1	results/fig4check/meta_rnha.log
+meta_rprn	data/fig4/metaCDN/meta_rprn.oracleGeneral.zst	1	-1	results/fig4check/meta_rprn.log
+kvcache_traces_1	data/fig4/metaKV/kvcache_traces_1.oracleGeneral.zst	1	-1	results/fig4check/kvcache_traces_1.log
+kvcache_traces_2	data/fig4/metaKV/kvcache_traces_2.oracleGeneral.zst	1	-1	results/fig4check/kvcache_traces_2.log
+kvcache_traces_3	data/fig4/metaKV/kvcache_traces_3.oracleGeneral.zst	1	-1	results/fig4check/kvcache_traces_3.log
+kvcache_traces_4	data/fig4/metaKV/kvcache_traces_4.oracleGeneral.zst	1	-1	results/fig4check/kvcache_traces_4.log
+kvcache_traces_5	data/fig4/metaKV/kvcache_traces_5.oracleGeneral.zst	1	-1	results/fig4check/kvcache_traces_5.log
+wiki_2019t	data/fig4/wiki/wiki_2019t.oracleGeneral.zst	1	-1	results/fig4check/wiki_2019t.log
+wiki_2016u	data/fig4/wiki/wiki_2016u.oracleGeneral.zst	1	-1	results/fig4check/wiki_2016u.log
+wiki_2019u	data/fig4/wiki/wiki_2019u.oracleGeneral.zst	1	-1	results/fig4check/wiki_2019u.log
+tencent_photo1	data/fig4/tencentPhoto/tencent_photo1.oracleGeneral.zst	0.1	-1	results/fig4check/tencent_photo1.log
+tencent_photo2	data/fig4/tencentPhoto/tencent_photo2.oracleGeneral.zst	0.1	-1	results/fig4check/tencent_photo2.log

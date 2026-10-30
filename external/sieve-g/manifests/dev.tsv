@@ -1,0 +1,10 @@
+# Development set (plan Phase 3): the failure clusters of the Figure 3 replication, with exactly the
+# trace version of their rows in external/sieve-fig3/manifests/twitter.tsv; cluster 49 as in
+# external/sieve-fig3/results/validation/ (sample10, whole trace).
+# cluster	trace_file	sample_ratio	max_req	log_file
+cluster8	data/twitter/cluster8.oracleGeneral.first1000000000.zst	1	-1	results/dev/cluster8.log
+cluster1	data/twitter/cluster1.oracleGeneral.first1000000000.zst	1	-1	results/dev/cluster1.log
+cluster12	data/twitter/sample100/cluster12.oracleGeneral.sample100.zst	1	-1	results/dev/cluster12.log
+cluster13	data/twitter/sample100/cluster13.oracleGeneral.sample100.zst	1	-1	results/dev/cluster13.log
+cluster23	data/twitter/sample100/cluster23.oracleGeneral.sample100.zst	1	-1	results/dev/cluster23.log
+cluster49	data/twitter/sample10/cluster49.oracleGeneral.sample10.zst	1	-1	results/dev/cluster49.log

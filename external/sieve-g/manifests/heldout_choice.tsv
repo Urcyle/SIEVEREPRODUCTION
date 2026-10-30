@@ -1,0 +1,31 @@
+cluster	version	extra_sample	max_req	est_req	est_obj	reason
+cluster25	sample10	1	-1	604353420	631540	whole trace
+cluster26	full	1	-1	160045600	12205400	whole trace
+cluster27	sample100	1	-1	120220788	7050550	whole trace
+cluster28	sample10	1	-1	514143320	6215670	whole trace
+cluster29	sample10	1	-1	675340210	25265140	whole trace
+cluster30	sample10	1	-1	341514330	1296420	whole trace
+cluster31	sample100	1	-1	13411974	12584276	whole trace
+cluster32	sample100	0.5	-1	18337927	17787870	sample100 footprint > 30000000: extra -s 1/2
+cluster33	sample10	1	-1	780809000	1909490	whole trace
+cluster34	sample10	1	-1	206664240	1419360	whole trace
+cluster35	sample10	1	-1	182716370	12793300	whole trace
+cluster36	sample10	1	-1	636583240	7100540	whole trace
+cluster37	sample100	1	-1	32482374	6971252	whole trace
+cluster38	sample100	1	-1	13424166	12595160	whole trace
+cluster39	sample100	1	-1	13288755	12469771	whole trace
+cluster40	sample100	1	-1	40299188	3018142	whole trace
+cluster41	sample10	1	-1	308405010	25201310	whole trace
+cluster42	sample10	1	-1	453873450	1338810	whole trace
+cluster43	sample100	1	-1	90917138	4326497	whole trace
+cluster44	sample10	1	-1	567754190	5817740	whole trace
+cluster45	sample10	1	-1	22450930	6545730	whole trace
+cluster46	sample100	1	-1	67826732	11583657	whole trace
+cluster47	sample10	1	-1	558034530	516230	whole trace
+cluster48	sample10	1	-1	113619820	22347220	whole trace
+cluster49	full	1	-1	813876300	1611300	whole trace
+cluster50	full	1	-1	137412900	2652500	whole trace
+cluster51	sample10	1	-1	761348040	500240	whole trace
+cluster52	sample100	1	-1	118560476	2516392	whole trace
+cluster53	full	1	-1	271089800	7273300	whole trace
+cluster54	sample100	1	-1	122379335	515202	whole trace

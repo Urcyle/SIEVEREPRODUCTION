@@ -1,0 +1,7 @@
+        algo  ratio  worse_than_sieve_at_10pct  strictly_higher_at_10pct clusters_worse  mean_reduction_small
+SIEVE-G 0.25   0.25                          0                         1                            -0.069416
+SIEVE-G 0.50   0.50                          1                         1       cluster1             -0.063180
+SIEVE-G 1.00   1.00                          1                         1       cluster1             -0.058859
+
+SIEVE mean reduction at 0.1%: -0.1397
+frozen ghost ratio: 0.25
