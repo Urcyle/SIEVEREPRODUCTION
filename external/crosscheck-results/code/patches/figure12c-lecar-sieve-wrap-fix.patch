@@ -1,0 +1,20 @@
+--- a/libCacheSim/cache/eviction/LeCaR.c
++++ b/libCacheSim/cache/eviction/LeCaR.c
+@@ -579,7 +579,7 @@
+   // update LRU chain state
+   remove_obj_from_list(&params->q_head, &params->q_tail, obj_to_evict);
+   if (update_sieve_pointer) {
+-    params->sieve_pointer = next_sieve_pointer ? next_sieve_pointer : params->q_head;
++    params->sieve_pointer = next_sieve_pointer;  /* NULL: the next scan starts at the tail, as in Sieve.c */
+   }
+ 
+   // update LFU chain state
+@@ -653,7 +653,7 @@
+   // remove from LRU list
+   remove_obj_from_list(&params->q_head, &params->q_tail, obj);
+   if (moved_sieve_pointer) {
+-    params->sieve_pointer = next_sieve_pointer ? next_sieve_pointer : params->q_head;
++    params->sieve_pointer = next_sieve_pointer;  /* NULL: the next scan starts at the tail, as in Sieve.c */
+   }
+ 
+   // remove from LFU

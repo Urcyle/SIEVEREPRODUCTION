@@ -1,0 +1,206 @@
+figure,dataset,size_label,algo,metric,value,exact,source
+fig1,all,large,SIEVE,mean,0.1883,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig1,all,large,ARC,mean,0.1798,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig1,all,large,LIRS,mean,0.1774,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig1,all,large,CACHEUS,mean,0.1718,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig1,all,large,LHD,mean,0.1551,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig1,all,large,CLOCK,mean,0.1369,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig1,all,large,LRU,mean,0.1259,yes,Fig 1 printed value; 1559 traces of which 1273 CDN1; cache size not stated (assumed large)
+fig3c,twitter,large,SIEVE,mean,0.155,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,SIEVE,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,SIEVE,p25,0.005,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,SIEVE,median,0.125,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,SIEVE,p75,0.238,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,SIEVE,p90,0.338,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,ARC,mean,0.14,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,ARC,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,ARC,p25,0.003,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,ARC,median,0.122,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,ARC,p75,0.227,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,ARC,p90,0.277,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TinyLFU,mean,0.07,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TinyLFU,p25,-0.018,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TinyLFU,median,0.019,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TinyLFU,p75,0.225,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TinyLFU,p90,0.308,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TwoQ,mean,0.145,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TwoQ,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TwoQ,p25,0.001,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TwoQ,median,0.133,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TwoQ,p75,0.248,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,TwoQ,p90,0.343,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LIRS,mean,0.15,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LIRS,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LIRS,p25,0.007,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LIRS,median,0.125,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LIRS,p75,0.266,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LIRS,p90,0.301,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LHD,mean,0.163,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LHD,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LHD,p25,0.01,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LHD,median,0.128,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LHD,p75,0.257,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LHD,p90,0.394,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CACHEUS,mean,0.132,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CACHEUS,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CACHEUS,p25,0.007,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CACHEUS,median,0.098,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CACHEUS,p75,0.205,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CACHEUS,p90,0.292,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,Hyperbolic,mean,0.027,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,Hyperbolic,p25,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,Hyperbolic,median,0.032,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,Hyperbolic,p75,0.109,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,Hyperbolic,p90,0.221,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CLOCK,mean,0.117,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CLOCK,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CLOCK,p25,0.005,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CLOCK,median,0.089,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CLOCK,p75,0.186,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,CLOCK,p90,0.282,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LRU,mean,0.13,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LRU,p10,0.0,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LRU,p25,0.006,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LRU,median,0.104,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LRU,p75,0.205,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,LRU,p90,0.299,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,B-LRU,p75,0.095,no,read off Fig 3c (54 traces)
+fig3c,twitter,large,B-LRU,p90,0.2,no,read off Fig 3c (54 traces)
+fig3f,twitter,small,SIEVE,mean,0.083,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,SIEVE,p10,-0.05,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,SIEVE,p25,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,SIEVE,median,0.079,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,SIEVE,p75,0.182,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,SIEVE,p90,0.27,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,ARC,mean,0.1,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,ARC,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,ARC,p25,0.009,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,ARC,median,0.08,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,ARC,p75,0.153,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,ARC,p90,0.241,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TinyLFU,mean,0.055,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TinyLFU,p25,-0.003,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TinyLFU,median,0.059,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TinyLFU,p75,0.195,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TinyLFU,p90,0.295,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TwoQ,mean,0.13,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TwoQ,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TwoQ,p25,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TwoQ,median,0.128,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TwoQ,p75,0.255,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,TwoQ,p90,0.291,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LIRS,mean,0.068,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LIRS,p10,-0.03,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LIRS,p25,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LIRS,median,0.049,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LIRS,p75,0.145,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LIRS,p90,0.227,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LHD,mean,0.142,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LHD,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LHD,p25,0.011,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LHD,median,0.139,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LHD,p75,0.243,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LHD,p90,0.289,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CACHEUS,mean,0.087,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CACHEUS,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CACHEUS,p25,0.001,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CACHEUS,median,0.085,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CACHEUS,p75,0.143,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CACHEUS,p90,0.213,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,Hyperbolic,mean,0.048,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,Hyperbolic,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,Hyperbolic,p25,0.003,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,Hyperbolic,median,0.055,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,Hyperbolic,p75,0.112,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,Hyperbolic,p90,0.155,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CLOCK,mean,0.074,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CLOCK,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CLOCK,p25,0.007,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CLOCK,median,0.065,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CLOCK,p75,0.136,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,CLOCK,p90,0.168,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LRU,mean,0.075,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LRU,p10,0.0,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LRU,p25,0.01,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LRU,median,0.069,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LRU,p75,0.133,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,LRU,p90,0.162,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,B-LRU,mean,-0.035,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,B-LRU,median,0.017,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,B-LRU,p75,0.097,no,read off Fig 3f (54 traces)
+fig3f,twitter,small,B-LRU,p90,0.147,no,read off Fig 3f (54 traces)
+fig3,twitter,large,LHD,rank,1.0,yes,"Sec 4.2: LHD is the best algorithm on Twitter, SIEVE second"
+fig5,wiki,large,SIEVE,win_fraction,0.333,no,read off Fig 5 bars
+fig5,wiki,large,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,wiki,large,TwoQ,win_fraction,0.0,no,read off Fig 5 bars
+fig5,wiki,large,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,wiki,large,Others,win_fraction,0.667,no,read off Fig 5 bars
+fig5,tencentPhoto,large,SIEVE,win_fraction,1.0,no,read off Fig 5 bars
+fig5,tencentPhoto,large,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,tencentPhoto,large,TwoQ,win_fraction,0.0,no,read off Fig 5 bars
+fig5,tencentPhoto,large,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,tencentPhoto,large,Others,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,large,SIEVE,win_fraction,0.333,no,read off Fig 5 bars
+fig5,metaCDN,large,ARC,win_fraction,0.333,no,read off Fig 5 bars
+fig5,metaCDN,large,TwoQ,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,large,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,large,Others,win_fraction,0.333,no,read off Fig 5 bars
+fig5,metaKV,large,SIEVE,win_fraction,1.0,no,read off Fig 5 bars
+fig5,metaKV,large,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,large,TwoQ,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,large,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,large,Others,win_fraction,0.0,no,read off Fig 5 bars
+fig5,cdn1,large,SIEVE,win_fraction,0.41,no,read off Fig 5 bars
+fig5,cdn1,large,ARC,win_fraction,0.12,no,read off Fig 5 bars
+fig5,cdn1,large,TwoQ,win_fraction,0.07,no,read off Fig 5 bars
+fig5,cdn1,large,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,cdn1,large,Others,win_fraction,0.4,no,read off Fig 5 bars
+fig5,cdn2,large,SIEVE,win_fraction,0.29,no,read off Fig 5 bars
+fig5,cdn2,large,ARC,win_fraction,0.1,no,read off Fig 5 bars
+fig5,cdn2,large,TwoQ,win_fraction,0.2,no,read off Fig 5 bars
+fig5,cdn2,large,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,cdn2,large,Others,win_fraction,0.41,no,read off Fig 5 bars
+fig5,twitter,large,SIEVE,win_fraction,0.3,no,read off Fig 5 bars
+fig5,twitter,large,ARC,win_fraction,0.02,no,read off Fig 5 bars
+fig5,twitter,large,TwoQ,win_fraction,0.15,no,read off Fig 5 bars
+fig5,twitter,large,LHD,win_fraction,0.19,no,read off Fig 5 bars
+fig5,twitter,large,Others,win_fraction,0.34,no,read off Fig 5 bars
+fig5,wiki,small,SIEVE,win_fraction,0.333,no,read off Fig 5 bars
+fig5,wiki,small,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,wiki,small,TwoQ,win_fraction,0.0,no,read off Fig 5 bars
+fig5,wiki,small,LHD,win_fraction,0.333,no,read off Fig 5 bars
+fig5,wiki,small,Others,win_fraction,0.333,no,read off Fig 5 bars
+fig5,tencentPhoto,small,SIEVE,win_fraction,0.0,no,read off Fig 5 bars
+fig5,tencentPhoto,small,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,tencentPhoto,small,TwoQ,win_fraction,0.0,no,read off Fig 5 bars
+fig5,tencentPhoto,small,LHD,win_fraction,1.0,no,read off Fig 5 bars
+fig5,tencentPhoto,small,Others,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,small,SIEVE,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,small,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,small,TwoQ,win_fraction,1.0,no,read off Fig 5 bars
+fig5,metaCDN,small,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaCDN,small,Others,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,small,SIEVE,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,small,ARC,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,small,TwoQ,win_fraction,1.0,no,read off Fig 5 bars
+fig5,metaKV,small,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,metaKV,small,Others,win_fraction,0.0,no,read off Fig 5 bars
+fig5,cdn1,small,SIEVE,win_fraction,0.3,no,read off Fig 5 bars
+fig5,cdn1,small,ARC,win_fraction,0.08,no,read off Fig 5 bars
+fig5,cdn1,small,TwoQ,win_fraction,0.26,no,read off Fig 5 bars
+fig5,cdn1,small,LHD,win_fraction,0.02,no,read off Fig 5 bars
+fig5,cdn1,small,Others,win_fraction,0.34,no,read off Fig 5 bars
+fig5,cdn2,small,SIEVE,win_fraction,0.03,no,read off Fig 5 bars
+fig5,cdn2,small,ARC,win_fraction,0.27,no,read off Fig 5 bars
+fig5,cdn2,small,TwoQ,win_fraction,0.32,no,read off Fig 5 bars
+fig5,cdn2,small,LHD,win_fraction,0.0,no,read off Fig 5 bars
+fig5,cdn2,small,Others,win_fraction,0.38,no,read off Fig 5 bars
+fig5,twitter,small,SIEVE,win_fraction,0.11,no,read off Fig 5 bars
+fig5,twitter,small,ARC,win_fraction,0.04,no,read off Fig 5 bars
+fig5,twitter,small,TwoQ,win_fraction,0.38,no,read off Fig 5 bars
+fig5,twitter,small,LHD,win_fraction,0.28,no,read off Fig 5 bars
+fig5,twitter,small,Others,win_fraction,0.19,no,read off Fig 5 bars
+fig5,twitter,large,SIEVE,win_fraction_text,0.3,yes,Sec 4.2 text: SIEVE best on 30% of Twitter traces
+fig5,cdn1,large,SIEVE,win_fraction_text,0.48,yes,Sec 4.2 text says 48%; Fig 5a bar reads ~0.41
+fig5,cdn2,large,SIEVE,win_fraction_text,0.38,yes,Sec 4.2 text says 38%; Fig 5a bar reads ~0.29
+fig5,wiki,large,SIEVE,win_fraction_text,1.0,yes,Sec 4.2 text says SIEVE outperforms all others on Wiki; Fig 5a shows 1 of 3 traces

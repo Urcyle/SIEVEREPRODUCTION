@@ -1,0 +1,5 @@
+capacity_fraction,config,n,mean,median,wins,ties,losses,passes_rule
+0.001,ghost0.5,11,0.009097,0.004405,9,0,2,True
+0.001,ghost1.0,11,0.002604,0.000479,6,0,5,False
+0.1,ghost0.5,11,-0.005817,0.000449,7,0,4,False
+0.1,ghost1.0,11,-0.028667,-0.003913,5,0,6,False

@@ -1,0 +1,90 @@
+diff --git a/libCacheSim/libCacheSim/bin/cachesim/main.c b/libCacheSim/libCacheSim/bin/cachesim/main.c
+--- a/libCacheSim/libCacheSim/bin/cachesim/main.c
++++ b/libCacheSim/libCacheSim/bin/cachesim/main.c
+@@ -4,20 +4,67 @@
+ #include <sys/sysinfo.h>
+ #endif
+ #include <assert.h>
++#include <ctype.h>
++#include <errno.h>
+ #include <libgen.h>
+ 
+ #include "../../include/libCacheSim/cache.h"
+ #include "../../include/libCacheSim/reader.h"
+ #include "../../include/libCacheSim/simulator.h"
++#include "../../utils/include/mymath.h"
+ #include "../../utils/include/mystr.h"
+ #include "../../utils/include/mysys.h"
+ #include "internal.h"
+ 
++/* Controlled MMIX stream for single-cache fixtures/replays. Seed zero is valid.
++ * Keep the default artifact lifecycle unchanged when the environment is unset. */
++static uint64_t controlled_seed(const char *value) {
++  if (*value == '\0') {
++    fprintf(stderr, "SIEVE_RNG_SEED must be decimal uint64\n");
++    exit(1);
++  }
++  for (const char *p = value; *p != '\0'; p++) {
++    if (!isdigit((unsigned char)*p)) {
++      fprintf(stderr, "SIEVE_RNG_SEED must be decimal uint64\n");
++      exit(1);
++    }
++  }
++  errno = 0;
++  char *end = NULL;
++  unsigned long long seed = strtoull(value, &end, 10);
++  if (errno == ERANGE || *end != '\0' || seed > UINT64_MAX) {
++    fprintf(stderr, "SIEVE_RNG_SEED must be decimal uint64\n");
++    exit(1);
++  }
++  return (uint64_t)seed;
++}
++
+ int main(int argc, char **argv) {
++  const char *seed_env = getenv("SIEVE_RNG_SEED");
++  uint64_t seed = 0;
++  if (seed_env != NULL) {
++    seed = controlled_seed(seed_env);
++    /* parse_cmd constructs caches; CACHEUS consumes an initialization draw. */
++    set_rand_seed(seed);
++  }
+   struct arguments args;
+   parse_cmd(argc, argv, &args);
+   if (args.n_cache_size == 0) {
+     ERROR("no cache size found\n");
++  }
++
++  if (seed_env != NULL) {
++    if (args.n_cache_size != 1 || args.n_eviction_algo != 1 || args.n_thread != 1) {
++      fprintf(stderr, "SIEVE_RNG_SEED supports one cache and --num-thread 1 only\n");
++      free_arg(&args);
++      return 1;
++    }
++    /* Leading newline isolates the record from the author logger's ANSI reset. */
++    printf("\nSIEVE_RNG {\"seed\":%llu,\"state_before_replay\":%llu,"
++           "\"lifecycle\":\"seed-before-initialization;continue-into-single-cache-replay\","
++           "\"rng\":\"MMIX-LCG64\","
++           "\"source_commit\":\"0861f8261c37b8286a70449a1defb5a4749c72d2\"}\n",
++           (unsigned long long)seed, (unsigned long long)rand_seed);
+   }
+ 
+   if (args.n_cache_size * args.n_eviction_algo == 1) {
+diff --git a/libCacheSim/libCacheSim/bin/cachesim/sim.c b/libCacheSim/libCacheSim/bin/cachesim/sim.c
+--- a/libCacheSim/libCacheSim/bin/cachesim/sim.c
++++ b/libCacheSim/libCacheSim/bin/cachesim/sim.c
+@@ -12,9 +12,12 @@
+ 
+ void simulate(reader_t *reader, cache_t *cache, int report_interval,
+               int warmup_sec, char *ofilepath) {
+-  /* random seed */
+-  srand(time(NULL));
+-  set_rand_seed(rand());
++  /* Controlled mode continues the stream seeded before cache construction.
++   * In particular, retain CACHEUS's initialization draw rather than reseeding. */
++  if (getenv("SIEVE_RNG_SEED") == NULL) {
++    srand(time(NULL));
++    set_rand_seed(rand());
++  }
+ 
+   request_t *req = new_request();
+   uint64_t req_cnt = 0, miss_cnt = 0;

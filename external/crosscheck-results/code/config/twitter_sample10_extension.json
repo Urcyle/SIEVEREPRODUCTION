@@ -1,0 +1,79 @@
+{
+  "family": "twitter-sample10-extension",
+  "protocol": "docs/twitter_sample10_extension_protocol.md",
+  "artifact_commit": "0861f8261c37b8286a70449a1defb5a4749c72d2",
+  "base_url": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets",
+  "out_dir": "local_results/twitter_sample10_extension",
+  "data_dir": "data/twitter_sample10",
+  "summary_csv": "sample10_extension.csv",
+  "kinds": {
+    "25": "sample10",
+    "27": "sample100",
+    "28": "sample10",
+    "30": "sample10",
+    "33": "sample10",
+    "34": "sample10",
+    "36": "sample10",
+    "42": "sample10",
+    "44": "sample10",
+    "47": "sample10",
+    "51": "sample10"
+  },
+  "clusters": [
+    25,
+    27,
+    28,
+    30,
+    33,
+    34,
+    36,
+    42,
+    44,
+    47,
+    51
+  ],
+  "worker_partition": [
+    [
+      33,
+      42,
+      27
+    ],
+    [
+      51,
+      28
+    ],
+    [
+      36,
+      47,
+      34
+    ],
+    [
+      25,
+      44,
+      30
+    ]
+  ],
+  "capacity_fractions": [
+    0.001,
+    0.1
+  ],
+  "core_policies": [
+    "fifo",
+    "lru",
+    "clock",
+    "sieve",
+    "arc"
+  ],
+  "extra_policies": [
+    "twoq",
+    "lirs",
+    "tinylfu_snapshot",
+    "blru",
+    "hyperbolic",
+    "lhd",
+    "cacheus"
+  ],
+  "rng_seed": 42,
+  "peak_estimate": "1 GiB + 250 bytes per unique object (as in batch 1, amendment 1)",
+  "exact_capacity_objects": true
+}

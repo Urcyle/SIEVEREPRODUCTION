@@ -1,0 +1,2 @@
+cluster,fraction,policy,reason
+25,0.001,cacheus,live RSS/headroom gate crossed; preserving failed attempt

@@ -1,0 +1,13 @@
+{
+ "compressed_bytes": 24283806419,
+ "head_content_length": 24283806419,
+ "label": "wiki_2016u",
+ "record_count": 2803498585,
+ "scan_seconds": 2895.0028556899633,
+ "sha256": "25d50ca53c22dfca70691d3abbaa5df57c9a86aa88dfc9223ca701dd418c3c38",
+ "stored_bytes": 24283806419,
+ "stream_sha256": "783e93f7a2b979f893b6cb08f504aba0a9257f810fb6b25c7d71d79af3dc3955",
+ "unique_objects": 37197832,
+ "url": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets/wiki/wiki_2016u.oracleGeneral.zst",
+ "zero_size_count": 0
+}
