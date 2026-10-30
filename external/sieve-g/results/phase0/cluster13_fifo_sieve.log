@@ -1,0 +1,13 @@
+# Phase 0 baseline check: cluster13, trace and settings of its row in external/sieve-fig3/manifests/twitter.tsv
+# cachesim args: fifo,sieve 0.001,0.1 --ignore-obj-size 1 --num-thread 4
+# started 2026-10-29T17:36:01-07:00
+[32m[INFO]  10-29-2026 17:36:01 cli_reader_utils.c:262  (tid=126113285104896): calculating working set size...
+[0m[32m[INFO]  10-29-2026 17:36:02 cli_reader_utils.c:279  (tid=126113285104896): working set size: 5187343 object 5187343 byte
+[0m[32m[INFO]  10-29-2026 17:36:03 cli_parser.c:545  (tid=126113285104896): trace path: /home/urcyle/SIEVEREPRODUCTION/external/sieve-g/data/twitter/sample100/cluster13.oracleGeneral.sample100.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster13.oracleGeneral.sample100.zst.cachesim, 4 threads, warmup -1 sec, total 2 algo x 2 size = 4 caches, fifo, sieve, ignore object size
+[0m[32m[INFO]  10-29-2026 17:36:03 simulator.c:294  (tid=126113285104896): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 5KiB, end cache Sieve size 507KiB, 4 caches, 4 threads, please wait
+[0m
+result/cluster13.oracleGeneral.sample100.zst                             FIFO cache size     5187, 8264851 req, miss ratio 0.6279, byte miss ratio 0.6279
+result/cluster13.oracleGeneral.sample100.zst                             FIFO cache size   518734, 8264851 req, miss ratio 0.6276, byte miss ratio 0.6276
+result/cluster13.oracleGeneral.sample100.zst                            Sieve cache size     5187, 8264851 req, miss ratio 0.6285, byte miss ratio 0.6285
+result/cluster13.oracleGeneral.sample100.zst                            Sieve cache size   518734, 8264851 req, miss ratio 0.6277, byte miss ratio 0.6277
+# time wall_s=4.04 maxrss_kb=1376040
