@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T19:33:09-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-29-2026 19:33:09 cli_reader_utils.c:262  (tid=131021283816704): calculating working set size...
+[0m[32m[INFO]  10-29-2026 19:33:33 cli_reader_utils.c:279  (tid=131021283816704): working set size: 18377117 object 18377117 byte
+[0m[32m[INFO]  10-29-2026 19:33:35 cli_parser.c:545  (tid=131021283816704): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2019t.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2019t.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 2 size = 6 caches, fifo, sieve, sieveg-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 19:33:35 simulator.c:294  (tid=131021283816704): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 18KiB, end cache SieveG-0.25 size 2MiB, 6 caches, 8 threads, please wait
+[0m
+result/wiki_2019t.oracleGeneral.zst                             FIFO cache size    18377, 207646002 req, miss ratio 0.8152, byte miss ratio 0.8152
+result/wiki_2019t.oracleGeneral.zst                             FIFO cache size  1837711, 207646002 req, miss ratio 0.2672, byte miss ratio 0.2672
+result/wiki_2019t.oracleGeneral.zst                            Sieve cache size    18377, 207646002 req, miss ratio 0.7196, byte miss ratio 0.7196
+result/wiki_2019t.oracleGeneral.zst                            Sieve cache size  1837711, 207646002 req, miss ratio 0.1866, byte miss ratio 0.1866
+result/wiki_2019t.oracleGeneral.zst                      SieveG-0.25 cache size    18377, 207646002 req, miss ratio 0.7182, byte miss ratio 0.7182
+result/wiki_2019t.oracleGeneral.zst                      SieveG-0.25 cache size  1837711, 207646002 req, miss ratio 0.1833, byte miss ratio 0.1833
+# time wall_s=119.20 maxrss_kb=1595292
+# finished 2026-10-29T19:35:09-07:00

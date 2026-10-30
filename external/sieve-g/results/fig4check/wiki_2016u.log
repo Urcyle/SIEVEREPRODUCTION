@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig3/data/wiki/wiki_2016u.oracleGeneral.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T19:35:09-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-29-2026 19:35:09 cli_reader_utils.c:262  (tid=126197416535296): calculating working set size...
+[0m[32m[INFO]  10-29-2026 19:38:11 cli_reader_utils.c:279  (tid=126197416535296): working set size: 37218197 object 37218197 byte
+[0m[32m[INFO]  10-29-2026 19:38:11 cli_parser.c:545  (tid=126197416535296): trace path: /home/urcyle/sieve-fig3/data/wiki/wiki_2016u.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath wiki_2016u.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 2 size = 6 caches, fifo, sieve, sieveg-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 19:38:11 simulator.c:294  (tid=126197416535296): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 36KiB, end cache SieveG-0.25 size 4MiB, 6 caches, 8 threads, please wait
+[0m
+result/wiki_2016u.oracleGeneral.zst                             FIFO cache size    37218, 2803498585 req, miss ratio 0.5791, byte miss ratio 0.5791
+result/wiki_2016u.oracleGeneral.zst                             FIFO cache size  3721819, 2803498585 req, miss ratio 0.1087, byte miss ratio 0.1087
+result/wiki_2016u.oracleGeneral.zst                            Sieve cache size    37218, 2803498585 req, miss ratio 0.4598, byte miss ratio 0.4598
+result/wiki_2016u.oracleGeneral.zst                            Sieve cache size  3721819, 2803498585 req, miss ratio 0.0611, byte miss ratio 0.0611
+result/wiki_2016u.oracleGeneral.zst                      SieveG-0.25 cache size    37218, 2803498585 req, miss ratio 0.4657, byte miss ratio 0.4657
+result/wiki_2016u.oracleGeneral.zst                      SieveG-0.25 cache size  3721819, 2803498585 req, miss ratio 0.0601, byte miss ratio 0.0601
+# time wall_s=1321.16 maxrss_kb=2093240
+# finished 2026-10-29T19:57:10-07:00

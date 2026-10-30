@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_4.oracleGeneral.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T19:29:14-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-29-2026 19:29:14 cli_reader_utils.c:262  (tid=125388534207744): calculating working set size...
+[0m[32m[INFO]  10-29-2026 19:29:38 cli_reader_utils.c:279  (tid=125388534207744): working set size: 16236011 object 16236011 byte
+[0m[32m[INFO]  10-29-2026 19:29:39 cli_parser.c:545  (tid=125388534207744): trace path: /home/urcyle/sieve-fig4/data/metaKV/kvcache_traces_4.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath kvcache_traces_4.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 2 size = 6 caches, fifo, sieve, sieveg-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 19:29:39 simulator.c:294  (tid=125388534207744): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 16KiB, end cache SieveG-0.25 size 2MiB, 6 caches, 8 threads, please wait
+[0m
+result/kvcache_traces_4.oracleGeneral.zst                             FIFO cache size    16236, 329914873 req, miss ratio 0.3320, byte miss ratio 0.3320
+result/kvcache_traces_4.oracleGeneral.zst                             FIFO cache size  1623601, 329914873 req, miss ratio 0.0907, byte miss ratio 0.0907
+result/kvcache_traces_4.oracleGeneral.zst                            Sieve cache size    16236, 329914873 req, miss ratio 0.2910, byte miss ratio 0.2910
+result/kvcache_traces_4.oracleGeneral.zst                            Sieve cache size  1623601, 329914873 req, miss ratio 0.0742, byte miss ratio 0.0742
+result/kvcache_traces_4.oracleGeneral.zst                      SieveG-0.25 cache size    16236, 329914873 req, miss ratio 0.2908, byte miss ratio 0.2908
+result/kvcache_traces_4.oracleGeneral.zst                      SieveG-0.25 cache size  1623601, 329914873 req, miss ratio 0.0732, byte miss ratio 0.0732
+# time wall_s=112.26 maxrss_kb=1528876
+# finished 2026-10-29T19:31:06-07:00

@@ -1,0 +1,22 @@
+# trace /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst
+# sample_ratio 0.1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T20:51:18-07:00 on OMEN, 8 threads
+# pass main
+spatial sampler: sample ratio 0.100000, sample func 0x64b063a67560, clone func 0x64b063a67510
+[32m[INFO]  10-29-2026 20:51:18 cli_reader_utils.c:262  (tid=123990283576576): calculating working set size...
+[0m[32m[INFO]  10-29-2026 20:54:19 cli_reader_utils.c:279  (tid=123990283576576): working set size: 50816130 object 50816130 byte
+[0m[32m[INFO]  10-29-2026 20:54:20 cli_parser.c:545  (tid=123990283576576): trace path: /home/urcyle/sieve-fig3/data/tencentPhoto/tencent_photo2.oracleGeneral.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath tencent_photo2.oracleGeneral.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 2 size = 6 caches, fifo, sieve, sieveg-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 20:54:20 simulator.c:294  (tid=123990283576576): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 50KiB, end cache SieveG-0.25 size 5MiB, 6 caches, 8 threads, please wait
+[0m
+result/tencent_photo2.oracleGeneral.zst                             FIFO cache size    50816, 273066692 req, miss ratio 0.7188, byte miss ratio 0.7188
+result/tencent_photo2.oracleGeneral.zst                             FIFO cache size  5081613, 273066692 req, miss ratio 0.2765, byte miss ratio 0.2765
+result/tencent_photo2.oracleGeneral.zst                            Sieve cache size    50816, 273066692 req, miss ratio 0.6843, byte miss ratio 0.6843
+result/tencent_photo2.oracleGeneral.zst                            Sieve cache size  5081613, 273066692 req, miss ratio 0.2448, byte miss ratio 0.2448
+result/tencent_photo2.oracleGeneral.zst                      SieveG-0.25 cache size    50816, 273066692 req, miss ratio 0.6621, byte miss ratio 0.6621
+result/tencent_photo2.oracleGeneral.zst                      SieveG-0.25 cache size  5081613, 273066692 req, miss ratio 0.2416, byte miss ratio 0.2416
+# time wall_s=1652.41 maxrss_kb=3311100
+# finished 2026-10-29T21:18:51-07:00
