@@ -1,0 +1,6 @@
+# trace cluster13.oracleGeneral.sample100.zst
+# cachesim args: fifo,sieve 0.001,0.1 --ignore-obj-size 1
+result/cluster13.oracleGeneral.sample100.zst FIFO cache size 5187, 8264851 req, miss ratio 0.6279, byte miss ratio 0.6279
+result/cluster13.oracleGeneral.sample100.zst FIFO cache size 518734, 8264851 req, miss ratio 0.6276, byte miss ratio 0.6276
+result/cluster13.oracleGeneral.sample100.zst Sieve cache size 5187, 8264851 req, miss ratio 0.6285, byte miss ratio 0.6285
+result/cluster13.oracleGeneral.sample100.zst Sieve cache size 518734, 8264851 req, miss ratio 0.6277, byte miss ratio 0.6277

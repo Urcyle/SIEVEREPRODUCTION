@@ -1,0 +1,12 @@
+# G3: trace A B C A B C (A=1, B=2, C=3), cache 2 objects, sieveg-1.0 (ghost of 2 ids), debug print in SieveG_insert/evict
+G3 insert obj 1 freq 0
+G3 insert obj 2 freq 0
+G3 evict obj 1 (added to ghost)
+G3 insert obj 3 freq 0
+G3 evict obj 2 (added to ghost)
+G3 insert obj 1 freq 1
+G3 evict obj 3 (added to ghost)
+G3 insert obj 2 freq 1
+G3 evict obj 1 (added to ghost)
+G3 insert obj 3 freq 1
+/home/urcyle/SIEVEREPRODUCTION/external/sieve-g/tests/data/g3_ABCABC.oracleGeneral SieveG-1.00 cache size 2, 6 req, miss ratio 1.0000, throughput 0.76 MQPS

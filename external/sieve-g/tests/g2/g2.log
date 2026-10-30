@@ -1,0 +1,24 @@
+# trace twice_gap10_n1000000.oracleGeneral
+# cachesim args: fifo,clock,sieve,sieveg-0.5 1000 --ignore-obj-size 1
+result/twice_gap10_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+# trace twice_gap50_n1000000.oracleGeneral
+# cachesim args: fifo,clock,sieve,sieveg-0.5 1000 --ignore-obj-size 1
+result/twice_gap50_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+# trace twice_gap200_n1000000.oracleGeneral
+# cachesim args: fifo,clock,sieve,sieveg-0.5 1000 --ignore-obj-size 1
+result/twice_gap200_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+# trace twice_gap800_n1000000.oracleGeneral
+# cachesim args: fifo,clock,sieve,sieveg-0.5 1000 --ignore-obj-size 1
+result/twice_gap800_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap800_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.6248, byte miss ratio 0.6248
+result/twice_gap800_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.9992, byte miss ratio 0.9992
+result/twice_gap800_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.9992, byte miss ratio 0.9992
