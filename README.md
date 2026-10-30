@@ -12,6 +12,7 @@ under `external/`, together with the one simulator they all use.
 | 5 | [external/sieve-fig4/fig5](external/sieve-fig4/fig5/README.md) | best algorithm per dataset, from the Figure 3 and 4 results | 7 of the 8 public-dataset bars exact; Twitter close |
 | 8 | [external/fig8](external/fig8/README.md) | miss ratio and popular object ratio over cache size, Zipf α = 1 | miss ratios within 0.0014 (LRU, ARC, SIEVE); popular-ratio ordering the paper's at 7 of 8 sizes |
 | 9 | [external/fig9](external/fig9/README.md) | the same over the Zipf skew, and SIEVE's hand over time | miss ratios within 0.003; hand wraps 0 / 1–2 / 5–7 vs the paper's 0 / 2 / 7 |
+| improvement | [external/sieve-g](external/sieve-g/README.md) | **SIEVE-G**: SIEVE + a ghost list of evicted ids, for SIEVE's small-cache failures (Figure 3); pre-registered held-out test on Twitter clusters 25–54 | held-out verdict **PASS** at both cache sizes (0.1%: +1.9% mean vs SIEVE, worse on 2 of 29 clusters); Figure 4 traces: better on 24 of 26 points, one flagged loss (Wiki 2016u, +0.0059) |
 
 Panels a, b, d and e of Figure 3 use proprietary traces (CDN1, CDN2) and are not reproduced.
 
@@ -20,12 +21,14 @@ Panels a, b, d and e of Figure 3 use proprietary traces (CDN1, CDN2) and are not
 ```
 external/NSDI24-SIEVE/   the authors' artifact (simulator: libCacheSim), git submodule,
                          github.com/cacheMon/NSDI24-SIEVE @ 0861f82
-patches/                 NSDI24-SIEVE-build-fix.patch: lets it build with newer compilers
-scripts/setup_simulator.sh   fetches the submodule and applies the patch
+patches/                 NSDI24-SIEVE-build-fix.patch: lets it build with newer compilers;
+                         SIEVE-G.patch, SIEVE-G-fp.patch: the SIEVE-G algorithm (external/sieve-g)
+scripts/setup_simulator.sh   fetches the submodule and applies the patches
 external/sieve-fig3/     Figure 3c/3f    copy of Urcyle/sieve-fig3 @ 1d318f4
 external/sieve-fig4/     Figures 4 and 5 copy of Urcyle/sieve-fig4 @ 6271e61
 external/fig8/           Figure 8        copy of Urcyle/fig8 @ 2245a86
 external/fig9/           Figure 9        copy of Urcyle/fig9 @ 7d4169e
+external/sieve-g/        SIEVE-G         new work in this repository (not a copy)
 paper/nsdi24-sieve.pdf   the paper (the figures' extraction scripts read their values from it)
 requirements.txt         the Python packages of the figures' scripts
 ```

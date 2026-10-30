@@ -157,7 +157,12 @@ def main():
         for ax, z in zip(axes, ("large", "small")):
             g = w[w["size"] == z]
             col = g.outcome.map({"better": "#1565C0", "equal": "#9E9E9E", "worse": "#C62828"})
-            ax.scatter(g["SIEVE"], g[SG], c=col, s=16, edgecolor="#333333", linewidth=0.3, zorder=3)
+            h = g.cluster != "cluster49"  # cluster 49 is also a dev cluster: hollow, labelled
+            ax.scatter(g["SIEVE"][h], g[SG][h], c=col[h], s=16, edgecolor="#333333", linewidth=0.3, zorder=3)
+            d49 = g[~h]
+            ax.scatter(d49["SIEVE"], d49[SG], facecolors="none", edgecolors=col[~h], s=22, linewidth=1, zorder=3)
+            for xs, ys in zip(d49["SIEVE"], d49[SG]):
+                ax.annotate("49 (dev set)", (xs, ys), fontsize=6, xytext=(-40, 6), textcoords="offset points")
             lim = [0, max(g["SIEVE"].max(), g[SG].max()) * 1.05]
             ax.plot(lim, lim, color="#666666", linewidth=0.7, zorder=2)
             ax.set_xlim(lim)
@@ -169,7 +174,7 @@ def main():
             n = g.outcome.value_counts()
             ax.set_title(f"{SIZE[z]} cache: {n.get('better', 0)} better, {n.get('equal', 0)} equal, "
                          f"{n.get('worse', 0)} worse", fontsize=8)
-        fig.suptitle("Held-out clusters 25-54: below the line = SIEVE-G better", fontsize=9)
+        fig.suptitle("Held-out clusters 25-54: below the line = SIEVE-G better (hollow: 49, also a dev cluster)", fontsize=8)
         fig.tight_layout()
         fig.savefig(G / "figures/fig_heldout_scatter.png")
         plt.close(fig)

@@ -5,7 +5,7 @@ usage: parse_logs.py <log> [<log> ...] --dataset NAME -o out.csv
 
 A copy of external/sieve-fig3/scripts/parse_logs.py for the SIEVE-G runs: one pass per log, the
 algorithms and sizes are read from the log's "# algos" / "# sizes" header, and SIEVE-G's names
-(SieveG-<ratio>, e.g. SieveG-0.50) are added. One row per (trace, cache size, algorithm):
+(SieveG-<ratio>, e.g. SieveG-0.50, and the fingerprint ghost SieveG-fp-<ratio>) are added. One row per (trace, cache size, algorithm):
     dataset, trace, size (small|large), algo, miss_ratio, reduction, vs_sieve, cache_size_obj,
     n_req, sample_ratio, max_req, wall_s, maxrss_kb
 reduction (paper §4.1), against FIFO on the same trace and size:
@@ -30,6 +30,9 @@ def name(cachesim_name):
     m = re.fullmatch(r"SieveG-(\d+\.\d+)", cachesim_name)
     if m:
         return f"SIEVE-G {m.group(1)}"
+    m = re.fullmatch(r"SieveG-fp-(\d+\.\d+)", cachesim_name)
+    if m:
+        return f"SIEVE-G-fp {m.group(1)}"
     sys.exit(f"unknown cache name {cachesim_name}")
 
 
@@ -78,7 +81,7 @@ def parse(path):
     for r in rows:
         r["reduction"] = round(reduction(fifo[r["size"]], r["miss_ratio"]), 6)
         r["vs_sieve"] = (round(reduction(sieve[r["size"]], r["miss_ratio"]), 6)
-                         if r["algo"].startswith("SIEVE-G") else "")
+                         if r["algo"].startswith("SIEVE-G") else "")  # also SIEVE-G-fp
     return rows
 
 
