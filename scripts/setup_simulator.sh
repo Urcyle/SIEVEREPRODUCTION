@@ -10,13 +10,24 @@ ROOT=$(cd "$(dirname "$0")/.." && pwd)
 cd "$ROOT"
 git submodule update --init external/NSDI24-SIEVE
 cd external/NSDI24-SIEVE
-# 1. the build fix; 2. SIEVE-G (external/sieve-g: SIEVE with a ghost list, a new algorithm
-#    "sieveg[-<ratio>]"; it changes no other algorithm)
-for name in NSDI24-SIEVE-build-fix SIEVE-G; do
-	P=$ROOT/patches/$name.patch
-	if git apply --reverse --check "$P" 2> /dev/null; then
-		echo "simulator: $name already applied"
+# The patches build on each other, in this order:
+#   1. NSDI24-SIEVE-build-fix: builds with newer compilers (no simulator code changed)
+#   2. SIEVE-G: external/sieve-g, SIEVE with a ghost list, a new algorithm "sieveg[-<ratio>]";
+#      it changes no other algorithm
+#   3. SIEVE-G-fp: SIEVE-G's optional lean ghost of 16-bit fingerprints, "sieveg-fp[-<ratio>]"
+# Find the last one already applied, and apply the ones after it.
+PATCHES=(NSDI24-SIEVE-build-fix SIEVE-G SIEVE-G-fp)
+last=-1
+for ((i = ${#PATCHES[@]} - 1; i >= 0; i--)); do
+	if git apply --reverse --check "$ROOT/patches/${PATCHES[$i]}.patch" 2> /dev/null; then
+		last=$i
+		break
+	fi
+done
+for ((i = 0; i < ${#PATCHES[@]}; i++)); do
+	if ((i <= last)); then
+		echo "simulator: ${PATCHES[$i]} already applied"
 	else
-		git apply "$P" && echo "simulator: $name applied"
+		git apply "$ROOT/patches/${PATCHES[$i]}.patch" && echo "simulator: ${PATCHES[$i]} applied"
 	fi
 done
