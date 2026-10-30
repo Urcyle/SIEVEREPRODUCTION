@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig3/data/twitter/sample10/cluster45.oracleGeneral.sample10.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T19:04:30-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-29-2026 19:04:30 cli_reader_utils.c:262  (tid=123659630052608): calculating working set size...
+[0m[32m[INFO]  10-29-2026 19:04:33 cli_reader_utils.c:279  (tid=123659630052608): working set size: 6548645 object 6548645 byte
+[0m[32m[INFO]  10-29-2026 19:04:35 cli_parser.c:545  (tid=123659630052608): trace path: /home/urcyle/sieve-fig3/data/twitter/sample10/cluster45.oracleGeneral.sample10.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster45.oracleGeneral.sample10.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 2 size = 6 caches, fifo, sieve, sieveg-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 19:04:35 simulator.c:294  (tid=123659630052608): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 6KiB, end cache SieveG-0.25 size 640KiB, 6 caches, 8 threads, please wait
+[0m
+result/cluster45.oracleGeneral.sample10.zst                             FIFO cache size     6548, 22288116 req, miss ratio 0.5249, byte miss ratio 0.5249
+result/cluster45.oracleGeneral.sample10.zst                             FIFO cache size   654864, 22288116 req, miss ratio 0.3916, byte miss ratio 0.3916
+result/cluster45.oracleGeneral.sample10.zst                            Sieve cache size     6548, 22288116 req, miss ratio 0.5050, byte miss ratio 0.5050
+result/cluster45.oracleGeneral.sample10.zst                            Sieve cache size   654864, 22288116 req, miss ratio 0.3764, byte miss ratio 0.3764
+result/cluster45.oracleGeneral.sample10.zst                      SieveG-0.25 cache size     6548, 22288116 req, miss ratio 0.5040, byte miss ratio 0.5040
+result/cluster45.oracleGeneral.sample10.zst                      SieveG-0.25 cache size   654864, 22288116 req, miss ratio 0.3758, byte miss ratio 0.3758
+# time wall_s=15.04 maxrss_kb=1389192
+# finished 2026-10-29T19:04:45-07:00

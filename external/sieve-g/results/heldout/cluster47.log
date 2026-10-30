@@ -1,0 +1,21 @@
+# trace /home/urcyle/sieve-fig3/data/twitter/sample10/cluster47.oracleGeneral.sample10.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T19:05:17-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-29-2026 19:05:17 cli_reader_utils.c:262  (tid=126225533129984): calculating working set size...
+[0m[32m[INFO]  10-29-2026 19:06:06 cli_reader_utils.c:279  (tid=126225533129984): working set size: 514602 object 514602 byte
+[0m[32m[INFO]  10-29-2026 19:06:09 cli_parser.c:545  (tid=126225533129984): trace path: /home/urcyle/sieve-fig3/data/twitter/sample10/cluster47.oracleGeneral.sample10.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster47.oracleGeneral.sample10.zst.cachesim, 8 threads, warmup -1 sec, total 3 algo x 2 size = 6 caches, fifo, sieve, sieveg-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 19:06:09 simulator.c:294  (tid=126225533129984): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 514, end cache SieveG-0.25 size 50KiB, 6 caches, 8 threads, please wait
+[0m
+result/cluster47.oracleGeneral.sample10.zst                             FIFO cache size      514, 672505759 req, miss ratio 0.3287, byte miss ratio 0.3287
+result/cluster47.oracleGeneral.sample10.zst                             FIFO cache size    51460, 672505759 req, miss ratio 0.0030, byte miss ratio 0.0030
+result/cluster47.oracleGeneral.sample10.zst                            Sieve cache size      514, 672505759 req, miss ratio 0.2310, byte miss ratio 0.2310
+result/cluster47.oracleGeneral.sample10.zst                            Sieve cache size    51460, 672505759 req, miss ratio 0.0016, byte miss ratio 0.0016
+result/cluster47.oracleGeneral.sample10.zst                      SieveG-0.25 cache size      514, 672505759 req, miss ratio 0.2324, byte miss ratio 0.2324
+result/cluster47.oracleGeneral.sample10.zst                      SieveG-0.25 cache size    51460, 672505759 req, miss ratio 0.0016, byte miss ratio 0.0016
+# time wall_s=143.62 maxrss_kb=1136228
+# finished 2026-10-29T19:07:41-07:00

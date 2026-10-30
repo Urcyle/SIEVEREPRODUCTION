@@ -1,0 +1,181 @@
+dataset,trace,size,algo,miss_ratio,reduction,vs_sieve,cache_size_obj,n_req,sample_ratio,max_req,wall_s,maxrss_kb
+twitter-heldout,cluster25,small,FIFO,0.0286,0.0,,632,607837158,1.0,-1,78.0,1999476
+twitter-heldout,cluster25,large,FIFO,0.0187,0.0,,63208,607837158,1.0,-1,78.0,1999476
+twitter-heldout,cluster25,small,SIEVE,0.028,0.020979,,632,607837158,1.0,-1,78.0,1999476
+twitter-heldout,cluster25,large,SIEVE,0.0158,0.15508,,63208,607837158,1.0,-1,78.0,1999476
+twitter-heldout,cluster25,small,SIEVE-G 0.25,0.028,0.020979,0.0,632,607837158,1.0,-1,78.0,1999476
+twitter-heldout,cluster25,large,SIEVE-G 0.25,0.0158,0.15508,0.0,63208,607837158,1.0,-1,78.0,1999476
+twitter-heldout,cluster26,small,FIFO,0.1115,0.0,,12231,156594627,1.0,-1,51.86,2496912
+twitter-heldout,cluster26,large,FIFO,0.0783,0.0,,1223105,156594627,1.0,-1,51.86,2496912
+twitter-heldout,cluster26,small,SIEVE,0.1013,0.09148,,12231,156594627,1.0,-1,51.86,2496912
+twitter-heldout,cluster26,large,SIEVE,0.0782,0.001277,,1223105,156594627,1.0,-1,51.86,2496912
+twitter-heldout,cluster26,small,SIEVE-G 0.25,0.1,0.103139,0.012833,12231,156594627,1.0,-1,51.86,2496912
+twitter-heldout,cluster26,large,SIEVE-G 0.25,0.0782,0.001277,0.0,1223105,156594627,1.0,-1,51.86,2496912
+twitter-heldout,cluster27,small,FIFO,0.7304,0.0,,7059,120220788,1.0,-1,62.76,2178128
+twitter-heldout,cluster27,large,FIFO,0.4677,0.0,,705951,120220788,1.0,-1,62.76,2178128
+twitter-heldout,cluster27,small,SIEVE,0.7029,0.037651,,7059,120220788,1.0,-1,62.76,2178128
+twitter-heldout,cluster27,large,SIEVE,0.4315,0.0774,,705951,120220788,1.0,-1,62.76,2178128
+twitter-heldout,cluster27,small,SIEVE-G 0.25,0.7014,0.039704,0.002134,7059,120220788,1.0,-1,62.76,2178128
+twitter-heldout,cluster27,large,SIEVE-G 0.25,0.4131,0.116742,0.042642,705951,120220788,1.0,-1,62.76,2178128
+twitter-heldout,cluster28,small,FIFO,0.1095,0.0,,6204,547922220,1.0,-1,100.32,1293504
+twitter-heldout,cluster28,large,FIFO,0.0196,0.0,,620416,547922220,1.0,-1,100.32,1293504
+twitter-heldout,cluster28,small,SIEVE,0.0762,0.30411,,6204,547922220,1.0,-1,100.32,1293504
+twitter-heldout,cluster28,large,SIEVE,0.0163,0.168367,,620416,547922220,1.0,-1,100.32,1293504
+twitter-heldout,cluster28,small,SIEVE-G 0.25,0.0746,0.318721,0.020997,6204,547922220,1.0,-1,100.32,1293504
+twitter-heldout,cluster28,large,SIEVE-G 0.25,0.0162,0.173469,0.006135,620416,547922220,1.0,-1,100.32,1293504
+twitter-heldout,cluster29,small,FIFO,0.2408,0.0,,25245,698889960,1.0,-1,206.4,1826096
+twitter-heldout,cluster29,large,FIFO,0.0552,0.0,,2524538,698889960,1.0,-1,206.4,1826096
+twitter-heldout,cluster29,small,SIEVE,0.2037,0.15407,,25245,698889960,1.0,-1,206.4,1826096
+twitter-heldout,cluster29,large,SIEVE,0.0468,0.152174,,2524538,698889960,1.0,-1,206.4,1826096
+twitter-heldout,cluster29,small,SIEVE-G 0.25,0.2024,0.159468,0.006382,25245,698889960,1.0,-1,206.4,1826096
+twitter-heldout,cluster29,large,SIEVE-G 0.25,0.0468,0.152174,0.0,2524538,698889960,1.0,-1,206.4,1826096
+twitter-heldout,cluster30,small,FIFO,0.2664,0.0,,1295,239772077,1.0,-1,43.5,1157380
+twitter-heldout,cluster30,large,FIFO,0.0117,0.0,,129548,239772077,1.0,-1,43.5,1157380
+twitter-heldout,cluster30,small,SIEVE,0.17,0.361862,,1295,239772077,1.0,-1,43.5,1157380
+twitter-heldout,cluster30,large,SIEVE,0.0084,0.282051,,129548,239772077,1.0,-1,43.5,1157380
+twitter-heldout,cluster30,small,SIEVE-G 0.25,0.1709,0.358483,-0.005266,1295,239772077,1.0,-1,43.5,1157380
+twitter-heldout,cluster30,large,SIEVE-G 0.25,0.0084,0.282051,0.0,129548,239772077,1.0,-1,43.5,1157380
+twitter-heldout,cluster31,small,FIFO,0.9383,0.0,,12584,13411974,1.0,-1,16.42,2505776
+twitter-heldout,cluster31,large,FIFO,0.9383,0.0,,1258427,13411974,1.0,-1,16.42,2505776
+twitter-heldout,cluster31,small,SIEVE,0.9383,0.0,,12584,13411974,1.0,-1,16.42,2505776
+twitter-heldout,cluster31,large,SIEVE,0.9383,0.0,,1258427,13411974,1.0,-1,16.42,2505776
+twitter-heldout,cluster31,small,SIEVE-G 0.25,0.9383,0.0,0.0,12584,13411974,1.0,-1,16.42,2505776
+twitter-heldout,cluster31,large,SIEVE-G 0.25,0.9383,0.0,0.0,1258427,13411974,1.0,-1,16.42,2505776
+twitter-heldout,cluster32,small,FIFO,0.97,0.0,,17789,18339848,0.5,-1,24.47,2837408
+twitter-heldout,cluster32,large,FIFO,0.97,0.0,,1778971,18339848,0.5,-1,24.47,2837408
+twitter-heldout,cluster32,small,SIEVE,0.97,0.0,,17789,18339848,0.5,-1,24.47,2837408
+twitter-heldout,cluster32,large,SIEVE,0.97,0.0,,1778971,18339848,0.5,-1,24.47,2837408
+twitter-heldout,cluster32,small,SIEVE-G 0.25,0.97,0.0,0.0,17789,18339848,0.5,-1,24.47,2837408
+twitter-heldout,cluster32,large,SIEVE-G 0.25,0.97,0.0,0.0,1778971,18339848,0.5,-1,24.47,2837408
+twitter-heldout,cluster33,small,FIFO,0.1533,0.0,,1910,696618130,1.0,-1,114.86,1172984
+twitter-heldout,cluster33,large,FIFO,0.0145,0.0,,191008,696618130,1.0,-1,114.86,1172984
+twitter-heldout,cluster33,small,SIEVE,0.124,0.191129,,1910,696618130,1.0,-1,114.86,1172984
+twitter-heldout,cluster33,large,SIEVE,0.0096,0.337931,,191008,696618130,1.0,-1,114.86,1172984
+twitter-heldout,cluster33,small,SIEVE-G 0.25,0.1205,0.21396,0.028226,1910,696618130,1.0,-1,114.86,1172984
+twitter-heldout,cluster33,large,SIEVE-G 0.25,0.0097,0.331034,-0.010309,191008,696618130,1.0,-1,114.86,1172984
+twitter-heldout,cluster34,small,FIFO,0.5185,0.0,,1423,236077508,1.0,-1,106.28,1162512
+twitter-heldout,cluster34,large,FIFO,0.3421,0.0,,142336,236077508,1.0,-1,106.28,1162512
+twitter-heldout,cluster34,small,SIEVE,0.4765,0.081003,,1423,236077508,1.0,-1,106.28,1162512
+twitter-heldout,cluster34,large,SIEVE,0.2425,0.291143,,142336,236077508,1.0,-1,106.28,1162512
+twitter-heldout,cluster34,small,SIEVE-G 0.25,0.4753,0.083317,0.002518,1423,236077508,1.0,-1,106.28,1162512
+twitter-heldout,cluster34,large,SIEVE-G 0.25,0.2311,0.324467,0.04701,142336,236077508,1.0,-1,106.28,1162512
+twitter-heldout,cluster35,small,FIFO,0.07,0.0,,12794,182860375,1.0,-1,48.61,1651536
+twitter-heldout,cluster35,large,FIFO,0.07,0.0,,1279489,182860375,1.0,-1,48.61,1651536
+twitter-heldout,cluster35,small,SIEVE,0.07,0.0,,12794,182860375,1.0,-1,48.61,1651536
+twitter-heldout,cluster35,large,SIEVE,0.07,0.0,,1279489,182860375,1.0,-1,48.61,1651536
+twitter-heldout,cluster35,small,SIEVE-G 0.25,0.07,0.0,0.0,12794,182860375,1.0,-1,48.61,1651536
+twitter-heldout,cluster35,large,SIEVE-G 0.25,0.07,0.0,0.0,1279489,182860375,1.0,-1,48.61,1651536
+twitter-heldout,cluster36,small,FIFO,0.2498,0.0,,7113,541003154,1.0,-1,135.31,1317088
+twitter-heldout,cluster36,large,FIFO,0.0533,0.0,,711399,541003154,1.0,-1,135.31,1317088
+twitter-heldout,cluster36,small,SIEVE,0.2135,0.145316,,7113,541003154,1.0,-1,135.31,1317088
+twitter-heldout,cluster36,large,SIEVE,0.044,0.174484,,711399,541003154,1.0,-1,135.31,1317088
+twitter-heldout,cluster36,small,SIEVE-G 0.25,0.212,0.151321,0.007026,7113,541003154,1.0,-1,135.31,1317088
+twitter-heldout,cluster36,large,SIEVE-G 0.25,0.044,0.174484,0.0,711399,541003154,1.0,-1,135.31,1317088
+twitter-heldout,cluster37,small,FIFO,0.252,0.0,,6971,32482374,1.0,-1,18.77,2261996
+twitter-heldout,cluster37,large,FIFO,0.2188,0.0,,697125,32482374,1.0,-1,18.77,2261996
+twitter-heldout,cluster37,small,SIEVE,0.2405,0.045635,,6971,32482374,1.0,-1,18.77,2261996
+twitter-heldout,cluster37,large,SIEVE,0.2174,0.006399,,697125,32482374,1.0,-1,18.77,2261996
+twitter-heldout,cluster37,small,SIEVE-G 0.25,0.2404,0.046032,0.000416,6971,32482374,1.0,-1,18.77,2261996
+twitter-heldout,cluster37,large,SIEVE-G 0.25,0.2174,0.006399,0.0,697125,32482374,1.0,-1,18.77,2261996
+twitter-heldout,cluster38,small,FIFO,0.9382,0.0,,12595,13424166,1.0,-1,19.0,2296276
+twitter-heldout,cluster38,large,FIFO,0.9382,0.0,,1259516,13424166,1.0,-1,19.0,2296276
+twitter-heldout,cluster38,small,SIEVE,0.9383,-0.000107,,12595,13424166,1.0,-1,19.0,2296276
+twitter-heldout,cluster38,large,SIEVE,0.9382,0.0,,1259516,13424166,1.0,-1,19.0,2296276
+twitter-heldout,cluster38,small,SIEVE-G 0.25,0.9383,-0.000107,0.0,12595,13424166,1.0,-1,19.0,2296276
+twitter-heldout,cluster38,large,SIEVE-G 0.25,0.9382,0.0,0.0,1259516,13424166,1.0,-1,19.0,2296276
+twitter-heldout,cluster39,small,FIFO,0.9384,0.0,,12469,13288755,1.0,-1,22.12,2503144
+twitter-heldout,cluster39,large,FIFO,0.9384,0.0,,1246977,13288755,1.0,-1,22.12,2503144
+twitter-heldout,cluster39,small,SIEVE,0.9384,0.0,,12469,13288755,1.0,-1,22.12,2503144
+twitter-heldout,cluster39,large,SIEVE,0.9384,0.0,,1246977,13288755,1.0,-1,22.12,2503144
+twitter-heldout,cluster39,small,SIEVE-G 0.25,0.9384,0.0,0.0,12469,13288755,1.0,-1,22.12,2503144
+twitter-heldout,cluster39,large,SIEVE-G 0.25,0.9384,0.0,0.0,1246977,13288755,1.0,-1,22.12,2503144
+twitter-heldout,cluster40,small,FIFO,0.2479,0.0,,3018,40299188,1.0,-1,18.93,2110444
+twitter-heldout,cluster40,large,FIFO,0.0859,0.0,,301814,40299188,1.0,-1,18.93,2110444
+twitter-heldout,cluster40,small,SIEVE,0.228,0.080274,,3018,40299188,1.0,-1,18.93,2110444
+twitter-heldout,cluster40,large,SIEVE,0.0826,0.038417,,301814,40299188,1.0,-1,18.93,2110444
+twitter-heldout,cluster40,small,SIEVE-G 0.25,0.2277,0.081484,0.001316,3018,40299188,1.0,-1,18.93,2110444
+twitter-heldout,cluster40,large,SIEVE-G 0.25,0.0826,0.038417,0.0,301814,40299188,1.0,-1,18.93,2110444
+twitter-heldout,cluster41,small,FIFO,0.2615,0.0,,25183,320359608,1.0,-1,115.54,1824356
+twitter-heldout,cluster41,large,FIFO,0.09,0.0,,2518353,320359608,1.0,-1,115.54,1824356
+twitter-heldout,cluster41,small,SIEVE,0.28,-0.066071,,25183,320359608,1.0,-1,115.54,1824356
+twitter-heldout,cluster41,large,SIEVE,0.0866,0.037778,,2518353,320359608,1.0,-1,115.54,1824356
+twitter-heldout,cluster41,small,SIEVE-G 0.25,0.2406,0.079924,0.140714,25183,320359608,1.0,-1,115.54,1824356
+twitter-heldout,cluster41,large,SIEVE-G 0.25,0.0866,0.037778,0.0,2518353,320359608,1.0,-1,115.54,1824356
+twitter-heldout,cluster42,small,FIFO,0.2163,0.0,,1335,350666603,1.0,-1,64.11,1156172
+twitter-heldout,cluster42,large,FIFO,0.0061,0.0,,133591,350666603,1.0,-1,64.11,1156172
+twitter-heldout,cluster42,small,SIEVE,0.1594,0.263061,,1335,350666603,1.0,-1,64.11,1156172
+twitter-heldout,cluster42,large,SIEVE,0.005,0.180328,,133591,350666603,1.0,-1,64.11,1156172
+twitter-heldout,cluster42,small,SIEVE-G 0.25,0.1582,0.268608,0.007528,1335,350666603,1.0,-1,64.11,1156172
+twitter-heldout,cluster42,large,SIEVE-G 0.25,0.005,0.180328,0.0,133591,350666603,1.0,-1,64.11,1156172
+twitter-heldout,cluster43,small,FIFO,0.2412,0.0,,4326,90917138,1.0,-1,81.68,2193680
+twitter-heldout,cluster43,large,FIFO,0.0596,0.0,,432649,90917138,1.0,-1,81.68,2193680
+twitter-heldout,cluster43,small,SIEVE,0.2344,0.028192,,4326,90917138,1.0,-1,81.68,2193680
+twitter-heldout,cluster43,large,SIEVE,0.0557,0.065436,,432649,90917138,1.0,-1,81.68,2193680
+twitter-heldout,cluster43,small,SIEVE-G 0.25,0.2144,0.111111,0.085324,4326,90917138,1.0,-1,81.68,2193680
+twitter-heldout,cluster43,large,SIEVE-G 0.25,0.0557,0.065436,0.0,432649,90917138,1.0,-1,81.68,2193680
+twitter-heldout,cluster44,small,FIFO,0.3141,0.0,,5799,548789525,1.0,-1,175.91,1285112
+twitter-heldout,cluster44,large,FIFO,0.038,0.0,,579999,548789525,1.0,-1,175.91,1285112
+twitter-heldout,cluster44,small,SIEVE,0.2415,0.231137,,5799,548789525,1.0,-1,175.91,1285112
+twitter-heldout,cluster44,large,SIEVE,0.0286,0.247368,,579999,548789525,1.0,-1,175.91,1285112
+twitter-heldout,cluster44,small,SIEVE-G 0.25,0.2408,0.233365,0.002899,5799,548789525,1.0,-1,175.91,1285112
+twitter-heldout,cluster44,large,SIEVE-G 0.25,0.0284,0.252632,0.006993,579999,548789525,1.0,-1,175.91,1285112
+twitter-heldout,cluster45,small,FIFO,0.5249,0.0,,6548,22288116,1.0,-1,15.04,1389192
+twitter-heldout,cluster45,large,FIFO,0.3916,0.0,,654864,22288116,1.0,-1,15.04,1389192
+twitter-heldout,cluster45,small,SIEVE,0.505,0.037912,,6548,22288116,1.0,-1,15.04,1389192
+twitter-heldout,cluster45,large,SIEVE,0.3764,0.038815,,654864,22288116,1.0,-1,15.04,1389192
+twitter-heldout,cluster45,small,SIEVE-G 0.25,0.504,0.039817,0.00198,6548,22288116,1.0,-1,15.04,1389192
+twitter-heldout,cluster45,large,SIEVE-G 0.25,0.3758,0.040347,0.001594,654864,22288116,1.0,-1,15.04,1389192
+twitter-heldout,cluster46,small,FIFO,0.244,0.0,,11583,67826732,1.0,-1,32.01,2480380
+twitter-heldout,cluster46,large,FIFO,0.1927,0.0,,1158365,67826732,1.0,-1,32.01,2480380
+twitter-heldout,cluster46,small,SIEVE,0.2389,0.020902,,11583,67826732,1.0,-1,32.01,2480380
+twitter-heldout,cluster46,large,SIEVE,0.1896,0.016087,,1158365,67826732,1.0,-1,32.01,2480380
+twitter-heldout,cluster46,small,SIEVE-G 0.25,0.2389,0.020902,0.0,11583,67826732,1.0,-1,32.01,2480380
+twitter-heldout,cluster46,large,SIEVE-G 0.25,0.1896,0.016087,0.0,1158365,67826732,1.0,-1,32.01,2480380
+twitter-heldout,cluster47,small,FIFO,0.3287,0.0,,514,672505759,1.0,-1,143.62,1136228
+twitter-heldout,cluster47,large,FIFO,0.003,0.0,,51460,672505759,1.0,-1,143.62,1136228
+twitter-heldout,cluster47,small,SIEVE,0.231,0.297232,,514,672505759,1.0,-1,143.62,1136228
+twitter-heldout,cluster47,large,SIEVE,0.0016,0.466667,,51460,672505759,1.0,-1,143.62,1136228
+twitter-heldout,cluster47,small,SIEVE-G 0.25,0.2324,0.292972,-0.006024,514,672505759,1.0,-1,143.62,1136228
+twitter-heldout,cluster47,large,SIEVE-G 0.25,0.0016,0.466667,0.0,51460,672505759,1.0,-1,143.62,1136228
+twitter-heldout,cluster48,small,FIFO,0.7681,0.0,,22293,112941896,1.0,-1,83.18,1749612
+twitter-heldout,cluster48,large,FIFO,0.3699,0.0,,2229316,112941896,1.0,-1,83.18,1749612
+twitter-heldout,cluster48,small,SIEVE,0.7488,0.025127,,22293,112941896,1.0,-1,83.18,1749612
+twitter-heldout,cluster48,large,SIEVE,0.3366,0.090024,,2229316,112941896,1.0,-1,83.18,1749612
+twitter-heldout,cluster48,small,SIEVE-G 0.25,0.7379,0.039318,0.014557,22293,112941896,1.0,-1,83.18,1749612
+twitter-heldout,cluster48,large,SIEVE-G 0.25,0.3365,0.090295,0.000297,2229316,112941896,1.0,-1,83.18,1749612
+twitter-heldout,cluster49,small,FIFO,0.4956,0.0,,1601,799295267,1.0,-1,310.99,2024204
+twitter-heldout,cluster49,large,FIFO,0.1094,0.0,,160115,799295267,1.0,-1,310.99,2024204
+twitter-heldout,cluster49,small,SIEVE,0.9185,-0.460425,,1601,799295267,1.0,-1,310.99,2024204
+twitter-heldout,cluster49,large,SIEVE,0.0938,0.142596,,160115,799295267,1.0,-1,310.99,2024204
+twitter-heldout,cluster49,small,SIEVE-G 0.25,0.6137,-0.192439,0.331845,1601,799295267,1.0,-1,310.99,2024204
+twitter-heldout,cluster49,large,SIEVE-G 0.25,0.0844,0.228519,0.100213,160115,799295267,1.0,-1,310.99,2024204
+twitter-heldout,cluster50,small,FIFO,0.7204,0.0,,2660,139655585,1.0,-1,65.04,2054948
+twitter-heldout,cluster50,large,FIFO,0.2173,0.0,,266098,139655585,1.0,-1,65.04,2054948
+twitter-heldout,cluster50,small,SIEVE,0.8811,-0.182386,,2660,139655585,1.0,-1,65.04,2054948
+twitter-heldout,cluster50,large,SIEVE,0.1884,0.132996,,266098,139655585,1.0,-1,65.04,2054948
+twitter-heldout,cluster50,small,SIEVE-G 0.25,0.7324,-0.016384,0.168766,2660,139655585,1.0,-1,65.04,2054948
+twitter-heldout,cluster50,large,SIEVE-G 0.25,0.1845,0.150943,0.020701,266098,139655585,1.0,-1,65.04,2054948
+twitter-heldout,cluster51,small,FIFO,0.3359,0.0,,501,612199280,1.0,-1,128.54,1136080
+twitter-heldout,cluster51,large,FIFO,0.0065,0.0,,50160,612199280,1.0,-1,128.54,1136080
+twitter-heldout,cluster51,small,SIEVE,0.2792,0.1688,,501,612199280,1.0,-1,128.54,1136080
+twitter-heldout,cluster51,large,SIEVE,0.0038,0.415385,,50160,612199280,1.0,-1,128.54,1136080
+twitter-heldout,cluster51,small,SIEVE-G 0.25,0.2658,0.208693,0.047994,501,612199280,1.0,-1,128.54,1136080
+twitter-heldout,cluster51,large,SIEVE-G 0.25,0.0038,0.415385,0.0,50160,612199280,1.0,-1,128.54,1136080
+twitter-heldout,cluster52,small,FIFO,0.256,0.0,,2516,118560476,1.0,-1,42.93,2097640
+twitter-heldout,cluster52,large,FIFO,0.065,0.0,,251639,118560476,1.0,-1,42.93,2097640
+twitter-heldout,cluster52,small,SIEVE,0.2123,0.170703,,2516,118560476,1.0,-1,42.93,2097640
+twitter-heldout,cluster52,large,SIEVE,0.0524,0.193846,,251639,118560476,1.0,-1,42.93,2097640
+twitter-heldout,cluster52,small,SIEVE-G 0.25,0.2107,0.176953,0.007537,2516,118560476,1.0,-1,42.93,2097640
+twitter-heldout,cluster52,large,SIEVE-G 0.25,0.0523,0.195385,0.001908,251639,118560476,1.0,-1,42.93,2097640
+twitter-heldout,cluster53,small,FIFO,0.5103,0.0,,7243,246508262,1.0,-1,90.96,2182640
+twitter-heldout,cluster53,large,FIFO,0.0678,0.0,,724391,246508262,1.0,-1,90.96,2182640
+twitter-heldout,cluster53,small,SIEVE,0.3794,0.256516,,7243,246508262,1.0,-1,90.96,2182640
+twitter-heldout,cluster53,large,SIEVE,0.0555,0.181416,,724391,246508262,1.0,-1,90.96,2182640
+twitter-heldout,cluster53,small,SIEVE-G 0.25,0.3786,0.258083,0.002109,7243,246508262,1.0,-1,90.96,2182640
+twitter-heldout,cluster53,large,SIEVE-G 0.25,0.0552,0.185841,0.005405,724391,246508262,1.0,-1,90.96,2182640
+twitter-heldout,cluster54,small,FIFO,0.7076,0.0,,515,122379335,1.0,-1,43.74,2008376
+twitter-heldout,cluster54,large,FIFO,0.0652,0.0,,51520,122379335,1.0,-1,43.74,2008376
+twitter-heldout,cluster54,small,SIEVE,0.5788,0.182024,,515,122379335,1.0,-1,43.74,2008376
+twitter-heldout,cluster54,large,SIEVE,0.0436,0.331288,,51520,122379335,1.0,-1,43.74,2008376
+twitter-heldout,cluster54,small,SIEVE-G 0.25,0.578,0.183154,0.001382,515,122379335,1.0,-1,43.74,2008376
+twitter-heldout,cluster54,large,SIEVE-G 0.25,0.0432,0.337423,0.009174,51520,122379335,1.0,-1,43.74,2008376
