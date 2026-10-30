@@ -10,7 +10,7 @@
   "fig3_overlap_max_abs_miss_ratio_difference": 0.0052,
   "fig3_spearman_of_means_vs_paper": {
     "large/theirs_mean": 0.964,
-    "large/union_mean": 0.989,
+    "large/union_mean": 0.991,
     "small/theirs_mean": 0.982,
     "small/union_mean": 0.982
   },

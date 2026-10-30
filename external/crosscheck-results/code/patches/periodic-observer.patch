@@ -1,0 +1,225 @@
+diff --git a/libCacheSim/libCacheSim/bin/cachesim/sim.c b/libCacheSim/libCacheSim/bin/cachesim/sim.c
+--- a/libCacheSim/libCacheSim/bin/cachesim/sim.c
++++ b/libCacheSim/libCacheSim/bin/cachesim/sim.c
+@@ -1,5 +1,8 @@
+ 
+ 
++#include <ctype.h>
++
++#include "../../dataStructure/hashtable/hashtable.h"
+ #include "../../include/libCacheSim/cache.h"
+ #include "../../include/libCacheSim/reader.h"
+ #include "../../utils/include/mymath.h"
+@@ -10,11 +13,169 @@
+ extern "C" {
+ #endif
+ 
++/* Exported read-only helper; no eviction algorithm decisions are changed. */
++int64_t Sieve_observer_hand_rank(const cache_t *cache, bool *pointer_null);
++
++typedef struct {
++  bool enabled;
++  uint64_t interval;
++  uint64_t hand_interval;
++  uint64_t switch_after;
++  uint64_t last_req;
++  uint64_t last_miss;
++  uint64_t *hotset;
++  uint64_t *next_hotset;
++  size_t hotset_size;
++  int phase;
++} sieve_observer_t;
++
++static void observer_fail(const char *message) {
++  fprintf(stderr, "SIEVE_OBSERVER configuration error: %s\n", message);
++  exit(1);
++}
++
++static uint64_t observer_uint(const char *value, const char *name,
++                              bool allow_zero) {
++  if (value == NULL || *value == '\0') observer_fail(name);
++  for (const char *p = value; *p != '\0'; p++) {
++    if (!isdigit((unsigned char)*p)) observer_fail(name);
++  }
++  errno = 0;
++  char *end = NULL;
++  unsigned long long number = strtoull(value, &end, 10);
++  if (errno == ERANGE || *end != '\0' || number > UINT64_MAX ||
++      (!allow_zero && number == 0)) {
++    observer_fail(name);
++  }
++  return (uint64_t)number;
++}
++
++static int observer_compare_id(const void *a, const void *b) {
++  uint64_t first = *(const uint64_t *)a;
++  uint64_t second = *(const uint64_t *)b;
++  return (first > second) - (first < second);
++}
++
++static uint64_t *observer_load_hotset(const char *path, size_t capacity) {
++  FILE *file = fopen(path, "r");
++  if (file == NULL) observer_fail("cannot open hotset");
++  uint64_t *ids = malloc(capacity * sizeof(*ids));
++  if (ids == NULL) observer_fail("cannot allocate hotset");
++  size_t count = 0;
++  char token[128];
++  while (fscanf(file, "%127s", token) == 1) {
++    if (count >= capacity) observer_fail("hotset must contain exactly C IDs");
++    ids[count++] = observer_uint(token, "hotset IDs must be uint64", true);
++  }
++  if (ferror(file)) observer_fail("cannot read hotset");
++  fclose(file);
++  if (count != capacity) observer_fail("hotset must contain exactly C IDs");
++  qsort(ids, count, sizeof(*ids), observer_compare_id);
++  for (size_t i = 1; i < count; i++) {
++    if (ids[i - 1] == ids[i]) observer_fail("hotset IDs must be unique");
++  }
++  return ids;
++}
++
++static sieve_observer_t observer_init(const cache_t *cache) {
++  sieve_observer_t observer = {0};
++  const char *interval = getenv("SIEVE_OBSERVER_INTERVAL");
++  if (interval == NULL) return observer;
++  observer.enabled = true;
++  observer.interval = observer_uint(interval, "invalid SIEVE_OBSERVER_INTERVAL", false);
++  const char *hand_interval = getenv("SIEVE_OBSERVER_HAND_INTERVAL");
++  if (hand_interval != NULL) {
++    observer.hand_interval = observer_uint(
++        hand_interval, "invalid SIEVE_OBSERVER_HAND_INTERVAL", false);
++    if (observer.hand_interval >= observer.interval) {
++      observer_fail("hand interval must be smaller than sample interval");
++    }
++  }
++  if (cache->cache_size <= 0 ||
++      (uint64_t)cache->cache_size > SIZE_MAX / sizeof(uint64_t)) {
++    observer_fail("invalid object capacity");
++  }
++  observer.hotset_size = (size_t)cache->cache_size;
++  const char *hotset = getenv("SIEVE_OBSERVER_HOTSET");
++  const char *next_hotset = getenv("SIEVE_OBSERVER_HOTSET_NEXT");
++  const char *switch_after = getenv("SIEVE_OBSERVER_SWITCH_AFTER");
++  if ((next_hotset == NULL) != (switch_after == NULL) ||
++      (next_hotset != NULL && hotset == NULL)) {
++    observer_fail("phase switch requires both hotsets and switch request");
++  }
++  if (hotset != NULL) {
++    observer.hotset = observer_load_hotset(hotset, observer.hotset_size);
++  }
++  if (next_hotset != NULL) {
++    observer.switch_after = observer_uint(
++        switch_after, "invalid SIEVE_OBSERVER_SWITCH_AFTER", false);
++    observer.next_hotset = observer_load_hotset(next_hotset, observer.hotset_size);
++  }
++  return observer;
++}
++
++static void observer_emit(sieve_observer_t *observer, cache_t *cache,
++                          const char *kind, uint64_t n_req, uint64_t n_miss,
++                          bool interval_sample) {
++  bool sieve = strcmp(cache->cache_name, "Sieve") == 0;
++  bool arc = strcmp(cache->cache_name, "ARC") == 0;
++  bool pointer_null = false;
++  int64_t hand_rank = sieve ? Sieve_observer_hand_rank(cache, &pointer_null) : -1;
++  char rank_json[32] = "null";
++  if (hand_rank >= 0) {
++    snprintf(rank_json, sizeof(rank_json), "%lld", (long long)hand_rank);
++  }
++  char hot_json[32] = "null";
++  if (observer->hotset != NULL && strcmp(kind, "hand") != 0) {
++    uint64_t hot_count = 0;
++    for (size_t i = 0; i < observer->hotset_size; i++) {
++      cache_obj_t *obj = hashtable_find_obj_id(cache->hashtable, observer->hotset[i]);
++      if (obj != NULL && !(arc && obj->ARC.ghost)) hot_count++;
++    }
++    snprintf(hot_json, sizeof(hot_json), "%llu", (unsigned long long)hot_count);
++  }
++  /* Author INFO logging leaves an ANSI reset after its newline. */
++  printf("\nSIEVE_OBSERVE {\"kind\":\"%s\",\"n_req\":%llu,\"n_miss\":%llu,"
++         "\"interval_req\":%llu,\"interval_miss\":%llu,\"cache_size\":%llu,"
++         "\"occupancy\":%lld,\"hot_count\":%s,\"phase\":%d,"
++         "\"hand_rank_from_tail\":%s,\"hand_pointer_null\":%s}\n",
++         kind, (unsigned long long)n_req, (unsigned long long)n_miss,
++         (unsigned long long)(interval_sample ? n_req - observer->last_req : 0),
++         (unsigned long long)(interval_sample ? n_miss - observer->last_miss : 0),
++         (unsigned long long)cache->cache_size, (long long)cache->get_n_obj(cache),
++         hot_json, observer->phase, rank_json,
++         sieve ? (pointer_null ? "true" : "false") : "null");
++  if (interval_sample) {
++    observer->last_req = n_req;
++    observer->last_miss = n_miss;
++  }
++}
++
++static void observer_after_request(sieve_observer_t *observer, cache_t *cache,
++                                   uint64_t n_req, uint64_t n_miss, bool final_request) {
++  bool sample = n_req % observer->interval == 0;
++  bool switching = observer->next_hotset != NULL && n_req == observer->switch_after;
++  if (sample || switching) {
++    observer_emit(observer, cache, "sample", n_req, n_miss, true);
++  }
++  if (switching) {
++    free(observer->hotset);
++    observer->hotset = observer->next_hotset;
++    observer->next_hotset = NULL;
++    observer->phase = 1;
++    observer_emit(observer, cache, "switch", n_req, n_miss, false);
++  } else if (!sample && !final_request && observer->hand_interval != 0 &&
++             n_req % observer->hand_interval == 0) {
++    observer_emit(observer, cache, "hand", n_req, n_miss, false);
++  }
++}
++
+ void simulate(reader_t *reader, cache_t *cache, int report_interval,
+               int warmup_sec, char *ofilepath) {
+   /* random seed */
+   srand(time(NULL));
+   set_rand_seed(rand());
++  sieve_observer_t observer = observer_init(cache);
+ 
+   request_t *req = new_request();
+   uint64_t req_cnt = 0, miss_cnt = 0;
+@@ -60,7 +221,16 @@
+     }
+ 
+     read_one_req(reader, req);
+-  }
++    if (observer.enabled) {
++      observer_after_request(&observer, cache, req_cnt, miss_cnt, !req->valid);
++    }
++  }
++
++  if (observer.enabled && req_cnt > observer.last_req) {
++    observer_emit(&observer, cache, "final", req_cnt, miss_cnt, true);
++  }
++  free(observer.hotset);
++  free(observer.next_hotset);
+ 
+   double runtime = gettime() - start_time;
+ 
+diff --git a/libCacheSim/libCacheSim/cache/eviction/Sieve.c b/libCacheSim/libCacheSim/cache/eviction/Sieve.c
+--- a/libCacheSim/libCacheSim/cache/eviction/Sieve.c
++++ b/libCacheSim/libCacheSim/cache/eviction/Sieve.c
+@@ -13,6 +13,21 @@
+ 
+   cache_obj_t *pointer;
+ } Sieve_params_t;
++
++/* Read-only observer: raw pointer rank from tail, or effective tail for NULL.
++ * An empty queue has no rank. This walk is called only at sample points. */
++int64_t Sieve_observer_hand_rank(const cache_t *cache, bool *pointer_null) {
++  const Sieve_params_t *params = cache->eviction_params;
++  *pointer_null = params->pointer == NULL;
++  if (params->q_tail == NULL) return -1;
++  if (*pointer_null) return 0;
++  int64_t rank = 0;
++  for (const cache_obj_t *obj = params->q_tail; obj != NULL; obj = obj->queue.prev) {
++    if (obj == params->pointer) return rank;
++    rank++;
++  }
++  return -1;
++}
+ 
+ // ***********************************************************************
+ // ****                                                               ****

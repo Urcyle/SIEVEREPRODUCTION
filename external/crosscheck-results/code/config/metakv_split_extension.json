@@ -1,0 +1,68 @@
+{
+  "family": "metakv-split-extension",
+  "protocol": "docs/metakv_split_protocol.md",
+  "artifact_commit": "0861f8261c37b8286a70449a1defb5a4749c72d2",
+  "out_dir": "local_results/metakv_split_extension",
+  "summary_csv": "metakv_split_extension.csv",
+  "label_prefix": "metakv_trace",
+  "local_files": {
+    "1": "data/metakv_split/kvcache_traces_1.valid.oracleGeneral.zst",
+    "2": "data/metakv_split/kvcache_traces_2.valid.oracleGeneral.zst",
+    "3": "data/metakv_split/kvcache_traces_3.valid.oracleGeneral.zst",
+    "4": "data/metakv_split/kvcache_traces_4.valid.oracleGeneral.zst",
+    "5": "data/metakv_split/kvcache_traces_5.valid.oracleGeneral.zst"
+  },
+  "kinds": {
+    "1": "valid",
+    "2": "valid",
+    "3": "valid",
+    "4": "valid",
+    "5": "valid"
+  },
+  "clusters": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "worker_partition": [
+    [
+      1,
+      5
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ]
+  ],
+  "capacity_fractions": [
+    0.001,
+    0.1
+  ],
+  "core_policies": [
+    "fifo",
+    "lru",
+    "clock",
+    "sieve",
+    "arc"
+  ],
+  "extra_policies": [
+    "twoq",
+    "lirs",
+    "tinylfu_snapshot",
+    "blru",
+    "hyperbolic",
+    "lhd",
+    "cacheus"
+  ],
+  "rng_seed": 42,
+  "exact_capacity_objects": true,
+  "peak_estimate": "policy-specific, from measured RSS (see docs, amendment 1)",
+  "policy_specific_estimate": true
+}

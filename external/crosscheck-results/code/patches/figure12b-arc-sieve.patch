@@ -1,0 +1,189 @@
+--- a/libCacheSim/cache/eviction/ARC.c
++++ b/libCacheSim/cache/eviction/ARC.c
+@@ -46,6 +46,9 @@
+   cache_obj_t *L2_ghost_tail;
+ 
+   double p;
++  bool T2_sieve;
++  cache_obj_t *T2_sieve_pointer;
++  char T2_type[16];
+   bool curr_obj_in_L1_ghost;
+   bool curr_obj_in_L2_ghost;
+   int64_t vtime_last_req_in_ghost;
+@@ -75,6 +78,8 @@
+ static cache_obj_t *_ARC_to_evict_miss_on_all_queues(cache_t *cache,
+                                                      const request_t *req);
+ static cache_obj_t *_ARC_to_replace(cache_t *cache, const request_t *req);
++static cache_obj_t *_ARC_sieve_candidate(ARC_params_t *params);
++static cache_obj_t *_ARC_sieve_evict(ARC_params_t *params);
+ 
+ /* debug functions */
+ static void print_cache(cache_t *cache);
+@@ -122,6 +127,15 @@
+   cache->eviction_params = my_malloc_n(ARC_params_t, 1);
+   ARC_params_t *params = (ARC_params_t *)(cache->eviction_params);
+   params->p = 0;
++  params->T2_sieve = false;
++  params->T2_sieve_pointer = NULL;
++  snprintf(params->T2_type, sizeof(params->T2_type), "LRU");
++  if (cache_specific_params != NULL && cache_specific_params[0] != '\0') {
++    ARC_parse_params(cache, cache_specific_params);
++  }
++  if (params->T2_sieve) {
++    snprintf(cache->cache_name, CACHE_NAME_ARRAY_LEN, "ARC-SIEVE");
++  }
+ 
+   params->L1_data_size = 0;
+   params->L2_data_size = 0;
+@@ -183,6 +197,7 @@
+ #ifdef DEBUG_MODE
+   return ARC_get_debug(cache, req);
+ #else
++  ARC_params_t *params = (ARC_params_t *)(cache->eviction_params);
+ 
+ #if defined(TRACK_DEMOTION)
+   if (cache->n_req % 100000 == 0) {
+@@ -274,6 +289,7 @@
+       // move to LRU2
+       obj->ARC.lru_id = 2;
+       remove_obj_from_list(&params->L1_data_head, &params->L1_data_tail, obj);
++      if (params->T2_sieve) obj->misc.freq = 0;
+       prepend_obj_to_head(&params->L2_data_head, &params->L2_data_tail, obj);
+ 
+ #if defined(TRACK_DEMOTION)
+@@ -284,6 +300,9 @@
+ 
+       params->L1_data_size -= obj->obj_size + cache->obj_md_size;
+       params->L2_data_size += obj->obj_size + cache->obj_md_size;
++    } else if (params->T2_sieve) {
++      // SIEVE marks a frequent (T2) hit without changing queue order.
++      obj->misc.freq = 1;
+     } else {
+       // move to LRU2 head
+       move_obj_to_head(&params->L2_data_head, &params->L2_data_tail, obj);
+@@ -313,6 +332,7 @@
+       (params->curr_obj_in_L1_ghost || params->curr_obj_in_L2_ghost)) {
+     // insert to L2 data head
+     obj->ARC.lru_id = 2;
++    if (params->T2_sieve) obj->misc.freq = 0;
+     prepend_obj_to_head(&params->L2_data_head, &params->L2_data_tail, obj);
+     params->L2_data_size += req->obj_size + cache->obj_md_size;
+ 
+@@ -406,6 +426,8 @@
+       remove_obj_from_list(&params->L1_data_head, &params->L1_data_tail, obj);
+     } else {
+       params->L2_data_size -= obj->obj_size + cache->obj_md_size;
++      if (params->T2_sieve && params->T2_sieve_pointer == obj)
++        params->T2_sieve_pointer = obj->queue.prev;
+       remove_obj_from_list(&params->L2_data_head, &params->L2_data_tail, obj);
+     }
+     cache_remove_obj_base(cache, obj, true);
+@@ -419,6 +441,34 @@
+ // ****                  cache internal functions                     ****
+ // ****                                                               ****
+ // ***********************************************************************
++/* SIEVE over ARC's frequent-object T2 queue. ARC metadata occupies the
++ * cache object's union, so the independent visited bit uses misc.freq. */
++static cache_obj_t *_ARC_sieve_candidate(ARC_params_t *params) {
++  cache_obj_t *obj = params->T2_sieve_pointer != NULL
++                         ? params->T2_sieve_pointer
++                         : params->L2_data_tail;
++  if (obj == NULL) return NULL;
++  cache_obj_t *start = obj;
++  while (obj->misc.freq > 0) {
++    obj = obj->queue.prev != NULL ? obj->queue.prev : params->L2_data_tail;
++    if (obj == start) return start;
++  }
++  return obj;
++}
++
++static cache_obj_t *_ARC_sieve_evict(ARC_params_t *params) {
++  cache_obj_t *obj = params->T2_sieve_pointer != NULL
++                         ? params->T2_sieve_pointer
++                         : params->L2_data_tail;
++  if (obj == NULL) return NULL;
++  while (obj->misc.freq > 0) {
++    obj->misc.freq = 0;
++    obj = obj->queue.prev != NULL ? obj->queue.prev : params->L2_data_tail;
++  }
++  params->T2_sieve_pointer = obj->queue.prev;
++  return obj;
++}
++
+ /* finding the eviction candidate in _ARC_replace but do not perform eviction */
+ static cache_obj_t *_ARC_to_replace(cache_t *cache, const request_t *req) {
+   ARC_params_t *params = (ARC_params_t *)(cache->eviction_params);
+@@ -436,7 +486,7 @@
+     obj = params->L1_data_tail;
+   } else {
+     // delete the item in L2 data, move to L2_ghost
+-    obj = params->L2_data_tail;
++    obj = params->T2_sieve ? _ARC_sieve_candidate(params) : params->L2_data_tail;
+   }
+ 
+   DEBUG_ASSERT(obj != NULL);
+@@ -480,7 +530,9 @@
+ 
+ static void _ARC_evict_L2_data(cache_t *cache, const request_t *req) {
+   ARC_params_t *params = (ARC_params_t *)(cache->eviction_params);
+-  cache_obj_t *obj = params->L2_data_tail;
++  cache_obj_t *obj = params->T2_sieve
++                         ? _ARC_sieve_evict(params)
++                         : params->L2_data_tail;
+   DEBUG_ASSERT(obj != NULL);
+ 
+   params->L2_data_size -= obj->obj_size + cache->obj_md_size;
+@@ -601,29 +653,33 @@
+ // ***********************************************************************
+ static const char *ARC_current_params(ARC_params_t *params) {
+   static __thread char params_str[128];
+-  snprintf(params_str, 128, "\n");
++  snprintf(params_str, 128, "T2-type=%s\n", params->T2_type);
+   return params_str;
+ }
+ 
+ static void ARC_parse_params(cache_t *cache,
+                              const char *cache_specific_params) {
+   ARC_params_t *params = (ARC_params_t *)(cache->eviction_params);
+-
+   char *params_str = strdup(cache_specific_params);
+   char *old_params_str = params_str;
+-
+   while (params_str != NULL && params_str[0] != '\0') {
+-    /* different parameters are separated by comma,
+-     * key and value are separated by = */
+     char *key = strsep((char **)&params_str, "=");
+-    // char *value = strsep((char **)&params_str, ",");
+-
+-    // skip the white space
+-    while (params_str != NULL && *params_str == ' ') {
+-      params_str++;
+-    }
+-
+-    if (strcasecmp(key, "print") == 0) {
++    char *value = strsep((char **)&params_str, ",");
++    while (key != NULL && *key == ' ') key++;
++    while (value != NULL && *value == ' ') value++;
++    if (key == NULL) break;
++    if (strcasecmp(key, "T2-type") == 0 && value != NULL) {
++      if (strcasecmp(value, "SIEVE") == 0) {
++        params->T2_sieve = true;
++        snprintf(params->T2_type, sizeof(params->T2_type), "SIEVE");
++      } else if (strcasecmp(value, "LRU") == 0) {
++        params->T2_sieve = false;
++        snprintf(params->T2_type, sizeof(params->T2_type), "LRU");
++      } else {
++        ERROR("ARC T2-type must be LRU or SIEVE, got %s\n", value);
++        exit(1);
++      }
++    } else if (strcasecmp(key, "print") == 0) {
+       printf("parameters: %s\n", ARC_current_params(params));
+       exit(0);
+     } else {
+@@ -631,7 +687,6 @@
+       exit(1);
+     }
+   }
+-
+   free(old_params_str);
+ }

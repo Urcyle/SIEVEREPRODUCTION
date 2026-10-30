@@ -1,0 +1,13 @@
+{
+ "compressed_bytes": 2039747026,
+ "head_content_length": 2039747026,
+ "label": "twitter_cluster41_sample10",
+ "record_count": 320359608,
+ "scan_seconds": 160.37281418591738,
+ "sha256": "61801089c7d7bc7ba5319d2bff37ec9842d860ebbc12fa63e3e9c11fb03ee4fa",
+ "stored_bytes": 2039747026,
+ "stream_sha256": "fe9dd714427ddab8d91d2a2b7abdfe1fb24ed3f42fb7c8125f6a8c9da23d7f60",
+ "unique_objects": 25181895,
+ "url": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets/twitter/sample10/cluster41.oracleGeneral.sample10.zst",
+ "zero_size_count": 0
+}

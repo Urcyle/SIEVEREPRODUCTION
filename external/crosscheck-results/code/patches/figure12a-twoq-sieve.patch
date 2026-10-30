@@ -1,0 +1,48 @@
+--- a/libCacheSim/cache/eviction/TwoQ.c
++++ b/libCacheSim/cache/eviction/TwoQ.c
+@@ -36,7 +36,7 @@
+ } TwoQ_params_t;
+ 
+ static const char *DEFAULT_CACHE_PARAMS =
+-    "Ain-size-ratio=0.25,Aout-size-ratio=0.5";
++    "Ain-size-ratio=0.25,Aout-size-ratio=0.5,Am-type=LRU";
+ 
+ // ***********************************************************************
+ // ****                                                               ****
+@@ -107,7 +107,15 @@
+   params->Aout = FIFO_init(ccache_params_local, NULL);
+ 
+   ccache_params_local.cache_size = params->Am_cache_size;
+-  params->Am = LRU_init(ccache_params_local, NULL);
++  if (strcasecmp(params->Am_type, "SIEVE") == 0) {
++    params->Am = Sieve_init(ccache_params_local, NULL);
++    snprintf(cache->cache_name, CACHE_NAME_ARRAY_LEN, "TwoQ-SIEVE");
++  } else if (strcasecmp(params->Am_type, "LRU") == 0) {
++    params->Am = LRU_init(ccache_params_local, NULL);
++  } else {
++    ERROR("TwoQ Am-type must be LRU or SIEVE, got %s\n", params->Am_type);
++    abort();
++  }
+ 
+   return cache;
+ }
+@@ -324,8 +332,8 @@
+ // ***********************************************************************
+ static const char *TwoQ_current_params(TwoQ_params_t *params) {
+   static __thread char params_str[128];
+-  snprintf(params_str, 128, "Ain-size-ratio=%.2lf,Aout-size-ratio=%.2lf\n",
+-           params->Ain_size_ratio, params->Aout_size_ratio);
++  snprintf(params_str, 128, "Ain-size-ratio=%.2lf,Aout-size-ratio=%.2lf,Am-type=%s\n",
++           params->Ain_size_ratio, params->Aout_size_ratio, params->Am_type);
+   return params_str;
+ }
+ 
+@@ -351,6 +359,8 @@
+       params->Ain_size_ratio = strtod(value, NULL);
+     } else if (strcasecmp(key, "Aout-size-ratio") == 0) {
+       params->Aout_size_ratio = strtod(value, NULL);
++    } else if (strcasecmp(key, "Am-type") == 0) {
++      snprintf(params->Am_type, sizeof(params->Am_type), "%s", value);
+     } else if (strcasecmp(key, "print") == 0) {
+       printf("parameters: %s\n", TwoQ_current_params(params));
+       exit(0);
