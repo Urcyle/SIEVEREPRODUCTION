@@ -104,7 +104,36 @@ points. SIEVE-G is better on 24 of 26 (e.g. Tencent at 0.1%: −0.022 on both tr
   cache of `cache_obj_t`, 80 bytes, plus a hash-table pointer) that is about 0.25 × 88 ≈ **22
   bytes per cached object**; a plain id set would need 0.25 × 8 = **2 bytes per cached object**
   plus hash-set overhead, against SIEVE's 1 bit per object (its visited bit).
-* **Time:** see the measurement below.
+* **Time** (`results/runtime.tsv`; each algorithm alone, one thread, one run each, so rough):
+  exact SIEVE-G is 1–5% slower than SIEVE in 3 of 4 cases and 55% slower on cluster 12 at 10%
+  (a ghost of ~520,000 ids); the fingerprint ghost takes about SIEVE's time (−11% to +8%). Peak
+  memory: the exact ghost adds 130–160 MB even for tiny caches, because libCacheSim gives every
+  cache (the ghost too) a preallocated hash table; the fingerprint ghost adds nothing measurable.
+
+## Phase 6 (optional): lean fingerprint ghost
+
+`sieveg-fp-<ratio>` (`patches/SIEVE-G-fp.patch`, on top of `SIEVE-G.patch`): the ghost keeps
+16-bit fingerprints of evicted ids (low 16 bits of the id's hash) in a ring buffer, and a count per
+fingerprint value for the membership test: **2 bytes per ghost entry** (0.5 byte per cached object
+at ratio 0.25) plus a fixed 256 KB, instead of ~88. Same frozen ratio, 0.25. Gates
+([tests/fp/fp_gates.log](tests/fp/fp_gates.log)): G1 9 of 9 identical to SIEVE with no ghost, G3 3
+ghost hits like the exact ghost, G4 unchanged; on Zipf within 0.0013 of the exact ghost.
+Held-out run ([results/heldout_fp.csv](results/heldout_fp.csv); FIFO, SIEVE and exact SIEVE-G in
+the same runs are identical to Phase 4a in all 180 values), primary 29 clusters, by the
+pre-registered rule:
+
+| cache | fingerprint SIEVE-G vs SIEVE: mean | median | better / worse | rule |
+|---|---|---|---|---|
+| 0.1% | +1.82% | +0.10% | 17 / 4 | pass (close to the exact ghost) |
+| 10% | **−1.70%** | 0.00% | 2 / **12** | **fail** |
+
+The fingerprint ghost fails at the large cache, as anticipated before the run: with
+0.25 × cache size ghost entries and only 65,536 fingerprint values, 20 of the 30 clusters need
+more entries than there are fingerprints at 10%; most fingerprints are then present and many new
+objects are wrongly taken as returning (cluster 34: 0.306 vs 0.231 for the exact ghost). In G2,
+the same false matches even lowered the miss ratio at gap 800 (0.970 vs 0.999), which is not the
+mechanism working. So 16-bit fingerprints suit small ghosts only; large caches need wider
+fingerprints (or a bucketed filter). Phase 6 is not part of the pre-registered verdict.
 
 ## Limitations
 

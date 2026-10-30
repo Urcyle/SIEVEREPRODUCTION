@@ -1,0 +1,33 @@
+# Phase 6: the held-out clusters of manifests/heldout.tsv, run again with the fingerprint ghost
+# (scripts/trace_stats.py -> choose_twitter.py -> make_manifests.py, from external/sieve-fig3).
+# cluster	trace_file	sample_ratio	max_req	log_file
+cluster25	data/twitter/sample10/cluster25.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster25.log
+cluster26	data/twitter/cluster26.oracleGeneral.zst	1	-1	results/heldout_fp/cluster26.log
+cluster27	data/twitter/sample100/cluster27.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster27.log
+cluster28	data/twitter/sample10/cluster28.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster28.log
+cluster29	data/twitter/sample10/cluster29.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster29.log
+cluster30	data/twitter/sample10/cluster30.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster30.log
+cluster31	data/twitter/sample100/cluster31.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster31.log
+cluster32	data/twitter/sample100/cluster32.oracleGeneral.sample100.zst	0.5	-1	results/heldout_fp/cluster32.log
+cluster33	data/twitter/sample10/cluster33.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster33.log
+cluster34	data/twitter/sample10/cluster34.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster34.log
+cluster35	data/twitter/sample10/cluster35.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster35.log
+cluster36	data/twitter/sample10/cluster36.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster36.log
+cluster37	data/twitter/sample100/cluster37.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster37.log
+cluster38	data/twitter/sample100/cluster38.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster38.log
+cluster39	data/twitter/sample100/cluster39.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster39.log
+cluster40	data/twitter/sample100/cluster40.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster40.log
+cluster41	data/twitter/sample10/cluster41.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster41.log
+cluster42	data/twitter/sample10/cluster42.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster42.log
+cluster43	data/twitter/sample100/cluster43.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster43.log
+cluster44	data/twitter/sample10/cluster44.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster44.log
+cluster45	data/twitter/sample10/cluster45.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster45.log
+cluster46	data/twitter/sample100/cluster46.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster46.log
+cluster47	data/twitter/sample10/cluster47.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster47.log
+cluster48	data/twitter/sample10/cluster48.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster48.log
+cluster49	data/twitter/cluster49.oracleGeneral.zst	1	-1	results/heldout_fp/cluster49.log
+cluster50	data/twitter/cluster50.oracleGeneral.zst	1	-1	results/heldout_fp/cluster50.log
+cluster51	data/twitter/sample10/cluster51.oracleGeneral.sample10.zst	1	-1	results/heldout_fp/cluster51.log
+cluster52	data/twitter/sample100/cluster52.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster52.log
+cluster53	data/twitter/cluster53.oracleGeneral.zst	1	-1	results/heldout_fp/cluster53.log
+cluster54	data/twitter/sample100/cluster54.oracleGeneral.sample100.zst	1	-1	results/heldout_fp/cluster54.log

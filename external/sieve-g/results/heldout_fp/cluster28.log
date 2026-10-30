@@ -1,0 +1,23 @@
+# trace /home/urcyle/sieve-fig3/data/twitter/sample10/cluster28.oracleGeneral.sample10.zst
+# sample_ratio 1
+# max_req -1
+# cachesim 0861f82 + patches/NSDI24-SIEVE-build-fix.patch + patches/SIEVE-G.patch
+# algos fifo,sieve,sieveg-0.25,sieveg-fp-0.25
+# sizes 0.001,0.1
+# started 2026-10-29T22:26:11-07:00 on OMEN, 8 threads
+# pass main
+[32m[INFO]  10-29-2026 22:26:11 cli_reader_utils.c:262  (tid=133667974948096): calculating working set size...
+[0m[32m[INFO]  10-29-2026 22:26:34 cli_reader_utils.c:279  (tid=133667974948096): working set size: 6204165 object 6204165 byte
+[0m[32m[INFO]  10-29-2026 22:26:35 cli_parser.c:545  (tid=133667974948096): trace path: /home/urcyle/sieve-fig3/data/twitter/sample10/cluster28.oracleGeneral.sample10.zst, trace_type ORACLE_GENERAL_TRACE, ofilepath cluster28.oracleGeneral.sample10.zst.cachesim, 8 threads, warmup -1 sec, total 4 algo x 2 size = 8 caches, fifo, sieve, sieveg-0.25, sieveg-fp-0.25, ignore object size
+[0m[32m[INFO]  10-29-2026 22:26:35 simulator.c:294  (tid=133667974948096): simulate_with_multi_caches starts computation, num_warmup_req 0, start cache FIFO size 6KiB, end cache SieveG-fp-0.25 size 606KiB, 8 caches, 8 threads, please wait
+[0m
+result/cluster28.oracleGeneral.sample10.zst                             FIFO cache size     6204, 547922220 req, miss ratio 0.1095, byte miss ratio 0.1095
+result/cluster28.oracleGeneral.sample10.zst                             FIFO cache size   620416, 547922220 req, miss ratio 0.0196, byte miss ratio 0.0196
+result/cluster28.oracleGeneral.sample10.zst                            Sieve cache size     6204, 547922220 req, miss ratio 0.0762, byte miss ratio 0.0762
+result/cluster28.oracleGeneral.sample10.zst                            Sieve cache size   620416, 547922220 req, miss ratio 0.0163, byte miss ratio 0.0163
+result/cluster28.oracleGeneral.sample10.zst                      SieveG-0.25 cache size     6204, 547922220 req, miss ratio 0.0746, byte miss ratio 0.0746
+result/cluster28.oracleGeneral.sample10.zst                      SieveG-0.25 cache size   620416, 547922220 req, miss ratio 0.0162, byte miss ratio 0.0162
+result/cluster28.oracleGeneral.sample10.zst                   SieveG-fp-0.25 cache size     6204, 547922220 req, miss ratio 0.0749, byte miss ratio 0.0749
+result/cluster28.oracleGeneral.sample10.zst                   SieveG-fp-0.25 cache size   620416, 547922220 req, miss ratio 0.0169, byte miss ratio 0.0169
+# time wall_s=108.79 maxrss_kb=1626300
+# finished 2026-10-29T22:28:00-07:00

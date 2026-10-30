@@ -1,0 +1,69 @@
+# Phase 6 gates for the fingerprint ghost (sieveg-fp), with the binary built from all three patches
+# G1: sieve vs sieveg-fp-0 (must be identical), and exact sieveg-0.25 vs sieveg-fp-0.25
+# trace zipf_0.8_m10000_n10000000_s1
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral Sieve cache size 10, 10000000 req, miss ratio 0.8933, byte miss ratio 0.8933
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral Sieve cache size 100, 10000000 req, miss ratio 0.7205, byte miss ratio 0.7205
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral Sieve cache size 1000, 10000000 req, miss ratio 0.4487, byte miss ratio 0.4487
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 10, 10000000 req, miss ratio 0.8933, byte miss ratio 0.8933
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 100, 10000000 req, miss ratio 0.7205, byte miss ratio 0.7205
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 1000, 10000000 req, miss ratio 0.4487, byte miss ratio 0.4487
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 10, 10000000 req, miss ratio 0.8946, byte miss ratio 0.8946
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 100, 10000000 req, miss ratio 0.7218, byte miss ratio 0.7218
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 1000, 10000000 req, miss ratio 0.4629, byte miss ratio 0.4629
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 10, 10000000 req, miss ratio 0.8947, byte miss ratio 0.8947
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 100, 10000000 req, miss ratio 0.7220, byte miss ratio 0.7220
+result/zipf_0.8_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 1000, 10000000 req, miss ratio 0.4642, byte miss ratio 0.4642
+# trace zipf_1.0_m10000_n10000000_s1
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral Sieve cache size 10, 10000000 req, miss ratio 0.7382, byte miss ratio 0.7382
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral Sieve cache size 100, 10000000 req, miss ratio 0.4879, byte miss ratio 0.4879
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral Sieve cache size 1000, 10000000 req, miss ratio 0.2466, byte miss ratio 0.2466
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 10, 10000000 req, miss ratio 0.7382, byte miss ratio 0.7382
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 100, 10000000 req, miss ratio 0.4879, byte miss ratio 0.4879
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 1000, 10000000 req, miss ratio 0.2466, byte miss ratio 0.2466
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 10, 10000000 req, miss ratio 0.7404, byte miss ratio 0.7404
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 100, 10000000 req, miss ratio 0.4906, byte miss ratio 0.4906
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 1000, 10000000 req, miss ratio 0.2556, byte miss ratio 0.2556
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 10, 10000000 req, miss ratio 0.7404, byte miss ratio 0.7404
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 100, 10000000 req, miss ratio 0.4908, byte miss ratio 0.4908
+result/zipf_1.0_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 1000, 10000000 req, miss ratio 0.2561, byte miss ratio 0.2561
+# trace zipf_1.2_m10000_n10000000_s1
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral Sieve cache size 10, 10000000 req, miss ratio 0.5280, byte miss ratio 0.5280
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral Sieve cache size 100, 10000000 req, miss ratio 0.2619, byte miss ratio 0.2619
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral Sieve cache size 1000, 10000000 req, miss ratio 0.1014, byte miss ratio 0.1014
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 10, 10000000 req, miss ratio 0.5280, byte miss ratio 0.5280
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 100, 10000000 req, miss ratio 0.2619, byte miss ratio 0.2619
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.00 cache size 1000, 10000000 req, miss ratio 0.1014, byte miss ratio 0.1014
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 10, 10000000 req, miss ratio 0.5311, byte miss ratio 0.5311
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 100, 10000000 req, miss ratio 0.2647, byte miss ratio 0.2647
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-0.25 cache size 1000, 10000000 req, miss ratio 0.1059, byte miss ratio 0.1059
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 10, 10000000 req, miss ratio 0.5312, byte miss ratio 0.5312
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 100, 10000000 req, miss ratio 0.2648, byte miss ratio 0.2648
+result/zipf_1.2_m10000_n10000000_s1.oracleGeneral SieveG-fp-0.25 cache size 1000, 10000000 req, miss ratio 0.1061, byte miss ratio 0.1061
+# G2: twice-requested traces, cache 1000
+# trace twice_gap10
+result/twice_gap10_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap10_n1000000.oracleGeneral SieveG-fp-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+# trace twice_gap50
+result/twice_gap50_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap50_n1000000.oracleGeneral SieveG-fp-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+# trace twice_gap200
+result/twice_gap200_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap200_n1000000.oracleGeneral SieveG-fp-0.50 cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+# trace twice_gap800
+result/twice_gap800_n1000000.oracleGeneral FIFO cache size 1000, 1000000 req, miss ratio 0.5000, byte miss ratio 0.5000
+result/twice_gap800_n1000000.oracleGeneral Clock cache size 1000, 1000000 req, miss ratio 0.6248, byte miss ratio 0.6248
+result/twice_gap800_n1000000.oracleGeneral Sieve cache size 1000, 1000000 req, miss ratio 0.9992, byte miss ratio 0.9992
+result/twice_gap800_n1000000.oracleGeneral SieveG-0.50 cache size 1000, 1000000 req, miss ratio 0.9992, byte miss ratio 0.9992
+result/twice_gap800_n1000000.oracleGeneral SieveG-fp-0.50 cache size 1000, 1000000 req, miss ratio 0.9696, byte miss ratio 0.9696
+# G3: A B C A B C, cache 2, ghost hits (SIEVEG_STATS)
+# SieveG-1.00 cache size 2: 6 insertions, 3 ghost hits (0.5000)
+# SieveG-fp-1.00 cache size 2: 6 insertions, 3 ghost hits (0.5000)

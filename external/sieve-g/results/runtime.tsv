@@ -1,0 +1,13 @@
+trace	size	algo	wall_s	maxrss_kb	miss_ratio
+cluster25	0.001	sieve	47.31	276172	0.0280
+cluster25	0.001	sieveg-0.25	47.97	407320	0.0280
+cluster25	0.001	sieveg-fp-0.25	44.14	274228	0.0280
+cluster25	0.1	sieve	45.76	278716	0.0158
+cluster25	0.1	sieveg-0.25	48.20	413128	0.0158
+cluster25	0.1	sieveg-fp-0.25	45.49	280828	0.0157
+cluster12	0.001	sieve	11.89	842036	0.8366
+cluster12	0.001	sieveg-0.25	12.54	843968	0.7923
+cluster12	0.001	sieveg-fp-0.25	10.60	841968	0.7922
+cluster12	0.1	sieve	11.86	845080	0.7908
+cluster12	0.1	sieveg-0.25	18.39	1005960	0.7904
+cluster12	0.1	sieveg-fp-0.25	12.78	844916	0.7904
