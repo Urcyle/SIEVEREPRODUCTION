@@ -1,0 +1,15 @@
+size_label,dataset,sieve_win_fraction
+large,CDN1,0.4085
+large,CDN2,0.293
+large,Meta (CDN),0.3333
+large,Meta (KV),1.0
+large,Tencent,1.0
+large,Twitter,0.3019
+large,Wiki,0.3333
+small,CDN1,0.2987
+small,CDN2,0.033
+small,Meta (CDN),0.0
+small,Meta (KV),0.0
+small,Tencent,0.0
+small,Twitter,0.1132
+small,Wiki,0.3333

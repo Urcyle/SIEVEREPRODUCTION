@@ -1,0 +1,13 @@
+{
+  "family": "twitter-sample100-extension",
+  "protocol": "docs/twitter_sampled_extension_protocol.md",
+  "artifact_commit": "0861f8261c37b8286a70449a1defb5a4749c72d2",
+  "base_url": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets",
+  "clusters": [32, 37, 40, 43, 46, 52, 54],
+  "worker_partition": [[54], [52], [43, 40], [46, 37, 32]],
+  "capacity_fractions": [0.001, 0.1],
+  "core_policies": ["fifo", "lru", "clock", "sieve", "arc"],
+  "extra_policies": ["twoq", "lirs", "tinylfu_snapshot", "blru", "hyperbolic", "lhd", "cacheus"],
+  "rng_seed": 42,
+  "peak_estimate": "1 GiB + 250 bytes per unique object (amendment 1; the original 4 GiB + 300 bytes blocked nearly every run on the available-memory gate while measured RSS was 0.3 GB)"
+}

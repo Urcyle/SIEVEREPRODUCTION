@@ -1,0 +1,13 @@
+trace,size,build,capacity_objects,is_simulator_capacity,miss_ratio,reduction_vs_their_fifo,paper_dot,distance_to_paper
+wiki_2016u,small,pinned,37218,True,0.4687,0.1906,0.1927,0.0021
+wiki_2016u,small,prefix,37218,True,0.4675,0.1928,0.1927,0.0001
+wiki_2016u,small,prefix,37197,False,0.4675,0.1927,0.1927,0.0000
+wiki_2016u,large,pinned,3721819,True,0.0608,0.4406,0.4434,0.0028
+wiki_2016u,large,prefix,3721819,True,0.0605,0.4430,0.4434,0.0004
+wiki_2016u,large,prefix,3719783,False,0.0606,0.4426,0.4434,0.0008
+wiki_2019u,small,pinned,49619,True,0.6448,0.1479,0.1498,0.0019
+wiki_2019u,small,prefix,49619,True,0.6434,0.1499,0.1498,0.0001
+wiki_2019u,small,prefix,49707,False,0.6405,0.1537,0.1498,0.0039
+wiki_2019u,large,pinned,4961998,True,0.0932,0.4332,0.4359,0.0027
+wiki_2019u,large,prefix,4961998,True,0.0928,0.4356,0.4359,0.0003
+wiki_2019u,large,prefix,4970746,False,0.0927,0.4365,0.4359,0.0006

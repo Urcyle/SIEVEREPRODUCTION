@@ -1,0 +1,7 @@
+variant,mean_abs_difference_to_paper,max_abs_difference_to_paper,points
+theirs: mean over the whole trace,0.0177,0.0868,32
+theirs: mean over the second half,0.0177,0.0862,32
+theirs: value at the end,0.0224,0.1114,32
+"ours: mean over the whole trace, empirical top-C",0.0196,0.0885,32
+"ours: value at the end, empirical top-C",0.0219,0.0914,32
+"ours: mean over the whole trace, generating-rank top-C",0.0199,0.0885,32

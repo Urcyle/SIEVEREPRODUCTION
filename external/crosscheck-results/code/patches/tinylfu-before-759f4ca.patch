@@ -1,0 +1,23 @@
+TinyLFU as it was before upstream libCacheSim commit 759f4ca ("fix bugs in TinyLFU",
+2023-08-15). That commit made W-TinyLFU also count an object in its frequency sketch when
+it is first inserted into the window.
+
+The authors' published snapshot (cacheMon/NSDI24-SIEVE) contains the fix, but the paper's
+Figure 4 TinyLFU points match the code *without* it. We build a second cachesim with this
+patch so the paper's TinyLFU can be reproduced. Evidence is in docs/LOG.md (2026-10-01,
+verification). No other algorithm is affected.
+
+Apply from external/NSDI24-SIEVE/libCacheSim (done automatically by setup/02_build_simulator.sh):
+    patch -p1 < patches/tinylfu-before-759f4ca.patch
+
+--- a/libCacheSim/cache/eviction/WTinyLFU.c
++++ b/libCacheSim/cache/eviction/WTinyLFU.c
+@@ -241,8 +241,6 @@ cache_obj_t *WTinyLFU_insert(cache_t *cache, const request_t *req) {
+   cache_obj_t *obj = NULL;
+   obj = params->LRU->insert(params->LRU, req);
+
+-  minimalIncrementCBF_add(params->CBF, (void *)&req->obj_id, sizeof(obj_id_t));
+-
+ #if defined(TRACK_DEMOTION)
+   obj->create_time = cache->n_req;
+ #endif

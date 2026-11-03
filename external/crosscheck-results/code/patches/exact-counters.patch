@@ -1,0 +1,31 @@
+diff --git a/libCacheSim/libCacheSim/bin/cachesim/main.c b/libCacheSim/libCacheSim/bin/cachesim/main.c
+--- a/libCacheSim/libCacheSim/bin/cachesim/main.c
++++ b/libCacheSim/libCacheSim/bin/cachesim/main.c
+@@ -69,6 +69,13 @@ int main(int argc, char **argv) {
+              (double)result[i].n_miss_byte / (double)result[i].n_req_byte);
+     printf("%s", output_str);
+     fprintf(output_file, "%s", output_str);
++    printf("SIEVE_COUNTERS policy=%s cache_size=%llu n_req=%llu n_miss=%llu "
++           "n_req_byte=%llu n_miss_byte=%llu\n",
++           result[i].cache_name, (unsigned long long)result[i].cache_size,
++           (unsigned long long)result[i].n_req,
++           (unsigned long long)result[i].n_miss,
++           (unsigned long long)result[i].n_req_byte,
++           (unsigned long long)result[i].n_miss_byte);
+   }
+   fclose(output_file);
+
+diff --git a/libCacheSim/libCacheSim/bin/cachesim/sim.c b/libCacheSim/libCacheSim/bin/cachesim/sim.c
+--- a/libCacheSim/libCacheSim/bin/cachesim/sim.c
++++ b/libCacheSim/libCacheSim/bin/cachesim/sim.c
+@@ -76,5 +76,10 @@ void simulate(reader_t *reader, cache_t *cache, int report_interval,
+
+ #pragma GCC diagnostic pop
+   printf("%s", output_str);
++  printf("SIEVE_COUNTERS policy=%s cache_size=%llu n_req=%llu n_miss=%llu "
++         "n_req_byte=%llu n_miss_byte=%llu\n",
++         cache->cache_name, (unsigned long long)cache->cache_size,
++         (unsigned long long)req_cnt, (unsigned long long)miss_cnt,
++         (unsigned long long)req_byte, (unsigned long long)miss_byte);
+
+   FILE *output_file = fopen(ofilepath, "a");

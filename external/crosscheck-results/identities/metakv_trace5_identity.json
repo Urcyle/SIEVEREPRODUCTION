@@ -1,0 +1,13 @@
+{
+ "compressed_bytes": 826492032,
+ "head_content_length": 826492032,
+ "label": "metakv_trace5",
+ "record_count": 332855870,
+ "scan_seconds": 131.26466818200424,
+ "sha256": "b296e79f2027f5823177a40c6b21e069088f9360be6623997fc8f8b0a7cda9dd",
+ "stored_bytes": 826492032,
+ "stream_sha256": "aae34e8550e410a27ff4cb6e76f5a902ae571000832bfebfbbc08c6084df70bc",
+ "unique_objects": 16672058,
+ "url": "local file made by scripts/split_metakv_202206.py",
+ "zero_size_count": 0
+}

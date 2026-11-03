@@ -1,0 +1,54 @@
+{
+  "family": "twitter-gated-extension",
+  "protocol": "docs/twitter_gated_extension_protocol.md",
+  "artifact_commit": "0861f8261c37b8286a70449a1defb5a4749c72d2",
+  "base_url": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets",
+  "out_dir": "local_results/twitter_gated_extension",
+  "data_dir": "data/twitter_sample100",
+  "summary_csv": "gated_extension.csv",
+  "kinds": {
+    "29": "sample10",
+    "41": "sample10",
+    "32": "sample100"
+  },
+  "clusters": [
+    29,
+    41,
+    32
+  ],
+  "worker_partition": [
+    [
+      29
+    ],
+    [
+      41
+    ],
+    [
+      32
+    ]
+  ],
+  "capacity_fractions": [
+    0.001,
+    0.1
+  ],
+  "core_policies": [
+    "fifo",
+    "lru",
+    "clock",
+    "sieve",
+    "arc"
+  ],
+  "extra_policies": [
+    "twoq",
+    "lirs",
+    "tinylfu_snapshot",
+    "blru",
+    "hyperbolic",
+    "lhd",
+    "cacheus"
+  ],
+  "rng_seed": 42,
+  "exact_capacity_objects": true,
+  "peak_estimate": "policy-specific, from measured RSS (see docs, amendment 1)",
+  "policy_specific_estimate": true
+}

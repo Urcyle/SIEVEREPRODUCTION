@@ -1,0 +1,75 @@
+{
+ "family": "wiki-2016u-extension",
+ "protocol": "docs/wiki_full_extension_protocol.md",
+ "artifact_commit": "0861f8261c37b8286a70449a1defb5a4749c72d2",
+ "out_dir": "local_results/wiki_2016u_extension",
+ "data_dir": "data/wiki",
+ "summary_csv": "wiki_2016u_extension.csv",
+ "local_files": {
+  "1": "data/wiki/wiki_2016u.oracleGeneral.zst"
+ },
+ "urls": {
+  "1": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets/wiki/wiki_2016u.oracleGeneral.zst"
+ },
+ "labels": {
+  "1": "wiki_2016u"
+ },
+ "clusters": [
+  1
+ ],
+ "worker_partition": [
+  [
+   1
+  ],
+  [
+   1
+  ],
+  [
+   1
+  ]
+ ],
+ "capacity_fractions": [
+  0.001,
+  0.1
+ ],
+ "rng_seed": 42,
+ "exact_capacity_objects": true,
+ "peak_estimate": "policy-specific, from measured RSS (see docs, amendment 1)",
+ "policy_specific_estimate": true,
+ "worker_policies": [
+  [
+   "fifo",
+   "lru",
+   "clock",
+   "sieve",
+   "arc",
+   "hyperbolic"
+  ],
+  [
+   "twoq",
+   "lirs",
+   "lhd"
+  ],
+  [
+   "tinylfu_snapshot",
+   "blru",
+   "cacheus"
+  ]
+ ],
+ "core_policies": [
+  "fifo",
+  "lru",
+  "clock",
+  "sieve",
+  "arc"
+ ],
+ "extra_policies": [
+  "twoq",
+  "lirs",
+  "tinylfu_snapshot",
+  "blru",
+  "hyperbolic",
+  "lhd",
+  "cacheus"
+ ]
+}

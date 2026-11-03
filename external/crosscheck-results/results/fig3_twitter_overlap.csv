@@ -1,0 +1,89 @@
+cluster,size,algo,theirs_trace_version,ours_miss_ratio,theirs_miss_ratio,difference
+3,large,ARC,full,0.0167,0.0167,+0.0000
+3,large,CACHEUS,full,0.0159,0.0173,-0.0014
+3,large,CLOCK,full,0.0164,0.0164,+0.0000
+3,large,FIFO,full,0.0206,0.0206,+0.0000
+3,large,Hyperbolic,full,0.0207,0.0207,+0.0000
+3,large,LHD,full,0.0165,0.0166,-0.0001
+3,large,LIRS,full,0.0162,0.0162,+0.0000
+3,large,LRU,full,0.0161,0.0161,+0.0000
+3,large,SIEVE,full,0.0157,0.0157,+0.0000
+3,large,TinyLFU,full,0.0197,0.0197,+0.0000
+3,large,TwoQ,full,0.0172,0.0172,+0.0000
+3,small,ARC,full,0.2129,0.2129,+0.0000
+3,small,CACHEUS,full,0.2241,0.2240,+0.0001
+3,small,CLOCK,full,0.2356,0.2355,+0.0001
+3,small,FIFO,full,0.2807,0.2806,+0.0001
+3,small,Hyperbolic,full,0.2517,0.2515,+0.0002
+3,small,LHD,full,0.2008,0.2007,+0.0001
+3,small,LIRS,full,0.2144,0.2143,+0.0001
+3,small,LRU,full,0.2416,0.2415,+0.0001
+3,small,SIEVE,full,0.2056,0.2056,+0.0000
+3,small,TinyLFU,full,0.2045,0.2045,+0.0000
+3,small,TwoQ,full,0.2070,0.2069,+0.0001
+7,large,ARC,full,0.1353,0.1354,-0.0001
+7,large,CLOCK,full,0.1436,0.1437,-0.0001
+7,large,FIFO,full,0.1513,0.1513,+0.0000
+7,large,LRU,full,0.1339,0.1340,-0.0001
+7,large,SIEVE,full,0.1330,0.1330,+0.0000
+7,small,ARC,full,0.2447,0.2448,-0.0001
+7,small,CLOCK,full,0.2480,0.2481,-0.0001
+7,small,FIFO,full,0.2661,0.2661,+0.0000
+7,small,LRU,full,0.2411,0.2411,+0.0000
+7,small,SIEVE,full,0.2425,0.2425,+0.0000
+8,large,ARC,full first 1000000000 requests,0.4334,0.4328,+0.0006
+8,large,CLOCK,full first 1000000000 requests,0.4127,0.4131,-0.0004
+8,large,FIFO,full first 1000000000 requests,0.4156,0.4160,-0.0004
+8,large,LRU,full first 1000000000 requests,0.4093,0.4097,-0.0004
+8,large,SIEVE,full first 1000000000 requests,0.5400,0.5396,+0.0004
+8,small,ARC,full first 1000000000 requests,0.6746,0.6742,+0.0004
+8,small,CLOCK,full first 1000000000 requests,0.8078,0.8076,+0.0002
+8,small,FIFO,full first 1000000000 requests,0.7662,0.7660,+0.0002
+8,small,LRU,full first 1000000000 requests,0.7898,0.7896,+0.0002
+8,small,SIEVE,full first 1000000000 requests,0.9944,0.9942,+0.0002
+10,large,ARC,sample10,0.4999,0.4999,+0.0000
+10,large,CACHEUS,sample10,0.5002,0.4999,+0.0003
+10,large,CLOCK,sample10,0.4999,0.4999,+0.0000
+10,large,FIFO,sample10,0.4999,0.4999,+0.0000
+10,large,Hyperbolic,sample10,0.4999,0.4999,+0.0000
+10,large,LHD,sample10,0.4999,0.4999,+0.0000
+10,large,LIRS,sample10,0.4999,0.4999,+0.0000
+10,large,LRU,sample10,0.4999,0.4999,+0.0000
+10,large,SIEVE,sample10,0.4999,0.4999,+0.0000
+10,large,TinyLFU,sample10,0.4999,0.4999,+0.0000
+10,large,TwoQ,sample10,0.4999,0.4999,+0.0000
+10,small,ARC,sample10,0.4999,0.4999,+0.0000
+10,small,CACHEUS,sample10,0.4999,0.4999,+0.0000
+10,small,CLOCK,sample10,0.4999,0.4999,+0.0000
+10,small,FIFO,sample10,0.4999,0.4999,+0.0000
+10,small,Hyperbolic,sample10,0.4999,0.4999,+0.0000
+10,small,LHD,sample10,0.4999,0.4999,+0.0000
+10,small,LIRS,sample10,0.4999,0.4999,+0.0000
+10,small,LRU,sample10,0.4999,0.4999,+0.0000
+10,small,SIEVE,sample10,0.5003,0.4999,+0.0004
+10,small,TinyLFU,sample10,0.5000,0.5000,+0.0000
+10,small,TwoQ,sample10,0.4999,0.4999,+0.0000
+13,large,ARC,sample100,0.6281,0.6279,+0.0002
+13,large,CLOCK,sample100,0.6279,0.6276,+0.0003
+13,large,FIFO,sample100,0.6279,0.6276,+0.0003
+13,large,Hyperbolic,sample100,0.6279,0.6276,+0.0003
+13,large,LRU,sample100,0.6279,0.6276,+0.0003
+13,large,SIEVE,sample100,0.6279,0.6277,+0.0002
+13,large,TinyLFU,sample100,0.6281,0.6278,+0.0003
+13,large,TwoQ,sample100,0.6279,0.6276,+0.0003
+13,small,ARC,sample100,0.6283,0.6280,+0.0003
+13,small,CACHEUS,sample100,0.6282,0.6279,+0.0003
+13,small,CLOCK,sample100,0.6281,0.6279,+0.0002
+13,small,FIFO,sample100,0.6281,0.6279,+0.0002
+13,small,Hyperbolic,sample100,0.6282,0.6279,+0.0003
+13,small,LHD,sample100,0.6281,0.6279,+0.0002
+13,small,LIRS,sample100,0.6363,0.6364,-0.0001
+13,small,LRU,sample100,0.6281,0.6278,+0.0003
+13,small,SIEVE,sample100,0.6337,0.6285,+0.0052
+13,small,TinyLFU,sample100,0.6433,0.6437,-0.0004
+13,small,TwoQ,sample100,0.6281,0.6279,+0.0002
+21,small,ARC,sample100,0.9446,0.9422,+0.0024
+21,small,CLOCK,sample100,0.9464,0.9440,+0.0024
+21,small,FIFO,sample100,0.9523,0.9501,+0.0022
+21,small,LRU,sample100,0.9470,0.9446,+0.0024
+21,small,SIEVE,sample100,0.9517,0.9492,+0.0025

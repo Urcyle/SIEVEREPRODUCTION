@@ -1,0 +1,102 @@
+{
+  "fig3_overlap_clusters": [
+    3,
+    7,
+    8,
+    10,
+    13,
+    21
+  ],
+  "fig3_overlap_max_abs_miss_ratio_difference": 0.0052,
+  "fig3_spearman_of_means_vs_paper": {
+    "large/theirs_mean": 0.964,
+    "large/union_mean": 0.991,
+    "small/theirs_mean": 0.982,
+    "small/union_mean": 0.982
+  },
+  "fig4_cells_with_different_cache_size": 30,
+  "fig4_max_abs_miss_ratio_difference_by_algo": {
+    "ARC": 0.0001,
+    "B-LRU": 0.0001,
+    "CACHEUS": 0.0164,
+    "CLOCK": 0.0001,
+    "Hyperbolic": 0.0001,
+    "LHD": 0.0045,
+    "LIRS": 0.0001,
+    "LRU": 0.0001,
+    "SIEVE": 0.0001,
+    "TinyLFU": 0.0001,
+    "TwoQ": 0.0001
+  },
+  "fig4_overlap_cells": 96,
+  "fig4_paper_dot_cells": 96,
+  "fig4_paper_dot_cells_within_0.0005": 77,
+  "fig4_paper_dot_max_distance": 0.0201,
+  "fig4_theirs_cells_vs_paper_dots": 286,
+  "fig4_theirs_deterministic_cells": 208,
+  "fig4_theirs_deterministic_cells_within_0.0005": 207,
+  "fig4_theirs_sieve_cells": 26,
+  "fig4_theirs_sieve_max_distance_to_nearest_dot": 0.0001,
+  "fig5_max_abs_difference_to_paper_by_dataset_size": {
+    "Meta (CDN)/large": 0.0,
+    "Meta (CDN)/small": 0.0,
+    "Meta (KV)/large": 0.0,
+    "Meta (KV)/small": 0.0,
+    "Tencent/large": 0.5,
+    "Tencent/small": 0.0,
+    "Twitter/large": 0.0519,
+    "Twitter/small": 0.092,
+    "Wiki/large": 0.0,
+    "Wiki/small": 0.0
+  },
+  "fig8a_max_abs_ours10k_minus_paper_excluding_LFU": 0.0007040000000000102,
+  "fig8a_max_abs_ours1M_minus_paper": 0.272069,
+  "fig8b_max_abs_ours_minus_paper": 0.0885,
+  "fig8b_mean_abs_ours_minus_paper": 0.019559375,
+  "fig9a_max_abs_ours_minus_paper": 0.0018,
+  "fig9b_max_abs_ours_minus_paper": 0.0276,
+  "fig9b_mean_abs_ours_minus_paper": 0.011359375,
+  "full_order_matches_paper_ours_vs_theirs": {
+    "fig8a_miss_by_capacity": {
+      "ours": [
+        8,
+        8
+      ],
+      "theirs": [
+        7,
+        8
+      ]
+    },
+    "fig8b_popular_by_capacity": {
+      "ours": [
+        4,
+        8
+      ],
+      "theirs": [
+        6,
+        8
+      ]
+    },
+    "fig9a_miss_by_alpha": {
+      "ours": [
+        7,
+        8
+      ],
+      "theirs": [
+        7,
+        8
+      ]
+    },
+    "fig9b_popular_by_alpha": {
+      "ours": [
+        6,
+        8
+      ],
+      "theirs": [
+        6,
+        8
+      ]
+    }
+  },
+  "snapshot": "sievereproduction_43fc450"
+}

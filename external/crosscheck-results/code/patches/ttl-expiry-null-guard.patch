@@ -1,0 +1,11 @@
+--- a/cache/cache.c
++++ b/cache/cache.c
+@@ -197,7 +197,7 @@
+     }
+ #endif
+ 
+-    if (update_cache) {
++    if (cache_obj != NULL && update_cache) {
+       cache_obj->misc.next_access_vtime = req->next_access_vtime;
+       cache_obj->misc.freq += 1;
+     }
