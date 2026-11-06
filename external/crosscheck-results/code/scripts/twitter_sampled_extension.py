@@ -59,8 +59,48 @@ def identity_path(n: int) -> Path:
     return OUT / (f"{label(n)}_identity.json" if "local_files" in CONFIG else f"cluster{n}_{kind(n)}_identity.json")
 
 
+def partitioned_unique_count(path: Path, partitions: int) -> int:
+    """Exact number of distinct nonzero-size object ids with bounded memory: `partitions` streaming passes, pass j keeps the
+    ids with id % partitions == j (the passes cover every id once, so the sum is exact). docs/tencent_full_protocol.md."""
+    import numpy as np
+    dtype = np.dtype([("time", "<u4"), ("id", "<u8"), ("size", "<u4"), ("next", "<i8")])
+    total = 0
+    for part in range(partitions):
+        proc = subprocess.Popen(["zstd", "-dc", "--", str(path)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        seen = np.empty(0, dtype=np.uint64)
+        pending, pending_size, carry = [], 0, b""
+        while block := proc.stdout.read(24 * (1 << 21)):
+            block = carry + block
+            usable = len(block) // 24 * 24
+            carry = block[usable:]
+            rows = np.frombuffer(block[:usable], dtype=dtype)
+            ids = rows["id"][(rows["size"] != 0) & (rows["id"] % np.uint64(partitions) == np.uint64(part))]
+            pending.append(np.unique(ids))
+            pending_size += len(pending[-1])
+            if pending_size > 20_000_000:
+                seen = np.unique(np.concatenate([seen] + pending))
+                pending, pending_size = [], 0
+        stderr = proc.stderr.read().decode(errors="replace")
+        if carry or proc.wait() != 0:
+            raise ValueError(f"alignment or zstd failure: {stderr[-300:]}")
+        seen = np.unique(np.concatenate([seen] + pending))
+        total += int(len(seen))
+        print(f"  count pass {part + 1}/{partitions}: {len(seen):,} ids", flush=True)
+    return total
+
+
 def fast_validate(path: Path) -> dict:
-    """Same fields as validate_oracle_file(count_unique=True), computed with NumPy blocks (24-byte <IQIq records)."""
+    """Same fields as validate_oracle_file(count_unique=True), computed with NumPy blocks (24-byte <IQIq records).
+    With CONFIG["count_partitions"] the distinct count uses partitioned_unique_count instead of one in-memory set."""
+    if CONFIG.get("count_partitions"):
+        meta = fast_validate_single_pass(path, count_unique=False)
+        meta["unique_objects"] = partitioned_unique_count(path, CONFIG["count_partitions"])
+        meta["count_method"] = f"partitioned, {CONFIG['count_partitions']} passes by id % partitions"
+        return meta
+    return fast_validate_single_pass(path, count_unique=True)
+
+
+def fast_validate_single_pass(path: Path, count_unique: bool = True) -> dict:
     import hashlib
     import numpy as np
     dtype = np.dtype([("time", "<u4"), ("id", "<u8"), ("size", "<u4"), ("next", "<i8")])
@@ -84,17 +124,19 @@ def fast_validate(path: Path) -> dict:
         n += len(rows)
         nonzero = rows["size"] != 0
         zeros += int((~nonzero).sum())
-        pending.append(np.unique(rows["id"][nonzero]))
-        pending_size += len(pending[-1])
-        if pending_size > 20_000_000:
-            seen = np.unique(np.concatenate([seen] + pending))
-            pending, pending_size = [], 0
+        if count_unique:
+            pending.append(np.unique(rows["id"][nonzero]))
+            pending_size += len(pending[-1])
+            if pending_size > 20_000_000:
+                seen = np.unique(np.concatenate([seen] + pending))
+                pending, pending_size = [], 0
     stderr = proc.stderr.read().decode(errors="replace")
     if carry or proc.wait() != 0:
         raise ValueError(f"alignment or zstd failure: {stderr[-300:]}")
-    seen = np.unique(np.concatenate([seen] + pending))
+    seen = np.unique(np.concatenate([seen] + pending)) if count_unique else seen
     return {"record_count": n, "zero_size_count": zeros, "sha256": stored.hexdigest(), "stream_sha256": stream_hash.hexdigest(),
-            "stored_bytes": path.stat().st_size, "compressed_bytes": path.stat().st_size, "unique_objects": int(len(seen))}
+            "stored_bytes": path.stat().st_size, "compressed_bytes": path.stat().st_size,
+            **({"unique_objects": int(len(seen))} if count_unique else {})}
 
 
 def fetch() -> None:

@@ -68,3 +68,24 @@ class SavedResultTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PartitionedCountTests(unittest.TestCase):
+    def test_partitioned_distinct_count_equals_the_single_pass_count(self):
+        import subprocess
+        import tempfile
+        import numpy as np
+        rng = np.random.default_rng(7)
+        dtype = np.dtype([("time", "<u4"), ("id", "<u8"), ("size", "<u4"), ("next", "<i8")])
+        rows = np.zeros(300_000, dtype=dtype)
+        rows["id"] = rng.integers(0, 2**63, 40_000, dtype=np.uint64)[rng.integers(0, 40_000, len(rows))]   # repeats; ids spread over the 64-bit range
+        rows["size"] = rng.integers(0, 4, len(rows))                                                         # some zero-size records
+        with tempfile.TemporaryDirectory() as tmp:
+            raw = Path(tmp) / "t.oracleGeneral"
+            raw.write_bytes(rows.tobytes())
+            subprocess.run(["zstd", "-q", "-f", str(raw), "-o", str(raw) + ".zst"], check=True)
+            path = Path(str(raw) + ".zst")
+            single = ext.fast_validate_single_pass(path)["unique_objects"]
+            self.assertEqual(single, len(np.unique(rows["id"][rows["size"] != 0])))
+            for parts in (1, 3, 8):
+                self.assertEqual(ext.partitioned_unique_count(path, parts), single)
