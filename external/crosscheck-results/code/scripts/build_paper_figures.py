@@ -983,7 +983,99 @@ def fig05c():
     save(fig, "fig05c_best_algorithm_independent")
 
 
-FIGURES = {"fig01": fig01, "fig02": fig02, "fig03": fig03, "fig03b": fig03b, "fig03c": fig03c, "fig04": fig04, "fig04c": fig04c, "fig05": fig05, "fig05b": fig05b, "fig05c": fig05c, "fig06": fig06, "fig07": fig07,
+def own_best_sets():
+    """{(dataset, capacity): {trace: {policy: reduction_from_fifo}}} from our own runs only, for every trace with at least 10 of the paper's 11
+    algorithms (Wiki 2019u lacks CACHEUS until docs/wiki_full_extension_protocol.md amendment 2 is run; the figure note says so)."""
+    sets = defaultdict(lambda: defaultdict(dict))
+
+    def add(dataset, trace, cap, policy, red):
+        sets[(dataset, str(cap))][trace].setdefault(policy, float(red))
+
+    for r in rows("local_results/online_baselines_public_extension/public_twelve_subset.csv"):
+        ds = {"wiki": "Wiki", "metaCDN": "Meta (CDN)"}.get(DATASET_OF.get(r["trace"]))
+        if ds and r["policy"] != "fifo":
+            add(ds, r["trace"], r["capacity_fraction"], r["policy"], r["reduction_from_fifo"])
+    for w in ("2016u", "2019u"):
+        path = f"local_results/wiki_{w}_extension/wiki_{w}_extension.csv"
+        if (ROOT / path).exists():
+            for r in rows(path):
+                if r["policy"] != "fifo":
+                    add("Wiki", f"wiki_{w}", r["capacity_fraction"], r["policy"], r["reduction_from_fifo"])
+    for r in rows("local_results/metakv_split_extension/metakv_split_extension.csv"):
+        if r["policy"] != "fifo":
+            add("Meta (KV)", r["trace"], r["capacity_fraction"], r["policy"], r["reduction_from_fifo"])
+    for cap, traces in twitter_complete_sets().items():
+        for trace, v in traces.items():
+            for policy, red in v.items():
+                add("Twitter", trace, cap, policy, red)
+    for path in ("local_results/twitter_sampled_extension/sample100_extension.csv", "local_results/twitter_sample10_extension/sample10_extension.csv",
+                 "local_results/twitter_gated_extension/gated_extension.csv"):
+        for r in rows(path):
+            if r["policy"] != "fifo":
+                add("Twitter", r["trace"], r["capacity_fraction"], r["policy"], r["reduction_from_fifo"])
+    tencent = ROOT / "local_results/tencent_full/tencent_full.csv"
+    if tencent.exists():
+        for r in rows("local_results/tencent_full/tencent_full.csv"):
+            if r["family"] == "sample" and r["seed"] == "42" and r["policy"] != "fifo" and r["reduction_from_fifo"]:
+                add("Tencent", r["trace"], r["fraction"], r["policy"], r["reduction_from_fifo"])
+    need = {p for p, _ in FIG3_FULL} - {"cacheus"}
+    return {k: {t: v for t, v in traces.items() if need <= set(v)} for k, traces in sets.items()}
+
+
+def best_shares(traces):
+    """Share of traces won by each algorithm among those present, exact ties split equally."""
+    shares = defaultdict(float)
+    for v in traces.values():
+        top = max(v.values())
+        winners = [p for p, x in v.items() if abs(x - top) < 1e-9]
+        for p in winners:
+            shares[p] += 1 / len(winners) / len(traces)
+    return shares
+
+
+def fig05d():
+    sets = own_best_sets()
+    paper = {(r["dataset"], r["size"]): r for r in rows(f"{SNAP}/fig5/fig5_bars.csv") if r["source"] == "paper Figure 5"}
+    order = ["Wiki", "Tencent", "Meta (CDN)", "Meta (KV)", "CDN1", "CDN2", "Twitter"]
+    parts = [("sieve", "SIEVE", SIEVE_C, ""), ("arc", "ARC", "#d9d9d9", "\\\\"), ("twoq", "TwoQ", "#f6c28b", "//"), ("lhd", "LHD", "#bfbfbf", "||"), (None, "Others", "white", "xxx")]
+    fig, axes = plt.subplots(1, 2, figsize=(8.8, 4.2), sharey=True)
+    for ax, size, cap, tag in ((axes[0], "large", "0.1", "(a) Large cache"), (axes[1], "small", "0.001", "(b) Small cache")):
+        for yi, name in enumerate(order):
+            pr = paper.get((name, size))
+            if pr:
+                left = 0
+                for key, _, color, hatch in parts:
+                    v = float(pr["Others" if key is None else {"sieve": "SIEVE", "arc": "ARC", "twoq": "TwoQ", "lhd": "LHD"}[key]])
+                    if v:
+                        ax.barh(yi + 0.2, v, left=left, height=0.36, color=color, hatch=hatch, edgecolor="black", linewidth=0.4, alpha=0.6)
+                        left += v
+            traces = sets.get((name, cap))
+            if not traces:
+                ax.text(0.5, yi - 0.2, "proprietary: not replicated" if name in ("CDN1", "CDN2") else "not run", ha="center", va="center", fontsize=6, color="#555555")
+                continue
+            shares = best_shares(traces)
+            left, named = 0, set()
+            for key, _, color, hatch in parts:
+                v = sum(x for p, x in shares.items() if (p == key if key else p not in {"sieve", "arc", "twoq", "lhd"}))
+                if v:
+                    ax.barh(yi - 0.2, v, left=left, height=0.36, color=color, hatch=hatch, edgecolor="black", linewidth=0.4)
+                    left += v
+            ax.text(1.02, yi - 0.2, f"n={len(traces)}", va="center", fontsize=6)
+        ax.set_yticks(range(len(order)), order)
+        ax.set_xlim(0, 1.12)
+        ax.set_xticks([0, .2, .4, .6, .8, 1.0])
+        caption(ax, tag)
+    legend = [Rectangle((0, 0), 1, 1, facecolor=c, hatch=h, edgecolor="black", label=l) for _, l, c, h in parts]
+    fig.legend(handles=legend, ncol=5, loc="upper center", bbox_to_anchor=(0.5, 0.94), frameon=False, fontsize=6.5)
+    fig.suptitle("Figure 5 (companion, our own runs) - best algorithm per dataset: paper (upper, faded) against ours (lower)", y=0.99, fontsize=8.5)
+    note(fig, "Ours: the best of the paper's 11 algorithms on every trace we ran (Wiki 3, Meta CDN 3, Meta KV 5 split from the merged file, Twitter: all clusters with 11 algorithms "
+              "from full-size and sampled files, Tencent: 10% sample if run); exact ties split equally. Wiki 2019u has 10 algorithms (no CACHEUS). Twitter and Tencent are "
+              "sampled files and not the paper's full traces. Paper bars read from the PDF by SIEVEREPRODUCTION.")
+    fig.tight_layout(rect=(0, 0, 1, 0.9))
+    save(fig, "fig05d_best_algorithm_own_runs")
+
+
+FIGURES = {"fig01": fig01, "fig02": fig02, "fig03": fig03, "fig03b": fig03b, "fig03c": fig03c, "fig04": fig04, "fig04c": fig04c, "fig05": fig05, "fig05b": fig05b, "fig05c": fig05c, "fig05d": fig05d, "fig06": fig06, "fig07": fig07,
            "fig08": fig08, "fig08c": fig08c, "fig09": fig09, "fig10": fig10, "fig10c": fig10c, "fig11": fig11, "fig12": fig12, "fig13": fig13, "fig14": fig14}
 
 if __name__ == "__main__":
