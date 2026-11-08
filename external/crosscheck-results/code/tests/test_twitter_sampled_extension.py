@@ -89,3 +89,4 @@ class PartitionedCountTests(unittest.TestCase):
             self.assertEqual(single, len(np.unique(rows["id"][rows["size"] != 0])))
             for parts in (1, 3, 8):
                 self.assertEqual(ext.partitioned_unique_count(path, parts), single)
+            self.assertEqual(ext.partitioned_unique_count(path, 8, workers=3), single)

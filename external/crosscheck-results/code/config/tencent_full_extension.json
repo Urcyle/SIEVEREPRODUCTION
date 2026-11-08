@@ -51,5 +51,6 @@
   "cacheus"
  ],
  "rng_seed": 42,
- "exact_capacity_objects": true
+ "exact_capacity_objects": true,
+ "count_workers": 4
 }

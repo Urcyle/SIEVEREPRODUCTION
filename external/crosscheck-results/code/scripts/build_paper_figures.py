@@ -359,6 +359,14 @@ def fig04():
                     fifo = [x for x in rows(path) if x["policy"] == "fifo" and x["capacity_fraction"] == cap][0]
                     pts[(cap, "metaKV", r["policy"])].append(float(r.get("reduction_from_fifo") or
                                                                     (1 - float(r["misses"]) / float(fifo["misses"]))))
+    tencent_full = defaultdict(list)    # full-size Tencent runs, drawn with a separate marker
+    if (ROOT / "local_results/tencent_full/tencent_full.csv").exists():
+        for r in rows("local_results/tencent_full/tencent_full.csv"):
+            if r["seed"] == "42" and r["policy"] != "fifo" and r["reduction_from_fifo"]:
+                if r["family"] == "sample":
+                    pts[(r["fraction"], "tencentPhoto", r["policy"])].append(float(r["reduction_from_fifo"]))
+                else:
+                    tencent_full[(r["fraction"], r["policy"])].append(float(r["reduction_from_fifo"]))
     paper = defaultdict(list)
     for r in rows("config/paper_fig4_points.csv"):
         paper[(r["size_label"], r["dataset"], r["algo"])].append(float(r["value"]))
@@ -370,17 +378,21 @@ def fig04():
                     ax.scatter(j + 0.14, v, marker=marker, s=14, facecolors="none", edgecolors=color, linewidths=0.6, alpha=0.7, zorder=2)
                 for v in pts.get((cap, ds, pol), []):
                     ax.scatter(j - 0.14, v, marker=marker, s=22, color=color, zorder=3, edgecolors="black", linewidths=0.3)
+        for j, (pol, label) in enumerate(FIG4_ALGOS):
+            for v in tencent_full.get((cap, pol), []):
+                ax.scatter(j - 0.27, v, marker="*", s=34, color=DATASET_STYLE["tencentPhoto"][1], zorder=3, edgecolors="black", linewidths=0.3)
         ax.set_xticks(range(len(FIG4_ALGOS)), [l for _, l in FIG4_ALGOS], rotation=45, ha="right")
         ax.set_ylabel("Miss Ratio Reduction from FIFO")
         ax.axhline(0, color="black", linewidth=0.5)
         ax.grid(axis="y", linestyle="--", alpha=0.4)
         caption(ax, tag)
     handles = [plt.Line2D([], [], marker=m, color=c, linestyle="none", markersize=4, label=n) for n, c, m in DATASET_STYLE.values()]
-    handles += [plt.Line2D([], [], marker="o", markerfacecolor="none", markeredgecolor=GREY, linestyle="none", label="hollow, right of tick: paper's points"),
+    handles += [plt.Line2D([], [], marker="*", color=DATASET_STYLE["tencentPhoto"][1], markeredgecolor="black", markeredgewidth=0.3, linestyle="none", markersize=6, label="star, far left: Tencent at full size"),
+                plt.Line2D([], [], marker="o", markerfacecolor="none", markeredgecolor=GREY, linestyle="none", label="hollow, right of tick: paper's points"),
                 plt.Line2D([], [], marker="o", color=GREY, linestyle="none", label="filled, left of tick: ours")]
     fig.legend(handles=handles, ncol=6, loc="lower center", bbox_to_anchor=(0.5, -0.02), frameon=False, fontsize=6.5)
     fig.suptitle("Figure 4 - Miss ratio reduction on Meta (KV + CDN), Wiki CDN and Tencent Photo", fontsize=9)
-    note(fig, "\nOurs: filled markers, one per public trace (Meta CDN 3, Wiki 3, Meta KV 5 split from the merged file plus the 2022-10 file; Tencent Photo not run). All 11 algorithms run except CACHEUS on Wiki 2019u (memory gate and disk); the 2022-10 Meta KV file has only SIEVE/ARC/LRU/CLOCK. "
+    note(fig, "\nOurs: filled markers, one per public trace (Meta CDN 3, Wiki 3, Meta KV 5 split from the merged file plus the 2022-10 file; Tencent Photo 2: 10% spatial sample as in the paper, full size starred where it fits in memory). All 11 algorithms run except CACHEUS on Wiki 2019u (memory gate and disk); the 2022-10 Meta KV file has only SIEVE/ARC/LRU/CLOCK. "
               "'TinyLFU' is the pinned-snapshot version (the paper's TinyLFU differs; see README). Paper: hollow markers read from the PDF, trace identity unlabeled.")
     fig.tight_layout()
     save(fig, "fig04_public_scatter")
@@ -517,7 +529,7 @@ def fig05():
     fig.suptitle("Figure 5 - Best-performing algorithms on each dataset", y=0.99, fontsize=9)
     note(fig, "Ours: for every public trace we ran, the share of traces on which each policy has the fewest misses among the same five contenders (SIEVE, ARC, CLOCK, LRU, LFU; exact ties shared); "
               "n = traces (Twitter: 16 at the small cache, 12 at the large; Meta KV: 3; Meta CDN: 3; Wiki: 1). The paper compares 11 algorithms, including TwoQ, LHD, TinyLFU and LIRS, so its bars have more room for 'others' and its SIEVE shares are not directly comparable. "
-              "The companion figure fig05b uses 11 candidates on 7 traces. The black tick is SIEVE's share in the paper's bar. Tencent Photo files are 35-37 GB each and were not run.")
+              "The companion figure fig05b uses 11 candidates on 7 traces. The black tick is SIEVE's share in the paper's bar. Tencent Photo (35-37 GB files) is not in this five-contender panel because LFU was not run on it; it was run with the 11 candidates and is in the companions fig05d and fig05e.")
     fig.tight_layout(rect=(0, 0, 1, 0.9))
     save(fig, "fig05_best_algorithm_share")
 
@@ -1075,7 +1087,69 @@ def fig05d():
     save(fig, "fig05d_best_algorithm_own_runs")
 
 
-FIGURES = {"fig01": fig01, "fig02": fig02, "fig03": fig03, "fig03b": fig03b, "fig03c": fig03c, "fig04": fig04, "fig04c": fig04c, "fig05": fig05, "fig05b": fig05b, "fig05c": fig05c, "fig05d": fig05d, "fig06": fig06, "fig07": fig07,
+def fig05e():
+    """Hypothesis H-T of docs/tencent_full_protocol.md: CACHEUS reduction over 9 seeds on tencent_photo2's 10% sample."""
+    fig, axes = plt.subplots(1, 2, figsize=(8.0, 3.2), sharey=False)
+    rng = np.random.default_rng(0)
+    for ax, size, tag in ((axes[0], "large", "(a) Large cache (10%)"), (axes[1], "small", "(b) Small cache (0.1%)")):
+        path = ROOT / f"local_results/tencent_full/cacheus_spread_{size}.csv"
+        if not path.exists():
+            unavailable(ax, tag, "CACHEUS seed runs not finished", headline="not run yet")
+            continue
+        data = rows(f"local_results/tencent_full/cacheus_spread_{size}.csv")
+        vals = [float(r["reduction_from_fifo"]) for r in data]
+        sieve, dot = float(data[0]["sieve_reduction"]), float(data[0]["paper_cacheus_dot"])
+        ax.scatter(rng.uniform(-0.12, 0.12, len(vals)), vals, s=26, color="#9467bd", edgecolors="black", linewidths=0.3, zorder=3, label=f"CACHEUS, {len(vals)} seeds (ours)")
+        ax.axhline(sieve, color=SIEVE_C, linewidth=1.4, label="SIEVE (ours)")
+        ax.axhline(dot, color=GREY, linestyle="--", linewidth=1.2, label="CACHEUS in the paper (Fig 4 dot)")
+        ax.axhspan(min(vals), max(vals), color="#9467bd", alpha=0.10)
+        ax.set_xlim(-0.6, 0.6)
+        ax.set_xticks([])
+        ax.set_ylabel("Miss Ratio Reduction from FIFO")
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        caption(ax, f"{tag}: CACHEUS range {min(vals):.4f}-{max(vals):.4f}", y=-0.06)
+        if size == "large":
+            ax.legend(loc="best", frameon=False, fontsize=6.5)
+    fig.suptitle("Is the Figure 5 Tencent flip a CACHEUS draw? tencent_photo2, 10% spatial sample, seeds 1-8 and 42", fontsize=9)
+    note(fig, "\nHypothesis H-T (docs/tencent_full_protocol.md): supported iff the CACHEUS range exceeds 0.01 and the paper's CACHEUS dot lies within the range widened by 0.005. "
+              "The pre-declared test is panel (a). Each dot is one run with a different CACHEUS random seed; everything else is identical.")
+    fig.tight_layout()
+    save(fig, "fig05e_tencent_cacheus_seed_spread")
+
+
+def fig04d():
+    """Descriptive check 4 of docs/tencent_full_protocol.md: each policy's reduction on the 10% sample against the same policy at full size."""
+    path = ROOT / "local_results/tencent_full/full_vs_sample.csv"
+    fig, ax = plt.subplots(figsize=(4.8, 4.2))
+    if not path.exists():
+        unavailable(ax, "Tencent: sample against full size", "full-size runs not finished", headline="not run yet")
+    else:
+        data = rows("local_results/tencent_full/full_vs_sample.csv")
+        marker = {"small": "o", "large": "s"}
+        color = {"tencent_photo1": "#1f77b4", "tencent_photo2": "#d62728"}
+        for r in data:
+            if not r["sample_reduction"] or r["algo"] == "FIFO":
+                continue
+            x, y = float(r["sample_reduction"]), float(r["full_reduction"])
+            ax.scatter(x, y, marker=marker[r["size"]], color=color[r["trace"]], s=28, edgecolors="black", linewidths=0.3, zorder=3)
+            ax.annotate(r["algo"], (x, y), textcoords="offset points", xytext=(3, 3), fontsize=5.5)
+        lim = [min(ax.get_xlim()[0], ax.get_ylim()[0]), max(ax.get_xlim()[1], ax.get_ylim()[1])]
+        ax.plot(lim, lim, color=GREY, linestyle="--", linewidth=0.8)
+        ax.set_xlabel("Reduction from FIFO on the 10% spatial sample")
+        ax.set_ylabel("Reduction from FIFO on the full trace")
+        ax.grid(linestyle="--", alpha=0.4)
+        handles = [plt.Line2D([], [], marker="o", color="#1f77b4", linestyle="none", label="tencent_photo1"),
+                   plt.Line2D([], [], marker="o", color="#d62728", linestyle="none", label="tencent_photo2"),
+                   plt.Line2D([], [], marker="o", color="black", markerfacecolor="white", linestyle="none", label="small cache (0.1%)"),
+                   plt.Line2D([], [], marker="s", color="black", markerfacecolor="white", linestyle="none", label="large cache (10%)")]
+        ax.legend(handles=handles, frameon=False, fontsize=6.5, loc="upper left")
+    ax.set_title("Tencent Photo: does the 10% sample move the answer?", fontsize=9)
+    note(fig, "\nOne dot per algorithm that ran at full size (policies that do not fit in memory at the 10% cache are absent, see omitted.csv). Dashed: y = x.")
+    fig.tight_layout()
+    save(fig, "fig04d_tencent_sample_vs_full")
+
+
+FIGURES = {"fig01": fig01, "fig02": fig02, "fig03": fig03, "fig03b": fig03b, "fig03c": fig03c, "fig04": fig04, "fig04c": fig04c, "fig04d": fig04d, "fig05": fig05, "fig05b": fig05b, "fig05c": fig05c, "fig05d": fig05d, "fig05e": fig05e, "fig06": fig06, "fig07": fig07,
            "fig08": fig08, "fig08c": fig08c, "fig09": fig09, "fig10": fig10, "fig10c": fig10c, "fig11": fig11, "fig12": fig12, "fig13": fig13, "fig14": fig14}
 
 if __name__ == "__main__":

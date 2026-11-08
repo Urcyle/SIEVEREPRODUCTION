@@ -107,11 +107,13 @@ def run(families: set[str]) -> None:
     missing = [n for n in CONFIG["clusters"] if not ext.identity_path(n).exists()]
     if missing:
         raise SystemExit(f"run `fetch` first; missing identity for {missing}")
-    todo = jobs(families)
+    finished = {(r["trace"], r["family"], r["fraction"], r["policy"], r["seed"]) for r in records()}   # resume: never redo a finished cell
+    todo = [j for j in jobs(families) if (f"tencent_photo{j['n']}", "sample" if j["sample"] else "full", j["fraction"], j["policy"], j["seed"]) not in finished]
+    print(f"{len(todo)} cells to run", flush=True)
     # cheap jobs (estimate <= 3 GiB) three at a time, staggered; the rest one at a time after them
     cheap = [j for j in todo if estimate(j) <= 3 * GIB]
     heavy = [j for j in todo if estimate(j) > 3 * GIB]
-    for batch, workers in ((cheap, 3), (heavy, 1)):
+    for batch, workers in ((cheap, 2), (heavy, 1)):
         queue, lock = list(batch), threading.Lock()
 
         def worker(i: int) -> None:
@@ -132,9 +134,42 @@ def run(families: set[str]) -> None:
             t.join()
 
 
+def retry(workers: int) -> None:
+    """Re-run the cells recorded as omitted (Amendment 2 of docs/tencent_full_protocol.md) that have no completed run, `workers` at a time."""
+    done = {(r["trace"], r["family"], r["fraction"], r["policy"], r["seed"]) for r in records()}
+    omitted = [row for p in sorted(OUT.glob("worker*/omitted.csv")) for row in csv.DictReader(p.open(newline=""))]
+    todo, seen = [], set()
+    for row in omitted:
+        n, fam = int(row["trace"].replace("tencent_photo", "")), row["family"]
+        key = (row["trace"], "sample" if fam in ("S", "C") else "full", float(row["fraction"]), row["policy"], int(row["seed"]))
+        if key in done or key in seen:
+            continue
+        seen.add(key)
+        todo.append({"fam": fam, "n": n, "policy": row["policy"], "fraction": float(row["fraction"]), "seed": int(row["seed"]),
+                     "sample": SAMPLE if fam in ("S", "C") else None})
+    print(f"retrying {len(todo)} omitted cells", flush=True)
+    queue, lock = list(todo), threading.Lock()
+
+    def worker(i: int) -> None:
+        root = OUT / f"retry{i}"
+        root.mkdir(parents=True, exist_ok=True)
+        while True:
+            with lock:
+                if not queue:
+                    return
+                job = queue.pop(0)
+            execute(job, root)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(workers)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+
 def records() -> list[dict]:
     out = []
-    for path in OUT.glob("worker*/runs/*/complete.json"):
+    for path in [*OUT.glob("worker*/runs/*/complete.json"), *OUT.glob("retry*/runs/*/complete.json")]:
         r = json.loads(path.read_text())
         spec = r["spec"]
         out.append({"trace": spec["trace_label"], "family": "sample" if spec.get("sample_ratio") else "full",
@@ -158,7 +193,11 @@ def summarize() -> None:
             writer = csv.DictWriter(stream, tuple(rows[0]))
             writer.writeheader()
             writer.writerows(rows)
-    omitted = [row for p in sorted(OUT.glob("worker*/omitted.csv")) for row in csv.DictReader(p.open(newline=""))]
+    omitted = [row for p in sorted([*OUT.glob("worker*/omitted.csv"), *OUT.glob("retry*/omitted.csv")]) for row in csv.DictReader(p.open(newline=""))]
+    finished = {(r["trace"], r["family"], float(r["fraction"]), r["policy"], int(r["seed"])) for r in recs}
+    for row in omitted:
+        row["trace"] = row["trace"] if row["trace"].startswith("tencent_photo") else f"tencent_photo{row['trace']}"    # the runner logs the bare number
+    omitted = [row for row in omitted if (row["trace"], "sample" if row["family"] in ("S", "C") else "full", float(row["fraction"]), row["policy"], int(row["seed"])) not in finished]
     if omitted:
         with (OUT / "omitted.csv").open("w", newline="") as stream:
             writer = csv.DictWriter(stream, tuple(omitted[0]))
@@ -173,6 +212,8 @@ if __name__ == "__main__":
         ext.fetch()
     elif cmd == "run":
         run(set(sys.argv[2:]) or {"S", "C", "F"})
+    elif cmd == "retry":
+        retry(int(sys.argv[2]) if len(sys.argv) > 2 else 1)
     elif cmd == "summarize":
         summarize()
     else:
