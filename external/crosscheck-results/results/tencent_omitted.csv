@@ -1,0 +1,3 @@
+family,trace,fraction,policy,seed,reason
+F,tencent_photo2,0.1,lhd,42,ValueError: estimate exceeds the 12 GiB soft experiment budget
+F,tencent_photo1,0.1,lhd,42,ValueError: estimate exceeds the 12 GiB soft experiment budget

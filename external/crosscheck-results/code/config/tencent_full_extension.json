@@ -1,0 +1,56 @@
+{
+ "family": "tencent-full",
+ "protocol": "docs/tencent_full_protocol.md",
+ "artifact_commit": "0861f8261c37b8286a70449a1defb5a4749c72d2",
+ "out_dir": "local_results/tencent_full",
+ "data_dir": "data/tencent",
+ "summary_csv": "tencent_full.csv",
+ "local_files": {
+  "1": "data/tencent/tencent_photo1.oracleGeneral.zst",
+  "2": "data/tencent/tencent_photo2.oracleGeneral.zst"
+ },
+ "urls": {
+  "1": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets/tencentPhoto/tencent_photo1.oracleGeneral.zst",
+  "2": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets/tencentPhoto/tencent_photo2.oracleGeneral.zst"
+ },
+ "labels": {
+  "1": "tencent_photo1",
+  "2": "tencent_photo2"
+ },
+ "clusters": [
+  1,
+  2
+ ],
+ "worker_partition": [
+  [
+   1
+  ],
+  [
+   2
+  ]
+ ],
+ "count_partitions": 16,
+ "capacity_fractions": [
+  0.001,
+  0.1
+ ],
+ "core_policies": [
+  "fifo",
+  "lru",
+  "clock",
+  "sieve",
+  "arc"
+ ],
+ "extra_policies": [
+  "twoq",
+  "lirs",
+  "tinylfu_snapshot",
+  "blru",
+  "hyperbolic",
+  "lhd",
+  "cacheus"
+ ],
+ "rng_seed": 42,
+ "exact_capacity_objects": true,
+ "count_workers": 4
+}

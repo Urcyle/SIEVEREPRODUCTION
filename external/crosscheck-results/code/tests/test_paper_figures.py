@@ -22,7 +22,7 @@ class PaperFigureTests(unittest.TestCase):
             main = [n for n in names if not re.match(r"fig\d\d[b-z]_", n)]
             self.assertEqual([n[:5] for n in main], [f"fig{i:02d}" for i in range(1, 15)])
             self.assertEqual(sorted(n[:6] for n in names if re.match(r"fig\d\d[b-z]_", n)),
-                             ["fig03b", "fig03c", "fig04c", "fig05b", "fig05c", "fig08c", "fig10c"])
+                             ["fig03b", "fig03c", "fig04c", "fig04d", "fig05b", "fig05c", "fig05d", "fig05e", "fig08c", "fig10c"])
             for stem in names:
                 for ext in ("png", "svg", "pdf"):
                     self.assertGreater((Path(folder) / f"{stem}.{ext}").stat().st_size, 4000, f"{stem}.{ext}")
@@ -31,14 +31,14 @@ class PaperFigureTests(unittest.TestCase):
         out = ROOT / "local_results/paper_figures"
         for i in range(1, 15):
             self.assertEqual(len(list(out.glob(f"fig{i:02d}_*.png"))), 1, i)
-        self.assertEqual(len(list(out.glob("fig??[b-z]_*.png"))), 7)
+        self.assertEqual(len(list(out.glob("fig??[b-z]_*.png"))), 10)
         readme = (out / "README.md").read_text()
         for i in range(1, 15):
             self.assertIn(f"| {i} |", readme)
 
     def test_labels_that_keep_unreproduced_work_honest_are_in_the_source(self):
         source = (ROOT / "scripts/build_paper_figures.py").read_text()
-        for phrase in ("proprietary", "not run", "not CacheLib", "paper (digitized)", "Tencent Photo not run"):
+        for phrase in ("proprietary", "not run", "not CacheLib", "paper (digitized)", "Tencent Photo (35-37 GB files) is not in this five-contender panel"):
             self.assertIn(phrase, source)
 
 

@@ -71,6 +71,19 @@ def parse_baseline_output(output, expected_policy, fraction, *, capacity_objects
     return result
 
 
+_TRACE_HASH_CACHE = {}
+
+
+def trace_sha256(path):
+    """SHA-256 of a trace, computed once per process for an unchanged (size, mtime) file: the 37 GB Tencent files are checked on every run."""
+    path = Path(path)
+    stat = path.stat()
+    key = (str(path), stat.st_size, stat.st_mtime_ns)
+    if key not in _TRACE_HASH_CACHE:
+        _TRACE_HASH_CACHE[key] = file_sha256(path)
+    return _TRACE_HASH_CACHE[key]
+
+
 def validate_record(record, expected_spec):
     if record.get("status") != "complete" or record.get("exit_code") != 0 or record.get("spec") != expected_spec:
         raise ValueError("stale or unsuccessful seeded baseline record")
@@ -91,9 +104,12 @@ def validate_record(record, expected_spec):
         raise ValueError("saved counters differ from raw output")
     expected_capacity = (exact_capacity if exact_capacity is not None else
                          capacity_for(record["unique_objects"], expected_spec["capacity_fraction"]))
-    if (record["unique_objects"] != expected_spec["expected_unique_objects"] or
-            record["n_req"] != expected_spec["expected_requests"] or
-            record["cache_size"] != expected_capacity):
+    # a spatially sampled run (docs/tencent_full_protocol.md) has no whole-file request or object count to equal; its footprint is the one the
+    # simulator reports on the sample and the capacity is checked against that footprint above
+    sampled = expected_spec.get("sample_ratio") is not None
+    if (record["cache_size"] != expected_capacity or
+            (not sampled and (record["unique_objects"] != expected_spec["expected_unique_objects"] or
+                              record["n_req"] != expected_spec["expected_requests"]))):
         raise ValueError("seeded baseline input count/footprint/capacity mismatch")
     if any(record.get(k) != v for k, v in expected_spec.get("expected_counters", {}).items()):
         raise ValueError("seeded anchor differs from its original production reference")
@@ -135,11 +151,13 @@ def stop_process(process):
 
 
 def run_baseline(*, trace, metadata, policy, fraction, seed, binary, output_root, manifest_hash,
-                 expected_counters=None, estimated_peak_bytes=3 * GIB, capacity_objects=None):
+                 expected_counters=None, estimated_peak_bytes=3 * GIB, capacity_objects=None, sample_ratio=None):
     if policy not in POLICIES or type(seed) is not int or not 0 <= seed < 2**64:
         raise ValueError("unsupported policy or RNG seed")
+    if sample_ratio is not None and (capacity_objects is not None or not 0 < sample_ratio <= 0.5):
+        raise ValueError("a sampled run takes a ratio in (0, 0.5] and fractional capacities only")
     trace, binary, output_root = Path(trace).resolve(), Path(binary).resolve(), Path(output_root)
-    if file_sha256(trace) != metadata["sha256"]:
+    if trace_sha256(trace) != metadata["sha256"]:
         raise ValueError("public input changed since its validated manifest")
     if (capacity_objects is not None and
             (type(capacity_objects) is not int or capacity_objects <= 0 or
@@ -157,6 +175,9 @@ def run_baseline(*, trace, metadata, policy, fraction, seed, binary, output_root
             "seed_patch_sha256": file_sha256(Path(__file__).resolve().parents[1] / "patches/controlled-seed.patch")}
     if capacity_objects is not None:
         spec["capacity_objects"] = capacity_objects
+    if sample_ratio is not None:
+        spec["sample_ratio"] = sample_ratio
+        spec["expected_requests"] = spec["expected_unique_objects"] = None
     if metadata.get("unique_wss_reference_run_ids"):
         spec["unique_wss_reference_run_ids"] = sorted(metadata["unique_wss_reference_run_ids"])
     if expected_counters:
@@ -175,6 +196,8 @@ def run_baseline(*, trace, metadata, policy, fraction, seed, binary, output_root
         configured_capacity = str(fraction if capacity_objects is None else capacity_objects)
         command = [str(binary), str(trace), "oracleGeneral", config["cli"], configured_capacity,
                    "--ignore-obj-size", "1", "--num-thread", "1", "--warmup-sec", "-1"]
+        if sample_ratio is not None:
+            command += ["-s", str(sample_ratio)]
         if "eviction_params" in config:
             command += ["--eviction-params", config["eviction_params"]]
         if "admission" in config:

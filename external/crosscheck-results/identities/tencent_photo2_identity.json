@@ -1,0 +1,14 @@
+{
+ "compressed_bytes": 34865523550,
+ "count_method": "partitioned, 16 passes by id % partitions",
+ "head_content_length": 34865523550,
+ "label": "tencent_photo2",
+ "record_count": 2731876302,
+ "scan_seconds": 2884.8472359429943,
+ "sha256": "876237cb4668125e7c1c7a1aa700081b0917292722fd8790cf24879997af5385",
+ "stored_bytes": 34865523550,
+ "stream_sha256": "ac7f17b6b1239927a282d548ad1e6dcc6b648fc8fa90a27a86fb70703559e80f",
+ "unique_objects": 508614756,
+ "url": "https://ftp.pdl.cmu.edu/pub/datasets/twemcacheWorkload/cacheDatasets/tencentPhoto/tencent_photo2.oracleGeneral.zst",
+ "zero_size_count": 1
+}

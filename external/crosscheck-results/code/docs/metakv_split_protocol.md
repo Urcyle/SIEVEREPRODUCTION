@@ -61,3 +61,20 @@ Descriptive comparison (`local_results/metakv_split_extension/comparison.csv`, C
 | 5 | 10% | 0.0761 | 0.0762 | 0.1717 | 0.1708 | 0.0009 |
 
 Our seed-42 draw equals SIEVEREPRODUCTION's default draw to within 0.0001 on 6 of 10 cells and differs by 0.002-0.004 on traces 2 and 3 at 10% and traces 2 and 5 at 0.1%. Against the paper's dots, 5 of 10 are within 0.001 (large cache of traces 1, 4, 5; small cache of trace 2) and the others are 0.010-0.026 away: at 10% on traces 2 and 3 our value (0.172) is about 0.025 above the paper's (0.147), at 0.1% on traces 1, 3, 4, 5 about 0.011 below. This is the same kind of seed-dependent spread as `docs/cacheus_seed_spread_protocol.md` found on Meta CDN (CACHEUS bimodal across seeds); we did not run a seed spread on Meta KV, so we do not claim that these gaps are seed draws, only that a single draw cannot tell them apart from a real difference.
+
+## Amendment 3 (2026-11-06, before the runs): TinyLFU on traces 3 and 5 at the capacities of the other simulator
+
+The text of this amendment (runs, readings, the pre-declared check) is in `docs/remaining_work_plan_20261106.md`, section "Amendment 3 to `docs/metakv_split_protocol.md`"; it was committed in `78090c70` before any run. Script: `scripts/metakv_tinylfu_theirs_capacity.py`.
+
+## Outcome of amendment 3 (2026-11-06): the small-cache gaps of traces 3 and 5 close at the other simulator's capacities
+
+`python3 -B scripts/metakv_tinylfu_theirs_capacity.py run` (8 runs, parts hash-checked; `local_results/metakv_tinylfu_theirs_capacity/`). Distance of the pre-fix build to the paper's dot of the trace, at SIEVEREPRODUCTION's capacities (reduction against our FIFO / against theirs):
+
+| trace | cache | capacity | pre-fix distance | pinned distance | pre-declared check (within 0.0005) |
+|---|---|---|---|---|---|
+| 3 | 0.1% | 16,168 | 0.0002 / 0.0001 | 0.0011 | passes |
+| 3 | 10% | 1,616,850 | **0.0007** / 0.0004 | 0.0307 | **fails on the primary reading by 0.0002**, passes on the second |
+| 5 | 0.1% | 16,661 | 0.0001 / 0.0001 | 0.0048 | passes |
+| 5 | 10% | 1,666,145 | 0.0003 / 0.0000 | 0.0324 | passes |
+
+Result: at our exact capacities these two small-cache cells were 0.024 from the dot (pre-fix); at the other simulator's capacities they are within 0.0002. With trace 1 (`docs/tinylfu_dot_check_protocol.md`) the small-cache TinyLFU gap on Meta KV is explained for the three traces where the capacity differs between the two simulators; the earlier "not claimed for traces 3 and 5" is now claimed. One cell does not meet the stated rule under its primary reading (trace 3, large, 0.0007), with a 0.0002 margin; the second reading passes. The pinned build is 0.031-0.032 away on both large cells, as before.
