@@ -4,13 +4,13 @@ P,paper order,local_results/paper_figures/fig02_illustration.png,png+svg+pdf,Fig
 P,paper order,local_results/paper_figures/fig03_boxplots.png,png+svg+pdf,Figure 3: boxplots,238531,928da4fe328b0bc71d940828903f789a7b6b46781cd88b1460c318771d8c102b
 P,paper order,local_results/paper_figures/fig03b_boxplots_four_algorithms_all_twitter.png,png+svg+pdf,paper figures: fig03b boxplots four algorithms all twitter,177449,c254e18d9de7bb389a59b95ec8c3826d309e6f993aca0bd5b9ff161524d5f6b9
 P,paper order,local_results/paper_figures/fig03c_twitter_means_three_sets.png,png+svg+pdf,paper figures: fig03c twitter means three sets,152312,d8541473fcdc31921dccfeab26f3a1318f15a1190231b40bfc9b2cbfd6c6c07c
-P,paper order,local_results/paper_figures/fig04_public_scatter.png,png+svg+pdf,Figure 4: public scatter,185162,dfd8346b90416f69d7c83c388c03f58861dbc2c8c5512d48cc600d04623d46ec
+P,paper order,local_results/paper_figures/fig04_public_scatter.png,png+svg+pdf,Figure 4: public scatter,185204,51c85067ccf2dff986c4358d99ef8f74149ccd9865d5cca28198de41a560e3c2
 P,paper order,local_results/paper_figures/fig04c_all_public_traces_independent.png,png+svg+pdf,paper figures: fig04c all public traces independent,170387,4b40fbd568e481962eb2b2caa49e88c866fff4a4d3a0f35f2f85d802047a08d0
 P,paper order,local_results/paper_figures/fig04d_tencent_sample_vs_full.png,png+svg+pdf,paper figures: fig04d tencent sample vs full,97709,a9bbc99c98496f5ac8ad8db5deca48d5078e2f1f92455b6048478b99e21f9fb3
 P,paper order,local_results/paper_figures/fig05_best_algorithm_share.png,png+svg+pdf,Figure 5: best algorithm share,121693,a5b85081ffe3df641324f63d0fa41f8582284931ba42f56f4d624973d43bb9cd
 P,paper order,local_results/paper_figures/fig05b_best_algorithm_share_11_candidates.png,png+svg+pdf,paper figures: fig05b best algorithm share 11 candidates,110078,53bc8b92682c1d2e30a2bc6048eae34837e07f54f3ac121db5d455dbdcdace75
 P,paper order,local_results/paper_figures/fig05c_best_algorithm_independent.png,png+svg+pdf,paper figures: fig05c best algorithm independent,145608,eb3293cfc5db4eede1094cc371329dc97351d33d44f4ee36c3649c1237fa6e09
-P,paper order,local_results/paper_figures/fig05d_best_algorithm_own_runs.png,png+svg+pdf,paper figures: fig05d best algorithm own runs,136548,8b3ae593efda0d10ed0662adf593e5a43d3d8a37f6511297c9825f6ddcaff768
+P,paper order,local_results/paper_figures/fig05d_best_algorithm_own_runs.png,png+svg+pdf,paper figures: fig05d best algorithm own runs,139548,f372c68d20e2d09c45f93449f2d900906141718edea321ef64be2f46cbb61e52
 P,paper order,local_results/paper_figures/fig05e_tencent_cacheus_seed_spread.png,png+svg+pdf,paper figures: fig05e tencent cacheus seed spread,90188,077d66dd14c62da1c36c6d0f2cb6748314271d1d01b093ec0e8a5a9fd74d4eb9
 P,paper order,local_results/paper_figures/fig06_throughput_adaptation.png,png+svg+pdf,Figure 6: throughput adaptation,133366,c87891acce6a502aafdaee78188e1493b131de8d11edf81b4fc49359b7199a37
 P,paper order,local_results/paper_figures/fig07_sifting_and_time.png,png+svg+pdf,Figure 7: sifting and time,163174,32a2105bb6c322338796150862a662a21dcf98eb46021db73e82dfd97e3eb1ee

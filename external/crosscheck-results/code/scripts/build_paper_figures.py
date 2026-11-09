@@ -1081,7 +1081,7 @@ def fig05d():
     fig.legend(handles=legend, ncol=5, loc="upper center", bbox_to_anchor=(0.5, 0.94), frameon=False, fontsize=6.5)
     fig.suptitle("Figure 5 (companion, our own runs) - best algorithm per dataset: paper (upper, faded) against ours (lower)", y=0.99, fontsize=8.5)
     note(fig, "Ours: the best of the paper's 11 algorithms on every trace we ran (Wiki 3, Meta CDN 3, Meta KV 5 split from the merged file, Twitter: all clusters with 11 algorithms "
-              "from full-size and sampled files, Tencent: 10% sample if run); exact ties split equally. Wiki 2019u has 10 algorithms (no CACHEUS). Twitter and Tencent are "
+              "from full-size and sampled files, Tencent: 10% sample if run); exact ties split equally. All Wiki traces have 11 algorithms (CACHEUS on Wiki 2019u finished 2026-11-08). Twitter and Tencent are "
               "sampled files and not the paper's full traces. Paper bars read from the PDF by SIEVEREPRODUCTION.")
     fig.tight_layout(rect=(0, 0, 1, 0.9))
     save(fig, "fig05d_best_algorithm_own_runs")

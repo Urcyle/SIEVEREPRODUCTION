@@ -278,6 +278,12 @@ def summarize() -> None:
         writer.writeheader()
         writer.writerows(rows)
     omitted = [row for p in sorted(OUT.glob("worker*/omitted.csv")) for row in csv.DictReader(p.open(newline=""))]
+    # an omission that a later round completed is history, not a gap (the worker's own omitted.csv keeps the record)
+    omitted = [row for row in omitted
+               if (globals()["label"](int(row["cluster"])), float(row["fraction"]), row["policy"]) not in
+               {(lab, float(frac), pol) for (lab, frac, pol) in records}]
+    if not omitted:
+        (OUT / "omitted.csv").unlink(missing_ok=True)
     if omitted:
         with (OUT / "omitted.csv").open("w", newline="") as stream:
             writer = csv.DictWriter(stream, tuple(omitted[0]))
